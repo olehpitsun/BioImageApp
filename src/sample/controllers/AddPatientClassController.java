@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import sample.libs.Messages;
 import sample.models.AddPatientModel;
+import sample.models.PatientsModel;
+import sample.objects.Patient;
 
 /**
  * Автор: Павло Лящинський
@@ -34,13 +36,11 @@ public class AddPatientClassController {
     private TextField date_of_completion;
     @FXML
     private TextField full_name_of_doctor;
-
+    private Patient patient;
     AddPatientModel addPatientModel;
 
     @FXML
     private ToggleGroup Gender;
-
-
     public void addAPatientInDB(){
         addPatientModel = new AddPatientModel();
         addPatientModel.setFull_name_of_patient(full_name_of_patient.getText());
@@ -51,6 +51,7 @@ public class AddPatientClassController {
         addPatientModel.setDate_of_completion(date_of_completion.getText());
         addPatientModel.setFull_name_of_doctor(full_name_of_doctor.getText());
         addPatientModel.addToDB();
+
     }
 
 } // class AdClassController

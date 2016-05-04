@@ -91,16 +91,17 @@ public class MainWindowController {
     @FXML
     public void handleSignIn(){
         try {
-            StartApp.startAuth();
+            /*StartApp.startAuth();
 
             settingsButton.setDisable(false);
             webcamButton.setDisable(false);
             photoCameraButton.setDisable(false);
             address_bookButton.setDisable(false);
             showButton1.setDisable(false);
-            showButton2.setDisable(false);
+            showButton2.setDisable(false); */
             //AuthModule auth = new AuthModule();
-        } catch (IOException e) {
+            Patients patients = new Patients();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

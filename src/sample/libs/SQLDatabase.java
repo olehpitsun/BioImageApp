@@ -48,6 +48,13 @@ public class SQLDatabase {
         }
         catch(SQLException f) {f.printStackTrace();}
     }
+    public void updateExecute(String query)
+    {
+        try{
+            statement.executeUpdate(query);
+        }
+        catch(Exception f) {f.printStackTrace();}
+    }
     public ResultSet returnResult()
     {
         return resultSet;
