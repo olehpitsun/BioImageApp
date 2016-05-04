@@ -42,16 +42,10 @@ public class StartApp extends Application {
     {
         DbModel db = new DbModel();
         if(db.checkDbConnection() == true) {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        AuthModule auth = new AuthModule();
-                        auth.authDialog();
-                    } catch (Exception e) {
-                    }
-                }
-            });
+
+            AuthModule auth = new AuthModule();
+            auth.authDialog();
+
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("БД");
@@ -77,15 +71,10 @@ public class StartApp extends Application {
     }
 
     public static void showDBSettingsPage() throws IOException{
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run(){
-                try {
-                    DBConnectionModule db = new DBConnectionModule();
-                    db.showDbConnectDialog();
-                } catch (Exception e) {}
-            }
-        });
+
+        DBConnectionModule db = new DBConnectionModule();
+        db.showDbConnectDialog();
+
     }
 }
 
