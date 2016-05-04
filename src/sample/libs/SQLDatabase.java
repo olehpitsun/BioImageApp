@@ -1,0 +1,55 @@
+package sample.libs;
+
+import com.mysql.fabric.jdbc.FabricMySQLDriver;
+
+import java.sql.*;
+
+public class SQLDatabase {
+    protected Connection connection;
+    protected Statement statement;
+    protected ResultSet resultSet;
+
+  public void sqlSetConnect() {
+      try {
+          Driver driver = new FabricMySQLDriver();
+          DriverManager.registerDriver(driver);
+          //connection = DriverManager.getConnection("jdbc:mysql://localhost/bioimageapp", "oleh", "oleh123");
+          connection = DriverManager.getConnection("jdbc:mysql://"+ SQLDatabaseParam.getHost() +"/" + SQLDatabaseParam.getDbname(),
+                  SQLDatabaseParam.getDbuser() , SQLDatabaseParam.getDbpass());
+
+          statement = connection.createStatement();
+      }
+      catch(SQLException e) {Messages.error("SQL error", "Server is not responding", "SQL");}
+  }
+
+    public void sqlUpdateConnect()
+    {
+       try
+       {
+           if(connection.isClosed())
+           {
+               sqlSetConnect();
+
+           }
+       }
+       catch(SQLException a)
+       {
+           a.printStackTrace();
+       }
+    }
+    public void sqlInsertExecute(String query) throws  SQLException
+    {
+         statement.execute(query);
+    }
+    public void sqlExecute(String query)
+    {
+        try{
+            resultSet = statement.executeQuery(query);
+        }
+        catch(SQLException f) {f.printStackTrace();}
+    }
+    public ResultSet returnResult()
+    {
+        return resultSet;
+    }
+}

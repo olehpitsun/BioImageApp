@@ -1,0 +1,48 @@
+#pane{
+    -fx-background-color:#317589;
+
+}
+#forgot {
+    -fx-background-color: transparent;
+    -fx-font-size: 10;
+    -fx-text-fill: #D7CCCC;
+}
+#forgot:hover {
+    -fx-background-color: transparent;
+    -fx-font-size: 10;
+    -fx-text-fill: #eee;
+}
+.button{
+    -fx-background-color: #7383B5;
+    -fx-text-fill: #eee;
+
+}
+.button:hover{
+    -fx-background-color: #78B5CA;
+    -fx-text-fill: #eee;
+}
+.button:pressed{
+    -fx-text-fill: #eee;
+    -fx-font-size: 15;
+}
+.text-field {
+    -fx-background-color: #fff;
+    -fx-font-size: 14;
+    -fx-background-radius: 3;
+    -fx-text-fill: #544545;
+}
+.text-field:focused {
+    -fx-background-color: rgba(255,255,255,0.8);
+}
+.text-area {
+    -fx-background-color: #fff;
+    -fx-font-size: 14;
+    -fx-background-radius: 3;
+    -fx-text-fill: #544545;
+}
+.text-area:focused {
+    -fx-background-color: rgba(255,255,255,0.8);
+}
+
+
+
