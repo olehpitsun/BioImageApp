@@ -51,7 +51,6 @@ public class AddPatientClassController {
         addPatientModel.setDate_of_completion(date_of_completion.getText());
         addPatientModel.setFull_name_of_doctor(full_name_of_doctor.getText());
         addPatientModel.addToDB();
-
     }
 
 } // class AdClassController

@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import sample.controllers.PatientsController;
 import sample.libs.Messages;
 import sample.libs.SQLDatabase;
 import sample.libs.Session;
@@ -63,8 +64,12 @@ public class AddPatientModel extends  SQLDatabase{
         try {
 
             sqlInsertExecute("INSERT INTO patients (Status, Full_name, Date_of_birth, Gender, Results_of_research, Diagnosis, Date_of_completion, Name_of_doctor) VALUES ("+"'Patient',"+"'"+full_name_of_patient+"',"+"'"+date_of_birth+"',"+"'"+gender+"',"+"'"+results_of_research+"',"+"'"+diagnosis+"',"+"'"+date_of_completion+"',"+"'"+full_name_of_doctor+"')");
-            System.out.println(Session.getKeyValue("id"));
-            System.out.println(Session.getKeyValue("name"));
+            sqlExecute("SELECT id, status FROM patients WHERE Full_name='"+full_name_of_patient+"' AND Date_of_birth='"+date_of_birth+"'");
+            if(resultSet.next())
+            PatientsController.patientsData.add(new Patient(Integer.valueOf(resultSet.getString("ID")), full_name_of_patient, date_of_birth,
+                    gender,
+                    results_of_research, diagnosis,
+                    date_of_completion, full_name_of_doctor, resultSet.getString("Status")));
             //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");
         } catch (Exception ex) {
             ex.printStackTrace();

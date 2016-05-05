@@ -66,14 +66,12 @@ public class PatientsController {
     private TextField search;
     @FXML
     private Label count;
-    int counts = 0;
 
     @FXML
     public void addPatient() throws Exception
     {
-        AddPatientModule addPatientModule = new AddPatientModule();
-        patientsModel.selectData();
-        table.setItems(patientsData);
+        AddPatientView addPatientView = new AddPatientView();
+        addPatientView.render();
     }
     @FXML
     public void editPatient(ActionEvent event)
@@ -86,6 +84,14 @@ public class PatientsController {
         } catch (Exception e) {e.printStackTrace();}
 
 
+    }
+    @FXML
+    public void deletePatient()
+    {
+        Patient patient = (Patient) table.getSelectionModel().getSelectedItem();
+        EditPatientController.patient = patient;
+        patientsModel.remove(patient);
+        patientsData.remove(patient);
     }
     public void updateCount(int counts)
     {
@@ -106,12 +112,7 @@ public class PatientsController {
         patientsData.addListener(new ListChangeListener<Patient>() {
             @Override
             public void onChanged(Change<? extends Patient> c){
-                updateCount(patientsModel.getCounts());
-                try {
-                    patientsModel.selectData();
-                    table.setItems(patientsData);
-                } catch (SQLException e) {e.printStackTrace();}
-
+                updateCount(patientsData.size());
             }
         });
         patientsModel.selectData();

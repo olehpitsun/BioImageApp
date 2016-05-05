@@ -11,7 +11,7 @@
          <children>
             <Button fx:id="addPatient" layoutX="34.0" layoutY="17.0" mnemonicParsing="false" onAction="#addPatient" text="Додати" AnchorPane.leftAnchor="15.0" />
             <Button fx:id="editPatient" layoutX="81.0" layoutY="17.0" mnemonicParsing="false" onAction="#editPatient" text="Редагувати" />
-            <Button fx:id="removePatient" layoutX="168.0" layoutY="17.0" mnemonicParsing="false" text="Видалити" />
+            <Button fx:id="removePatient" layoutX="168.0" layoutY="17.0" mnemonicParsing="false" onAction="#deletePatient" text="Видалити" />
             <TextField fx:id="search" layoutX="257.0" layoutY="17.0" prefHeight="25.0" prefWidth="263.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="80.0" />
             <Button fx:id="searchButton" layoutX="502.0" layoutY="17.0" mnemonicParsing="false" text="Пошук" AnchorPane.rightAnchor="15.0" />
          </children>

@@ -26,6 +26,11 @@ public class PatientsModel extends SQLDatabase {
         sqlSetConnect();
         sqlExecute("SELECT * FROM patients");
 
+
+    }
+    public void remove(Patient patient)
+    {
+        removeExecute("DELETE FROM patients WHERE ID='"+patient.getId()+"'");
     }
     public void setData() throws SQLException
     {
