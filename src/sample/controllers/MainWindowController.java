@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.opencv.core.Mat;
+import sample.libs.Session;
 import sample.models.DbModel;
 import sample.nodes.*;
 
@@ -77,9 +78,7 @@ public class MainWindowController {
     @FXML
     public Image img;
     @FXML
-    private Label mseResLabel;
-    @FXML
-    private Label psnrResLabel;
+    private Label infoLabel;
 
     @FXML
     public ImageView imgview;
@@ -92,15 +91,14 @@ public class MainWindowController {
     public void handleSignIn(){
         try {
             StartApp.startAuth();
-
+            infoLabel.setText("Вітаю, " + Session.getKeyValue("name"));
             settingsButton.setDisable(false);
             webcamButton.setDisable(false);
             photoCameraButton.setDisable(false);
             address_bookButton.setDisable(false);
             showButton1.setDisable(false);
             showButton2.setDisable(false);
-            //AuthModule auth = new AuthModule();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -115,12 +113,20 @@ public class MainWindowController {
     private void handleDBConnect() throws Exception {
 
         StartApp.showDBSettingsPage();
-        signInButton.setDisable(false);
+        DbModel db = new DbModel();
+                if(db.checkDbConnection() == true) {
+                       signInButton.setDisable(false);
+                  }
     }
 
     @FXML
     private void handlePacientList(){
-        System.out.println(";;;;;");
+
+        try {
+            Patients patients = new Patients();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

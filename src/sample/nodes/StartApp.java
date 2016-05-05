@@ -9,6 +9,7 @@ import javafx.concurrent.Task;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
+import sample.libs.Messages;
 import sample.models.CheckerModel;
 import sample.models.DbModel;
 import sample.views.CheckerView;
@@ -42,7 +43,7 @@ public class StartApp extends Application {
     {
         DbModel db = new DbModel();
         if(db.checkDbConnection() == true) {
-            Platform.runLater(new Runnable() {
+           /* Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
                     try {
@@ -51,13 +52,11 @@ public class StartApp extends Application {
                     } catch (Exception e) {
                     }
                 }
-            });
+            }); */
+        AuthModule auth = new AuthModule();
+        auth.authDialog();
         }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("БД");
-            alert.setHeaderText("Помилка");
-            alert.setContentText("Не встановлено з'єднання з БД");
-            alert.showAndWait();
+            Messages.error("Помилка БД!", "Не встановлено з'эднання", "БД");
         }
     }
 
@@ -77,7 +76,7 @@ public class StartApp extends Application {
     }
 
     public static void showDBSettingsPage() throws IOException{
-        Platform.runLater(new Runnable() {
+       /* Platform.runLater(new Runnable() {
             @Override
             public void run(){
                 try {
@@ -85,7 +84,9 @@ public class StartApp extends Application {
                     db.showDbConnectDialog();
                 } catch (Exception e) {}
             }
-        });
+        });*/
+        DBConnectionModule db = new DBConnectionModule();
+        db.showDbConnectDialog();
     }
 
 
