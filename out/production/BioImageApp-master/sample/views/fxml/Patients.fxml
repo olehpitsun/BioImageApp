@@ -44,6 +44,11 @@
          <children>
             <Label prefHeight="17.0" prefWidth="99.0" text="Кількість записів:" />
             <Label fx:id="count" text="0" />
+            <Button fx:id="close" cancelButton="true" mnemonicParsing="false" onAction="#close" text="Вихід">
+               <HBox.margin>
+                  <Insets left="420.0" />
+               </HBox.margin>
+            </Button>
          </children>
          <VBox.margin>
             <Insets left="15.0" top="25.0" />

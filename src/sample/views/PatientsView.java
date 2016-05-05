@@ -17,6 +17,7 @@ public class PatientsView {
     {
         Parent parent = FXMLLoader.load(getClass().getResource("fxml/Patients.fxml"));
         Scene scene = new Scene(parent, 600, 400);
+        CurrentStage.setOwnerStage(primaryStage);
         primaryStage.setMinHeight(400);
         primaryStage.setMinWidth(600);
         primaryStage.setTitle("Patients List");

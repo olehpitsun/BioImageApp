@@ -6,6 +6,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import sample.controllers.PatientsController;
+import sample.libs.CurrentStage;
 import sample.libs.Messages;
 import sample.libs.SQLDatabase;
 import sample.libs.Session;
@@ -71,6 +72,7 @@ public class AddPatientModel extends  SQLDatabase{
                     results_of_research, diagnosis,
                     date_of_completion, full_name_of_doctor, resultSet.getString("Status")));
             //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");
+            CurrentStage.getStage().close();
         } catch (Exception ex) {
             ex.printStackTrace();
             Messages.error("Error", "The patient can not be added", "БД");

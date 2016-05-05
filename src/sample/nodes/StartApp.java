@@ -43,7 +43,7 @@ public class StartApp extends Application {
     {
         DbModel db = new DbModel();
         if(db.checkDbConnection() == true) {
-            Platform.runLater(new Runnable() {
+           /* Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
                     try {
@@ -52,7 +52,9 @@ public class StartApp extends Application {
                     } catch (Exception e) {
                     }
                 }
-            });
+            }); */
+        AuthModule auth = new AuthModule();
+        auth.authDialog();
         }else{
             Messages.error("Помилка БД!", "Не встановлено з'эднання", "БД");
         }
@@ -74,7 +76,7 @@ public class StartApp extends Application {
     }
 
     public static void showDBSettingsPage() throws IOException{
-        Platform.runLater(new Runnable() {
+       /* Platform.runLater(new Runnable() {
             @Override
             public void run(){
                 try {
@@ -82,7 +84,9 @@ public class StartApp extends Application {
                     db.showDbConnectDialog();
                 } catch (Exception e) {}
             }
-        });
+        });*/
+        DBConnectionModule db = new DBConnectionModule();
+        db.showDbConnectDialog();
     }
 
 

@@ -53,7 +53,7 @@ public class AuthModel extends SQLDatabase {
                 System.out.println(Session.getKeyValue("id"));
                 System.out.println(Session.getKeyValue("name"));
 
-                //MainApp mainApp = new MainApp();
+               // MainApp mainApp = new MainApp();
 
             }
 

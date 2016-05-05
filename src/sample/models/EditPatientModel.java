@@ -4,6 +4,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import sample.controllers.EditPatientController;
 import sample.controllers.PatientsController;
+import sample.libs.CurrentStage;
 import sample.libs.Messages;
 import sample.libs.SQLDatabase;
 import sample.libs.Session;
@@ -71,7 +72,7 @@ public class EditPatientModel extends SQLDatabase {
                     results_of_research, diagnosis,
                     date_of_completion, full_name_of_doctor, status));
 
-
+            CurrentStage.getStage().close();
             //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -33,10 +33,10 @@
                         <RowConstraints />
                      </rowConstraints>
                      <children>
-
-                        <Button fx:id="signInButton" disable="true" mnemonicParsing="false" onAction="#handleSignIn" text="Увійти" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label fx:id="infoLabel" GridPane.columnIndex="0" GridPane.rowIndex="0" >Увійдіть в систему</Label>
+                        <Button fx:id="signInButton" disable="true" mnemonicParsing="false" onAction="#handleSignIn" text="Увійти" GridPane.columnIndex="0" GridPane.rowIndex="1">
                         </Button>
-                        <Button fx:id="dbButton" mnemonicParsing="false" onAction="#handleDBConnect" text="Налаштування БД" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <Button fx:id="dbButton" mnemonicParsing="false" onAction="#handleDBConnect" text="Налаштування БД" GridPane.columnIndex="0" GridPane.rowIndex="2">
                         </Button>
 
                      </children>

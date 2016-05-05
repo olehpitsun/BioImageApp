@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.interfaces.PatientsBook;
+import sample.libs.CurrentStage;
 import sample.libs.SQLDatabase;
 import sample.models.AddPatientModel;
 import sample.models.EditPatientModel;
@@ -63,6 +64,8 @@ public class PatientsController {
     @FXML
     private Button searchButton;
     @FXML
+    private Button close;
+    @FXML
     private TextField search;
     @FXML
     private Label count;
@@ -72,6 +75,11 @@ public class PatientsController {
     {
         AddPatientView addPatientView = new AddPatientView();
         addPatientView.render();
+    }
+    @FXML
+    public void close()
+    {
+        CurrentStage.getOwnerStage().close();
     }
     @FXML
     public void editPatient(ActionEvent event)
@@ -100,6 +108,7 @@ public class PatientsController {
 
     @FXML
     public void initialize() throws Exception{
+        patientsData.clear();
         id.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("id"));
         name.setCellValueFactory(new PropertyValueFactory<Patient, String>("full_name_of_patient"));
         birth.setCellValueFactory(new PropertyValueFactory<Patient, String>("date_of_birth"));
