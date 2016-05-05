@@ -28,7 +28,7 @@ import java.util.List;
 public class MainWindowController {
 
     @FXML
-    private Button signInButton, settingsButton, webcamButton, photoCameraButton, address_bookButton, showButton1,showButton2;
+    private Button signInButton, settingsButton, webcamButton, photoCameraButton, address_bookButton, showButton1,simpleResearchButton;
     @FXML
     private TextField researchNameField;
 
@@ -80,6 +80,7 @@ public class MainWindowController {
     @FXML
     private Label infoLabel;
 
+
     @FXML
     public ImageView imgview;
     @FXML
@@ -91,14 +92,16 @@ public class MainWindowController {
     public void handleSignIn(){
         try {
             StartApp.startAuth();
+
             infoLabel.setText("Вітаю, " + Session.getKeyValue("name"));
             settingsButton.setDisable(false);
             webcamButton.setDisable(false);
             photoCameraButton.setDisable(false);
             address_bookButton.setDisable(false);
             showButton1.setDisable(false);
-            showButton2.setDisable(false);
-        } catch (Exception e) {
+            simpleResearchButton.setDisable(false);
+            //AuthModule auth = new AuthModule();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -113,20 +116,21 @@ public class MainWindowController {
     private void handleDBConnect() throws Exception {
 
         StartApp.showDBSettingsPage();
+
         DbModel db = new DbModel();
-                if(db.checkDbConnection() == true) {
-                       signInButton.setDisable(false);
-                  }
+        if(db.checkDbConnection() == true) {
+            signInButton.setDisable(false);
+        }
+    }
+
+    @FXML
+    private void handleSimpleResearch(){
+        StartApp.showSimpleResearch();
     }
 
     @FXML
     private void handlePacientList(){
-
-        try {
-            Patients patients = new Patients();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.out.println(";;;;;");
     }
 
     @FXML

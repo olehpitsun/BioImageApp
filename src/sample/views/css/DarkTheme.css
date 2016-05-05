@@ -169,6 +169,14 @@
     -fx-border-color: #d8d8d8;
 }
 
+#loadImageButton{
+    -fx-min-height: 50px;
+    -fx-min-width: 220px;
+    -fx-background-image: url("../images/photo.png");
+    -fx-background-size: 50px 50px;
+    -fx-background-repeat: no-repeat;
+}
+
 #pacientButton{
     -fx-min-height: 100px;
     -fx-min-width: 350px;
@@ -183,7 +191,10 @@
     -fx-border-color: #1b323b;
 }
 
-
+#automaticButton, #handeButton{
+    -fx-background-color: #6B9362;
+    -fx-text-fill: #ffffff;
+}
 
 .button {
     -fx-padding: 3 10 3 10;
@@ -234,7 +245,7 @@
     -fx-background-repeat: no-repeat;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
-#showButton2{
+#simpleResearchButton{
     -fx-padding: 3 10 3 10;
     -fx-border-color: #317589;
     -fx-border-width: 2;
