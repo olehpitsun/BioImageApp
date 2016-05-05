@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="363.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainWindowController">
+<AnchorPane prefHeight="363.0" prefWidth="693.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainWindowController">
    <children>
       <SplitPane dividerPositions="0.4126984126984127, 0.5" layoutX="153.0" layoutY="70.0" prefHeight="363.0" prefWidth="293.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -34,7 +34,6 @@
                      </rowConstraints>
                      <children>
                         <Label fx:id="infoLabel" GridPane.columnIndex="0" GridPane.rowIndex="0" >Увійдіть в систему</Label>
-
                         <Button fx:id="signInButton" disable="true" mnemonicParsing="false" onAction="#handleSignIn" text="Увійти" GridPane.columnIndex="0" GridPane.rowIndex="1">
                         </Button>
                         <Button fx:id="dbButton" mnemonicParsing="false" onAction="#handleDBConnect" text="Налаштування БД" GridPane.columnIndex="0" GridPane.rowIndex="2">
@@ -60,7 +59,7 @@
 
                         <Button fx:id="showButton1" disable="true" mnemonicParsing="false" onAction="#handlePacientList" text="Список пацієнтів" GridPane.columnIndex="0" GridPane.rowIndex="0">
                         </Button>
-                        <Button fx:id="simpleResearchButton" disable="true" mnemonicParsing="false" onAction="#handleSimpleResearch" text="Досліди" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Button fx:id="showButton2" disable="true" mnemonicParsing="false" onAction="#handleResearchList" text="Досліди" GridPane.columnIndex="1" GridPane.rowIndex="0">
                         </Button>
                         <Button fx:id="showButton3" disable="true" mnemonicParsing="false" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada  фото" GridPane.columnIndex="0" GridPane.rowIndex="1">
                         </Button>
