@@ -20,6 +20,7 @@ import org.opencv.core.Mat;
 import sample.libs.Session;
 import sample.models.DbModel;
 import sample.nodes.*;
+import sample.objects.Patient;
 
 import java.io.IOException;
 import java.util.List;
@@ -118,7 +119,7 @@ public class MainWindowController {
         StartApp.showDBSettingsPage();
 
         DbModel db = new DbModel();
-        if(db.checkDbConnection() == true) {
+        if(db.checkDbConnection()) {
             signInButton.setDisable(false);
         }
     }
@@ -129,8 +130,9 @@ public class MainWindowController {
     }
 
     @FXML
-    private void handlePacientList(){
-        System.out.println(";;;;;");
+    private void handlePacientList() throws Exception{
+
+        Patients patient = new Patients();
     }
 
     @FXML
