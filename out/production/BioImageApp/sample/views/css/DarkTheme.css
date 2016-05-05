@@ -175,7 +175,6 @@
     -fx-background-image: url("../images/photo.png");
     -fx-background-size: 50px 50px;
     -fx-background-repeat: no-repeat;
-    -fx-border-color: #d8d8d8;
 }
 
 #pacientButton{

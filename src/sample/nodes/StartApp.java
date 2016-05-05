@@ -6,7 +6,10 @@ package sample.nodes;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
 import sample.models.CheckerModel;
@@ -38,6 +41,9 @@ public class StartApp extends Application {
         tasks.start();
 
     }
+
+
+
     public static void startAuth() throws IOException
     {
         DbModel db = new DbModel();
