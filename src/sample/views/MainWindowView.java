@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.omg.CORBA.Current;
 import sample.libs.CurrentStage;
 
 
@@ -29,6 +30,7 @@ public class MainWindowView {
         primaryStage.setMinHeight(275);
         primaryStage.setScene(scene);
         primaryStage.setResizable(true);
+        CurrentStage.setMainStage(primaryStage);
         CurrentStage.getStage().close();
         primaryStage.show();
     }
