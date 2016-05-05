@@ -7,29 +7,44 @@ import sample.nodes.AuthModule;
 import sample.nodes.StartApp;
 import sample.views.CheckerView;
 
+import java.net.HttpURLConnection;
+import java.net.InetAddress;
+import java.net.URL;
+
 /**
  * Created by Admin on 26.04.2016.
  */
 public class CheckerModel extends Task<Void> {
     public void checkInternet(String host) throws Exception
     {
-        Process proc = Runtime.getRuntime().exec("ping -n 1 " + host);
-        boolean reachable = (proc.waitFor()==0);
-        System.out.println(reachable ? "Host is reachable" : "Host is NOT reachable");
+        Boolean result = false;
+        HttpURLConnection con = null;
+        try {
+            con = (HttpURLConnection) new URL(host).openConnection();
+            con.setRequestMethod("HEAD");
+            result = (con.getResponseCode() == HttpURLConnection.HTTP_OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (con != null) {
+                try {
+                    con.disconnect();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        System.out.println(result ? "True" : "False");
 
     }
 
     @Override
     protected Void call() throws Exception {
 
-                    checkInternet("google.com");
-                    checkInternet("youtube.com");
-                    checkInternet("vk.com");
-                    checkInternet("instagram.com");
-                    checkInternet("google.com");
-                    checkInternet("northbridge.16mb.com");
-                    checkInternet("ki.tneu.edu.ua");
-                    checkInternet("twitter.com");
+                    checkInternet("http://www.google.com/");
+                    checkInternet("https://www.youtube.com/");
+                    checkInternet("https://www.instagram.com/");
+                    checkInternet("https://www.twitter.com/");
                     System.out.println("Done");
                     Thread.sleep(200);
                     //StartApp.startAuth();

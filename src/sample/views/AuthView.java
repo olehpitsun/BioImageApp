@@ -21,7 +21,6 @@ public class AuthView{
         primaryStage.setTitle("Authorization");
         primaryStage.setScene(scene);
         scene.getStylesheets().add(0, "sample/views/css/style.css");
-        CurrentStage.getStage().close();
         CurrentStage.setStage(primaryStage);
         primaryStage.show();
 

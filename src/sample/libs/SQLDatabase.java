@@ -19,7 +19,7 @@ public class SQLDatabase {
 
           statement = connection.createStatement();
       }
-      catch(SQLException e) {Messages.error("SQL error", "Server is not responding");}
+      catch(SQLException e) {Messages.error("SQL error", "Server is not responding", "SQL");}
   }
 
     public void sqlUpdateConnect()
@@ -47,6 +47,20 @@ public class SQLDatabase {
             resultSet = statement.executeQuery(query);
         }
         catch(SQLException f) {f.printStackTrace();}
+    }
+    public void updateExecute(String query)
+    {
+        try{
+            statement.executeUpdate(query);
+        }
+        catch(Exception f) {f.printStackTrace();}
+    }
+    public void removeExecute(String query)
+    {
+        try{
+            statement.executeUpdate(query);
+        }
+        catch(Exception f) {f.printStackTrace();}
     }
     public ResultSet returnResult()
     {
