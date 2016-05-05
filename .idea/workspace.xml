@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2655a775-c4f5-4532-882e-6ea1389e71f6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="2655a775-c4f5-4532-882e-6ea1389e71f6" name="Default" comment="" />
     <ignored path="BioImageApp-master.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -90,7 +88,7 @@
     </push-targets>
   </component>
   <component name="GithubProjectSettings">
-    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="develop" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="plist" />
     <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="Rainbow-MRX" />
     <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="BioImageApp" />
   </component>
