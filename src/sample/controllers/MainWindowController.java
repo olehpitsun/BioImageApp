@@ -28,7 +28,7 @@ import java.util.List;
 public class MainWindowController {
 
     @FXML
-    private Button signInButton, settingsButton, webcamButton, photoCameraButton, address_bookButton, showButton1,showButton2;
+    private Button signInButton, settingsButton, webcamButton, photoCameraButton, address_bookButton, showButton1,simpleResearchButton;
     @FXML
     private TextField researchNameField;
 
@@ -99,7 +99,7 @@ public class MainWindowController {
             photoCameraButton.setDisable(false);
             address_bookButton.setDisable(false);
             showButton1.setDisable(false);
-            showButton2.setDisable(false);
+            simpleResearchButton.setDisable(false);
             //AuthModule auth = new AuthModule();
         } catch (IOException e) {
             e.printStackTrace();
@@ -121,6 +121,11 @@ public class MainWindowController {
         if(db.checkDbConnection() == true) {
             signInButton.setDisable(false);
         }
+    }
+
+    @FXML
+    private void handleSimpleResearch(){
+        StartApp.showSimpleResearch();
     }
 
     @FXML

@@ -76,6 +76,17 @@ public class StartApp extends Application {
         db.showDbConnectDialog();
 
     }
+
+    /**
+     * функція для відображення сторінки з дослідами
+     */
+    public static void showSimpleResearch(){
+        try {
+            SimpleResearchModule srm = new SimpleResearchModule();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 /////////////////////////////////////////////////
