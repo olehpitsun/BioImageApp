@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
+import sample.libs.Messages;
 import sample.models.CheckerModel;
 import sample.models.DbModel;
 import sample.views.CheckerView;
@@ -53,11 +54,7 @@ public class StartApp extends Application {
             auth.authDialog();
 
         }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("БД");
-            alert.setHeaderText("Помилка");
-            alert.setContentText("Не встановлено з'єднання з БД");
-            alert.showAndWait();
+            Messages.error("Помилка БД!", "Не встановлено з\'єднання з БД", "БД");
         }
     }
 

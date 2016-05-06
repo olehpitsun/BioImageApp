@@ -35,6 +35,7 @@ public class PatientsController {
         patientsModel = new PatientsModel();
     }
     public static ObservableList<Patient> patientsData = FXCollections.observableArrayList();
+    public static ObservableList<Patient> backupPatientsData = FXCollections.observableArrayList();
     @FXML
     private TableView<Patient> table;
     @FXML
@@ -70,6 +71,49 @@ public class PatientsController {
     @FXML
     private Label count;
 
+    @FXML
+    public void search()
+    {
+        patientsData.clear();
+        String text = search.getText();
+        if (text == "")
+        {
+            patientsData.clear();
+            patientsData.addAll(backupPatientsData);
+        }
+        for (Patient patient : backupPatientsData)
+        {
+            if(String.valueOf(patient.getId()).contains(text) ||
+                    patient.getDate_of_birth().toLowerCase().contains(text) ||
+                    patient.getDate_of_completion().toLowerCase().contains(text) ||
+                    patient.getDiagnosis().toLowerCase().contains(text) ||
+                    patient.getFull_name_of_patient().toLowerCase().contains(text) ||
+                    patient.getFull_name_of_doctor().toLowerCase().contains(text) ||
+                    patient.getGender().toLowerCase().contains(text) ||
+                    patient.getResults_of_research().toLowerCase().contains(text) ||
+                    patient.getStatus().toLowerCase().contains(text) ||
+                    patient.getDate_of_birth().toUpperCase().contains(text) ||
+                    patient.getDate_of_completion().toUpperCase().contains(text) ||
+                    patient.getDiagnosis().toUpperCase().contains(text) ||
+                    patient.getFull_name_of_patient().toUpperCase().contains(text) ||
+                    patient.getFull_name_of_doctor().toUpperCase().contains(text) ||
+                    patient.getGender().toUpperCase().contains(text) ||
+                    patient.getResults_of_research().toUpperCase().contains(text) ||
+                    patient.getStatus().toUpperCase().contains(text) ||
+                    patient.getDate_of_birth().contains(text) ||
+                    patient.getDate_of_completion().contains(text) ||
+                    patient.getDiagnosis().contains(text) ||
+                    patient.getFull_name_of_patient().contains(text) ||
+                    patient.getFull_name_of_doctor().contains(text) ||
+                    patient.getGender().contains(text) ||
+                    patient.getResults_of_research().contains(text) ||
+                    patient.getStatus().contains(text))
+            {
+                patientsData.add(patient);
+            }
+        }
+
+    }
     @FXML
     public void addPatient() throws Exception
     {
