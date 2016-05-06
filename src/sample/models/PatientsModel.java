@@ -55,6 +55,7 @@ public class PatientsModel extends SQLDatabase {
                     results_of_research, diagnosis,
                     date_of_completion, full_name_of_doctor, status));
         }
+        PatientsController.backupPatientsData.addAll(PatientsController.patientsData);
     }
     public int getCounts()
     {
