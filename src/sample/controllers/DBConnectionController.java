@@ -51,9 +51,9 @@ public class DBConnectionController {
     public void setConnectField() {
         hostField.setText("localhost");
         portField.setText("3306");
-        userField.setText("oleh");
-        passwordField.setText("oleh123");
-        dbnameField.setText("bioimageapp");
+        userField.setText("manager");
+        passwordField.setText("root");
+        dbnameField.setText("javafx");
     }
 
     /**

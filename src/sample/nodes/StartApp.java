@@ -6,9 +6,13 @@ package sample.nodes;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
+import sample.libs.Messages;
 import sample.models.CheckerModel;
 import sample.models.DbModel;
 import sample.views.CheckerView;
@@ -38,26 +42,19 @@ public class StartApp extends Application {
         tasks.start();
 
     }
+
+
+
     public static void startAuth() throws IOException
     {
         DbModel db = new DbModel();
         if(db.checkDbConnection() == true) {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        AuthModule auth = new AuthModule();
-                        auth.authDialog();
-                    } catch (Exception e) {
-                    }
-                }
-            });
+
+            AuthModule auth = new AuthModule();
+            auth.authDialog();
+
         }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("БД");
-            alert.setHeaderText("Помилка");
-            alert.setContentText("Не встановлено з'єднання з БД");
-            alert.showAndWait();
+            Messages.error("Помилка БД!", "Не встановлено з\'єднання з БД", "БД");
         }
     }
 
@@ -77,14 +74,24 @@ public class StartApp extends Application {
     }
 
     public static void showDBSettingsPage() throws IOException{
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run(){
-                try {
-                    DBConnectionModule db = new DBConnectionModule();
-                    db.showDbConnectDialog();
-                } catch (Exception e) {}
-            }
-        });
+
+        DBConnectionModule db = new DBConnectionModule();
+        db.showDbConnectDialog();
+
+    }
+
+    /**
+     * функція для відображення сторінки з дослідами
+     */
+    public static void showSimpleResearch(){
+        try {
+            SimpleResearchModule srm = new SimpleResearchModule();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
+
+/////////////////////////////////////////////////
+/////////////
+

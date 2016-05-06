@@ -37,23 +37,25 @@ public class AuthModel extends SQLDatabase {
     {
         if (!RegExp.checkWithRegExp(login))
         {
-            Messages.information("Please, check your login", "It must have more than 6 characters");
+            Messages.information("Please, check your login", "It must have more than 6 characters", "Перевірка даних");
         } else {
             sqlExecute("SELECT * FROM users WHERE login='" + login + "' AND pass='" + password + "'");
 
 
             if(!resultSet.next())
             {
-                Messages.error("Wrong password or login", "Please, check it and try again");
+                Messages.error("Wrong password or login", "Please, check it and try again", "Перевірка даних");
             }
             else {
                 Session.setKeyValue("id", resultSet.getString("id"));
                 Session.setKeyValue("name", resultSet.getString("name"));
+                Session.setKeyValue("role", resultSet.getString("role"));
 
                 System.out.println(Session.getKeyValue("id"));
                 System.out.println(Session.getKeyValue("name"));
+                System.out.println(Session.getKeyValue("role"));
 
-                //MainApp mainApp = new MainApp();
+               // MainApp mainApp = new MainApp();
 
             }
 
