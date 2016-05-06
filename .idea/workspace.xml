@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2655a775-c4f5-4532-882e-6ea1389e71f6" name="Default" comment="add search">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/controllers/MainWindowController.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/controllers/MainWindowController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/nodes/StartApp$1.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/nodes/StartApp$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/nodes/StartApp.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/nodes/StartApp.class" />
+    <list default="true" id="2655a775-c4f5-4532-882e-6ea1389e71f6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/controllers/PatientsController$1.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/controllers/PatientsController$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/controllers/PatientsController.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/controllers/PatientsController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/models/AuthModel.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/models/AuthModel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/models/PatientsModel.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/models/PatientsModel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/views/css/DarkTheme.css" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/views/css/DarkTheme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/views/fxml/MainWindowView.fxml" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/views/fxml/MainWindowView.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controllers/PatientsController.java" afterPath="$PROJECT_DIR$/src/sample/controllers/PatientsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/models/AuthModel.java" afterPath="$PROJECT_DIR$/src/sample/models/AuthModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/models/PatientsModel.java" afterPath="$PROJECT_DIR$/src/sample/models/PatientsModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/fxml/Patients.fxml" afterPath="$PROJECT_DIR$/src/sample/views/fxml/Patients.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/views/fxml/Patients.fxml" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/views/fxml/Patients.fxml" />
     </list>
     <ignored path="BioImageApp-master.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +33,8 @@
       <file leaf-file-name="PatientsController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/controllers/PatientsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.12403101">
-              <caret line="109" column="39" selection-start-line="109" selection-start-column="39" selection-end-line="109" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.13898306">
+              <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -601,7 +598,13 @@
       <option name="project" value="LOCAL" />
       <updated>1462474090976</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add search">
+      <created>1462530168077</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1462530168077</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -610,7 +613,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.48770493" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -930,8 +933,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controllers/PatientsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12403101">
-          <caret line="109" column="39" selection-start-line="109" selection-start-column="39" selection-end-line="109" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.13898306">
+          <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
           <folding />
         </state>
       </provider>
