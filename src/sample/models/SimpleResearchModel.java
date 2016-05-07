@@ -1,5 +1,6 @@
 package sample.models;
 
+import com.mysql.jdbc.PreparedStatement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,8 +9,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.opencv.core.Mat;
+import org.opencv.core.*;
 import org.opencv.highgui.Highgui;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.imgproc.Moments;
 import sample.libs.Estimate;
 import sample.libs.Filters.FilterColection;
 import sample.libs.Filters.FiltersOperations;
@@ -18,8 +21,12 @@ import sample.libs.PreProcessing.PreProcessingOperation;
 import sample.libs.PreProcessing.StartImageParams;
 import sample.libs.SQLDatabase;
 import sample.libs.Segmentation.SegmentationOperations;
+import sample.libs.Session;
+import sample.libs.SimpleResearch.ResearchParam;
 import sample.libs.SimpleResearch.SimpleResearchCollection;
 
+import java.awt.List;
+import java.awt.Point;
 import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
@@ -30,6 +37,9 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.*;
+
+import static java.lang.Math.sqrt;
 
 /**
  * Created by oleh on 04.05.2016.
@@ -39,7 +49,7 @@ public class SimpleResearchModel extends SQLDatabase {
     private ObservableList<SimpleResearchCollection> comboBoxData = FXCollections.observableArrayList();
     protected Mat image, preprocimage, segmentationimage;
     public int  id;
-    public String name;
+    public String name, originalImagePath;
 
     public SimpleResearchModel(){
         sqlSetConnect();
@@ -49,7 +59,7 @@ public class SimpleResearchModel extends SQLDatabase {
      * @param actionEvent
      * @throws java.io.IOException
      */
-    public void chooseFile(ActionEvent actionEvent) throws java.io.IOException {
+    public void chooseFile(ActionEvent actionEvent) throws java.io.IOException, SQLException {
 
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
@@ -57,6 +67,9 @@ public class SimpleResearchModel extends SQLDatabase {
         chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files","*.bmp", "*.png", "*.jpg", "*.gif"));
         File file = chooser.showOpenDialog(new Stage());
         if(file != null) {
+
+            this.originalImagePath = file.getAbsolutePath().substring(file.getAbsolutePath().lastIndexOf("\\")+1);
+            this.insertImageNameToDB(this.originalImagePath);
 
             /** return RGB values, average bright**/
             StartImageParams.getStartValues(file);
@@ -475,6 +488,50 @@ public class SimpleResearchModel extends SQLDatabase {
 
         //Estimate.setFirstHistAverageValue(null);
         //Estimate.setSecondHistAverageValue(null);
+    }
+
+    /**
+     * занесення нового класу (досліду) до БД
+     * @param res_name
+     */
+    @FXML
+    public void insertResearchNameToDb(String res_name) throws SQLException {
+
+        //Integer.parseInt(Session.getKeyValue("id")
+        String stwww = "277";
+        String query = "INSERT INTO simple_research (user_id, name) VALUES ('"+stwww+"', '"+res_name+"' )";
+        sqlInsertExecute(query);
+
+        String lastIDquery = "select MAX(id) from simple_research";
+        sqlExecute(lastIDquery);
+
+        while(resultSet.next())
+        {
+            int lastID = resultSet.getInt(1);
+            ResearchParam.setResearch_id(lastID);
+        }
+    }
+
+    /**
+     * занесення назви файлу в БД
+     * @param imgN
+     * @throws SQLException
+     */
+    public void insertImageNameToDB(String imgN) throws SQLException {
+
+        ResearchParam.setImg_name(imgN);
+
+        String query = "INSERT INTO research_images (research_id, image_name) VALUES ('"+ResearchParam.getResearch_id()+"', '"+imgN+"')";
+        sqlInsertExecute(query);
+
+        String lastIDquery = "select MAX(id) from research_images";
+        sqlExecute(lastIDquery);
+
+        while(resultSet.next())
+        {
+            int lastID = resultSet.getInt(1);
+            ResearchParam.setImg_id(lastID);
+        }
     }
 
     /**

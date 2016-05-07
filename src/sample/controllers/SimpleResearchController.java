@@ -6,26 +6,24 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import org.opencv.core.Mat;
-import sample.libs.Filters.FilterColection;
 import sample.libs.Image.ImageOperations;
+import sample.libs.Nuclei;
 import sample.libs.Segmentation.SegmentationColection;
 import sample.libs.SimpleResearch.ResearchParam;
 import sample.libs.SimpleResearch.SimpleResearchCollection;
+import sample.models.CellEstimatorModel;
 import sample.models.SimpleResearchModel;
 import sample.nodes.StartApp;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class SimpleResearchController {
 
     @FXML
-    private Button loadImageButton, researchNameButton, automaticButton, handeButton;
+    private Button loadImageButton, researchNameButton, automaticButton, handeButton, autoButton, cellEstimatorButton;
     @FXML
     protected ImageView segmentationImage, originalImage;
     @FXML
@@ -40,22 +38,49 @@ public class SimpleResearchController {
     private ObservableList<SegmentationColection> comboBoxSegmentationData = FXCollections.observableArrayList();
     protected StartApp startApp;
     private String  researchname;
+    @FXML
+    private TableView<Nuclei> nucleiTable;
+    @FXML
+    private TableColumn<Nuclei, Integer> contourNumColumn;
+    @FXML
+    private TableColumn<Nuclei, Double> contourAreaColumn, contourPerimetrColumn, contourHeightColumn, contourWidthColumn,
+            contourCircularityColumn, contourXcColumn, contourYcColumn, contourMajor_axisColumn, contourMinor_axisColumn,
+            contourThetaColumn, contourquiDiameterColumn;
+
     private boolean preProcModeType = true;
+    public Mat segmentedImage;
 
     public SimpleResearchController(){
+    }
+
+    @FXML
+    private void initialize() {
+
+        contourNumColumn.setCellValueFactory(cellData -> cellData.getValue().contourNumProperty().asObject());
+        contourAreaColumn.setCellValueFactory(cellData -> cellData.getValue().contourAreaProperty().asObject());
+        contourPerimetrColumn.setCellValueFactory(cellData -> cellData.getValue().contourPerimetrProperty().asObject());
+        contourHeightColumn.setCellValueFactory(cellData -> cellData.getValue().contourHeightProperty().asObject());
+        contourWidthColumn.setCellValueFactory(cellData -> cellData.getValue().contourWidthtProperty().asObject());
+        contourCircularityColumn.setCellValueFactory(cellData -> cellData.getValue().contourCircularityProperty().asObject());
+        contourXcColumn.setCellValueFactory(cellData -> cellData.getValue().contourXcProperty().asObject());
+        contourYcColumn.setCellValueFactory(cellData -> cellData.getValue().contourYcProperty().asObject());
+        contourMajor_axisColumn.setCellValueFactory(cellData -> cellData.getValue().contourMajor_axisProperty().asObject());
+        contourMinor_axisColumn.setCellValueFactory(cellData -> cellData.getValue().contourMinor_axisProperty().asObject());
+        contourThetaColumn.setCellValueFactory(cellData -> cellData.getValue().contourThetaProperty().asObject());
+        contourquiDiameterColumn.setCellValueFactory(cellData -> cellData.getValue().contourEquiDiameterProperty().asObject());
     }
 
     public void setMainApp(StartApp startApp) {
         this.startApp = startApp;
     }
 
-    public void chooseImage(ActionEvent actionEvent) throws IOException {
+    public void chooseImage(ActionEvent actionEvent) throws IOException, SQLException {
         SimpleResearchModel srm = new SimpleResearchModel();
         srm.chooseFile(actionEvent);
 
         setOriginalImage(sample.libs.Image.Image.getImageMat());
+        autoButton.setDisable(false);
     }
-
 
     @FXML
     private void setOriginalImage(Mat dst ){
@@ -73,14 +98,6 @@ public class SimpleResearchController {
         this.segmentationImage.setPreserveRatio(true);
     }
 
-    @FXML
-    public void setResearchName() throws IOException{
-
-        this.researchname = researchNameField.getText();
-        loadImageButton.setVisible(true);
-
-    }
-
     /**
      * результат попередньої обробки
      */
@@ -89,8 +106,13 @@ public class SimpleResearchController {
         SimpleResearchModel simpleResearchModel = new SimpleResearchModel();
         simpleResearchModel.autoPreProcFiltersSegmentationSetting();
         this.setOriginalImage(simpleResearchModel.getPreprocimage());// вивід обробленого зображення
-        this.setSegmentedImage(simpleResearchModel.getSegmentationimage());
 
+        this.segmentedImage = simpleResearchModel.getSegmentationimage();
+        sample.libs.Image.Image.setSegmentedImage(this.segmentedImage);
+        this.setSegmentedImage(this.segmentedImage);
+
+        this.autoButton.setDisable(true);
+        this.cellEstimatorButton.setDisable(false);
     }
 
     @FXML
@@ -111,6 +133,20 @@ public class SimpleResearchController {
      */
     @FXML
     private void handleStart() {
+
+        /**
+         * відображення виділеного обєкта
+         */
+        nucleiTable.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+                    CellEstimatorModel cellEstimatorModel = new CellEstimatorModel();
+                    cellEstimatorModel.showOnlyOneObject(nucleiTable.getSelectionModel().getSelectedItem().contourNumProperty().get());
+                    setSegmentedImage(cellEstimatorModel.getOneObjectImage());
+                }
+            }
+        });
 
         SimpleResearchModel sm = new SimpleResearchModel();
         try {
@@ -137,7 +173,7 @@ public class SimpleResearchController {
             ResearchParam.setResearch_id(Integer.parseInt(selectedResearch.getId()));
             researchNameField.setVisible(false);
             researchNameButton.setVisible(false);
-            loadImageButton.setVisible(true);
+            loadImageButton.setDisable(false);
         }
     }
 
@@ -146,4 +182,40 @@ public class SimpleResearchController {
         System.out.println("Ручний режим. Робить Андрій");
     }
 
+    /**
+     * Поле вводу назви нового класу (досліду)
+     * @throws IOException
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    @FXML
+    public void setResearchName() throws IOException, SQLException, ClassNotFoundException {
+
+        if(researchNameField.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Попередження");
+            alert.setHeaderText("Поле не може бути пустим");
+            alert.showAndWait();
+        }else{
+            this.researchname = researchNameField.getText();
+
+            SimpleResearchModel srm = new SimpleResearchModel();
+            srm.insertResearchNameToDb(this.researchname);
+            loadImageButton.setDisable(false);
+        }
+    }
+
+
+    @FXML
+    private void cellEstimator() throws SQLException {
+
+        CellEstimatorModel cellEstimatorModel = new CellEstimatorModel();
+        cellEstimatorModel.SimpleDetect(this.segmentedImage);
+
+        this.setSegmentedImage(cellEstimatorModel.getnewDrawImage());
+
+        nucleiTable.setItems(cellEstimatorModel.getNucleiData());
+
+        this.cellEstimatorButton.setDisable(true);
+    }
 }

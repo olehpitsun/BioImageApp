@@ -170,6 +170,7 @@
 }
 
 #loadImageButton{
+    -fx-background-color: #264348;
     -fx-min-height: 50px;
     -fx-min-width: 220px;
     -fx-background-image: url("../images/photo.png");
@@ -198,6 +199,13 @@
 #automaticButton, #handeButton{
     -fx-background-color: #6B9362;
     -fx-text-fill: #ffffff;
+}
+
+#cellEstimatorButton{
+    -fx-background-color: #CA6924;
+    -fx-text-fill: #ffffff;
+    -fx-min-height: 50px;
+    -fx-min-width: 220px;
 }
 
 .button {

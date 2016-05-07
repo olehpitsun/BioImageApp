@@ -55,10 +55,11 @@
 
                         <Label fx:id="researchNameLabel" text="Назва досліду" visible="false" GridPane.rowIndex="2" />
                         <TextField fx:id="researchNameField" text="Назва досліду" visible="false" GridPane.rowIndex="2" />
-                        <Button fx:id="loadImageButton" mnemonicParsing="false" onAction="#chooseImage" text="Завантажити зображення" visible="false" GridPane.rowIndex="3" />
+                        <Button fx:id="loadImageButton" disable="true" mnemonicParsing="false" onAction="#chooseImage" text="Завантажити зображення" GridPane.rowIndex="3" />
                         <Label fx:id="firstNameLabel" styleClass="label-bright" text="" GridPane.columnIndex="1" />
                         <Button fx:id="researchNameButton" defaultButton="true" minWidth="63.0" mnemonicParsing="false" onAction="#setResearchName" prefHeight="28.0" prefWidth="63.0" text="OK" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Button fx:id="autoButton" defaultButton="true" mnemonicParsing="false" onAction="#autoSetting" prefHeight="45.0" prefWidth="87.0" text="Автоматично" visible="true" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <Button fx:id="autoButton" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#autoSetting" prefHeight="45.0" prefWidth="87.0" text="Автоматично" visible="true" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <Button fx:id="cellEstimatorButton" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#cellEstimator" prefHeight="45.0" prefWidth="87.0" text="К-сні параметри" visible="true" GridPane.columnIndex="0" GridPane.rowIndex="7" />
 
                      </children>
                   </GridPane>
@@ -68,10 +69,37 @@
                   </ButtonBar>
                </children>
             </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="525.0" prefHeight="362.0" prefWidth="530.0" styleClass="background" SplitPane.resizableWithParent="false">
+            <AnchorPane minHeight="0.0" minWidth="525.0" prefHeight="272.0" prefWidth="525.0" styleClass="background" SplitPane.resizableWithParent="false">
                <children>
                   <ImageView fx:id="originalImage" fitHeight="136.0" fitWidth="173.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="segmentationImage" fitHeight="136.0" fitWidth="173.0" layoutX="494.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+
+
+
+
+                  <TableView fx:id="nucleiTable" layoutY="258.0" prefHeight="144.0" prefWidth="525.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="330.0">
+                     <columns>
+                        <TableColumn fx:id="contourNumColumn" prefWidth="55.0" text="#" />
+                        <TableColumn fx:id="contourAreaColumn" prefWidth="55.0" text="Площа" />
+                        <TableColumn fx:id="contourPerimetrColumn" prefWidth="55.0" text="Периметр" />
+                        <TableColumn fx:id="contourHeightColumn" prefWidth="55.0" text="Висота" />
+                        <TableColumn fx:id="contourWidthColumn" prefWidth="55.0" text="Ширина" />
+                        <TableColumn fx:id="contourCircularityColumn" prefWidth="55.0" text="Округлість" />
+                        <TableColumn fx:id="contourXcColumn" prefWidth="55.0" text="Xc" />
+                        <TableColumn fx:id="contourYcColumn" prefWidth="55.0" text="Yc" />
+                        <TableColumn fx:id="contourMajor_axisColumn" prefWidth="55.0" text="major" />
+                        <TableColumn fx:id="contourMinor_axisColumn" prefWidth="55.0" text="minot" />
+                        <TableColumn fx:id="contourThetaColumn" prefWidth="55.0" text="Angle" />
+                        <TableColumn fx:id="contourquiDiameterColumn" prefWidth="55.0" text="Екв. діаметр" />
+
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+
+
+
                </children>
             </AnchorPane>
          </items>
