@@ -17,6 +17,7 @@ import sample.libs.Hash;
 import sample.libs.PreProcessing.PreProcessingOperation;
 import sample.libs.PreProcessing.StartImageParams;
 import sample.libs.SQLDatabase;
+import sample.libs.Segmentation.SegmentationOperations;
 import sample.libs.SimpleResearch.SimpleResearchCollection;
 
 import java.sql.SQLException;
@@ -36,7 +37,7 @@ import java.sql.Statement;
 public class SimpleResearchModel extends SQLDatabase {
 
     private ObservableList<SimpleResearchCollection> comboBoxData = FXCollections.observableArrayList();
-    protected Mat image, preprocimage;
+    protected Mat image, preprocimage, segmentationimage;
     public int  id;
     public String name;
 
@@ -457,18 +458,20 @@ public class SimpleResearchModel extends SQLDatabase {
         //this.setPreProcImage(properation.getOutputImage());
 
 
-        //SegmentationOperations segoperation = new SegmentationOperations(properation.getOutputImage(), "3",
-          //      "0", "0");
+        SegmentationOperations segoperation = new SegmentationOperations(properation.getOutputImage(), "3",
+                "0", "0");
 
         properation.getOutputImage().release(); // очистка памяті після попередньої обробки
 
-       // SegmentationOperations segoperation_1 = new SegmentationOperations(segoperation.getOutputImage(), "1",
-            //    "200", "255");
+       SegmentationOperations segoperation_1 = new SegmentationOperations(segoperation.getOutputImage(), "1",
+                "200", "255");
 
         //this.setSegmentationImage(segoperation_1.getOutputImage());
+        this.segmentationimage = new Mat();
+        segoperation_1.getOutputImage().copyTo(this.segmentationimage);
 
-        //segoperation.getOutputImage().release();
-        //segoperation_1.getOutputImage().release();
+        segoperation.getOutputImage().release();
+        segoperation_1.getOutputImage().release();
 
         //Estimate.setFirstHistAverageValue(null);
         //Estimate.setSecondHistAverageValue(null);
@@ -481,4 +484,10 @@ public class SimpleResearchModel extends SQLDatabase {
     public Mat getPreprocimage(){
         return this.preprocimage;
     }
+
+    /**
+     * повертає зображення після сегментації в форматі opencv Mat
+     * @return
+     */
+    public Mat getSegmentationimage(){return this.segmentationimage;}
 }

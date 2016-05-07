@@ -176,6 +176,10 @@
     -fx-background-size: 50px 50px;
     -fx-background-repeat: no-repeat;
 }
+#autoButton{
+    -fx-min-height: 50px;
+    -fx-min-width: 220px;
+}
 
 #pacientButton{
     -fx-min-height: 100px;

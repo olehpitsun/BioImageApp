@@ -27,7 +27,7 @@ public class SimpleResearchController {
     @FXML
     private Button loadImageButton, researchNameButton, automaticButton, handeButton;
     @FXML
-    protected ImageView preProcImage, segmentationImage, originalImage;
+    protected ImageView segmentationImage, originalImage;
     @FXML
     private TextField researchNameField;
     @FXML
@@ -66,6 +66,14 @@ public class SimpleResearchController {
     }
 
     @FXML
+    private void setSegmentedImage(Mat dst ){
+        this.segmentationImage.setImage(ImageOperations.mat2Image(dst));
+        this.segmentationImage.setFitWidth(450.0);
+        this.segmentationImage.setFitHeight(450.0);
+        this.segmentationImage.setPreserveRatio(true);
+    }
+
+    @FXML
     public void setResearchName() throws IOException{
 
         this.researchname = researchNameField.getText();
@@ -81,6 +89,8 @@ public class SimpleResearchController {
         SimpleResearchModel simpleResearchModel = new SimpleResearchModel();
         simpleResearchModel.autoPreProcFiltersSegmentationSetting();
         this.setOriginalImage(simpleResearchModel.getPreprocimage());// вивід обробленого зображення
+        this.setSegmentedImage(simpleResearchModel.getSegmentationimage());
+
     }
 
     @FXML

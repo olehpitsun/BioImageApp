@@ -71,8 +71,7 @@
             <AnchorPane minHeight="0.0" minWidth="525.0" prefHeight="362.0" prefWidth="530.0" styleClass="background" SplitPane.resizableWithParent="false">
                <children>
                   <ImageView fx:id="originalImage" fitHeight="136.0" fitWidth="173.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="preProcImage" fitHeight="136.0" fitWidth="173.0" layoutX="494.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="segmentationImage" fitHeight="136.0" fitWidth="173.0" layoutX="8.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="segmentationImage" fitHeight="136.0" fitWidth="173.0" layoutX="494.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
          </items>
