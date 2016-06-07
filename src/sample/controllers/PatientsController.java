@@ -80,6 +80,7 @@ public class PatientsController {
         {
             patientsData.clear();
             patientsData.addAll(backupPatientsData);
+            backupPatientsData.clear();
         }
         for (Patient patient : backupPatientsData)
         {
@@ -125,6 +126,7 @@ public class PatientsController {
     {
         CurrentStage.getOwnerStage().close();
     }
+
     @FXML
     public void editPatient(ActionEvent event)
     {
