@@ -11,6 +11,7 @@ public class AuthModel extends SQLDatabase {
     public AuthModel()
     {
         sqlSetConnect();
+        Session.setKeyValue("activeStatus", "0");
     }
 
     private String login;
@@ -47,13 +48,14 @@ public class AuthModel extends SQLDatabase {
                 Messages.error("Wrong password or login", "Please, check it and try again", "Перевірка даних");
             }
             else {
+                Session.setKeyValue("activeStatus", "1");
                 Session.setKeyValue("id", resultSet.getString("id"));
                 Session.setKeyValue("name", resultSet.getString("name"));
-                Session.setKeyValue("role", resultSet.getString("role"));
+                Session.setKeyValue("role_id", resultSet.getString("role_id"));
 
                 System.out.println(Session.getKeyValue("id"));
                 System.out.println(Session.getKeyValue("name"));
-                System.out.println(Session.getKeyValue("role"));
+                System.out.println(Session.getKeyValue("role_id"));
 
                // MainApp mainApp = new MainApp();
 
