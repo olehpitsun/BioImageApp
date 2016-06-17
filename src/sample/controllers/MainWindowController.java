@@ -94,14 +94,18 @@ public class MainWindowController {
         try {
             StartApp.startAuth();
 
-            infoLabel.setText("Вітаю, " + Session.getKeyValue("name"));
-            settingsButton.setDisable(false);
-            webcamButton.setDisable(false);
-            photoCameraButton.setDisable(false);
-            address_bookButton.setDisable(false);
-            showButton1.setDisable(false);
-            simpleResearchButton.setDisable(false);
-            //AuthModule auth = new AuthModule();
+            if(Session.getKeyValue("activeStatus") == "1"){
+
+                infoLabel.setText("Вітаю, " + Session.getKeyValue("name"));
+                settingsButton.setDisable(false);
+                webcamButton.setDisable(false);
+                photoCameraButton.setDisable(false);
+                address_bookButton.setDisable(false);
+                showButton1.setDisable(false);
+                simpleResearchButton.setDisable(false);
+                //AuthModule auth = new AuthModule();
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }

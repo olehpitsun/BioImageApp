@@ -53,7 +53,7 @@ public class DBConnectionController {
         portField.setText("3306");
         userField.setText("oleh");
         passwordField.setText("oleh123");
-        dbnameField.setText("bioimageapp");
+        dbnameField.setText("BioImageApp");
     }
 
     /**
