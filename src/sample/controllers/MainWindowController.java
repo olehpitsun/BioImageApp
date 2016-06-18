@@ -8,28 +8,47 @@ package sample.controllers;
  * Це вікно є робочим простором лікаря, яке містить свій функціонал.
  */
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.opencv.core.Mat;
+import sample.libs.Messenger.Messenger;
+import sample.libs.Nuclei;
 import sample.libs.Session;
+import sample.models.CellEstimatorModel;
 import sample.models.DbModel;
+import sample.models.MessengerModel;
+import sample.models.PatientsModel;
 import sample.nodes.*;
 import sample.objects.Patient;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 
 public class MainWindowController {
 
+    MessengerModel messengerModel;
     @FXML
     private Button signInButton, settingsButton, webcamButton, photoCameraButton, address_bookButton, showButton1,simpleResearchButton;
+    @FXML
+    private TableView<Messenger> messenger;
+    @FXML
+    private TableColumn<Messenger, Integer> idColumn, send_FromColumn;
+    @FXML
+    private TableColumn<Messenger, String> messageColumn;
+    public static ObservableList<Messenger> messengersData = FXCollections.observableArrayList();
+
+
+
     @FXML
     private TextField researchNameField;
 
@@ -84,6 +103,43 @@ public class MainWindowController {
 
     @FXML
     public ImageView imgview;
+
+
+    @FXML
+    private void initialize() {
+        idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
+        messageColumn.setCellValueFactory(cellData -> cellData.getValue().messageProperty());
+        send_FromColumn.setCellValueFactory(cellData -> cellData.getValue().send_from_idProperty().asObject());
+    }
+
+    public MainWindowController()
+    {
+    }
+
+    @FXML
+    private void showMessages() throws SQLException {
+
+        messengerModel = new MessengerModel();
+        messenger.setVisible(true);
+        MainWindowController.messengersData.add(new Messenger(4, "Hello", 3,4));
+        messengerModel.selectData();
+        messenger.setItems(MainWindowController.messengersData);
+
+        /**
+         * обробка вибраного повідомлення
+         */
+        messenger.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+                    System.out.println(messenger.getSelectionModel().getSelectedItem().idProperty().get());
+                    Messenger selected = messenger.getSelectionModel().getSelectedItem();
+                    StartApp.showMessage(selected);
+                }
+            }
+        });
+    }
+
     @FXML
     public void registerADoctor(){
 
