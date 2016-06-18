@@ -60,10 +60,11 @@
 
                         <Button fx:id="showButton1" disable="true" mnemonicParsing="false" onAction="#handlePacientList" text="Список пацієнтів" GridPane.columnIndex="0" GridPane.rowIndex="0">
                         </Button>
-                        <Button fx:id="simpleResearchButton" disable="true" mnemonicParsing="false" onAction="#handleSimpleResearch" text="Досліди" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Button fx:id="showButton3" disable="true" mnemonicParsing="false" text="Направлення" GridPane.columnIndex="1" GridPane.rowIndex="0">
                         </Button>
-                        <Button fx:id="showButton3" disable="true" mnemonicParsing="false" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada  фото" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <Button fx:id="simpleResearchButton" disable="true" mnemonicParsing="false" onAction="#handleSimpleResearch" text="Досліди" GridPane.columnIndex="0" GridPane.rowIndex="1">
                         </Button>
+
                         <Button fx:id="showButton4" disable="true" mnemonicParsing="false" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada " GridPane.columnIndex="1" GridPane.rowIndex="1">
                         </Button>
                      </children>
