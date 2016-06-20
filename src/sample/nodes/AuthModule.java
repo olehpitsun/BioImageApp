@@ -82,13 +82,11 @@ public class AuthModule {
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
 
-            //return controller.isOkClicked();
+            return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
-
-        return false;
     }
 
 }
