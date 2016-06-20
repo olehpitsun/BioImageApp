@@ -125,6 +125,7 @@ public class PatientsController {
     {
         CurrentStage.getOwnerStage().close();
     }
+
     @FXML
     public void editPatient(ActionEvent event)
     {
