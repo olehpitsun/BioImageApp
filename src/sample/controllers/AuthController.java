@@ -22,7 +22,7 @@ public class AuthController {
     private Button SignIn;
     AuthModel authModel;
     private Stage dialogStage;
-    private boolean okClicked = false;
+    //private boolean okClicked = false;
 
     @FXML
     private void initialize() {
@@ -46,9 +46,9 @@ public class AuthController {
      * Returns true if the user clicked OK, false otherwise.
      * @return
      */
-    public boolean isOkClicked() {
-        return okClicked;
-    }
+   // public boolean isOkClicked() {
+        //return okClicked;
+  //  }
 
     /**
      * Called when the user clicks ok.
@@ -58,7 +58,7 @@ public class AuthController {
 
         System.out.print("Ok");
         this.checkIt();
-        okClicked = true;
+       // okClicked = true;
         dialogStage.close();
 
     }
