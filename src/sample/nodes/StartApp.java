@@ -13,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
 import sample.libs.Messages;
+import sample.libs.Messenger.Messenger;
 import sample.models.CheckerModel;
 import sample.models.DbModel;
 import sample.views.CheckerView;
@@ -30,8 +31,6 @@ public class StartApp extends Application {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         launch(args);
     }
-
-
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -78,6 +77,17 @@ public class StartApp extends Application {
         DBConnectionModule db = new DBConnectionModule();
         db.showDbConnectDialog();
 
+    }
+
+    public static void showMessage(Messenger messenger){
+
+        ShowMessageModule showMessageModule = new ShowMessageModule();
+        showMessageModule.showMessageDialog(messenger);
+    }
+
+    public static void writeMessage(){
+        writeMessageModule writeMessageModule = new writeMessageModule();
+        writeMessageModule.writeMessageeDialog();
     }
 
     /**
