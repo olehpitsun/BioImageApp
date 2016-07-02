@@ -67,7 +67,12 @@ public class EditPatientModel extends SQLDatabase {
 
             updateExecute("UPDATE patients SET Full_name='"+full_name_of_patient+"', Date_of_birth='"+date_of_birth+"', Gender='"+gender+"', Results_of_research='"+results_of_research+"', Diagnosis='"+diagnosis+"', Date_of_completion='"+date_of_completion+"', Name_of_doctor='"+full_name_of_doctor+"' WHERE ID='"+id+"'");
             PatientsController.patientsData.remove(EditPatientController.patient);
+            PatientsController.backupPatientsData.remove(EditPatientController.patient);
             PatientsController.patientsData.add(new Patient(id, full_name_of_patient, date_of_birth,
+                    gender,
+                    results_of_research, diagnosis,
+                    date_of_completion, full_name_of_doctor, status));
+            PatientsController.backupPatientsData.add(new Patient(id, full_name_of_patient, date_of_birth,
                     gender,
                     results_of_research, diagnosis,
                     date_of_completion, full_name_of_doctor, status));

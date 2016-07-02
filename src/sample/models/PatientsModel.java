@@ -25,8 +25,6 @@ public class PatientsModel extends SQLDatabase {
     {
         sqlSetConnect();
         sqlExecute("SELECT * FROM patients");
-
-
     }
     public void remove(Patient patient)
     {
@@ -46,7 +44,7 @@ public class PatientsModel extends SQLDatabase {
     }
     public void selectData() throws SQLException
     {
-
+        PatientsController.patientsData.clear();
         while(resultSet.next()) {
             setData();
             counts++;
@@ -55,6 +53,7 @@ public class PatientsModel extends SQLDatabase {
                     results_of_research, diagnosis,
                     date_of_completion, full_name_of_doctor, status));
         }
+        PatientsController.backupPatientsData.clear();
         PatientsController.backupPatientsData.addAll(PatientsController.patientsData);
     }
     public int getCounts()

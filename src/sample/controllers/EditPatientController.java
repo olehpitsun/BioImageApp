@@ -47,7 +47,6 @@ public class EditPatientController {
     public void update()
     {
         editPatientModel.setFull_name_of_patient(full_name_of_patient.getText());
-        patient.setFull_name_of_patient(full_name_of_patient.getText());
         editPatientModel.setDate_of_birth(date_of_birth.getText());
         editPatientModel.setGender(Gender);
         editPatientModel.setId(patient.getId());

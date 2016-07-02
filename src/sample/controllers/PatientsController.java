@@ -70,7 +70,6 @@ public class PatientsController {
     private TextField search;
     @FXML
     private Label count;
-
     @FXML
     public void search()
     {
@@ -80,6 +79,7 @@ public class PatientsController {
         {
             patientsData.clear();
             patientsData.addAll(backupPatientsData);
+            backupPatientsData.clear();
         }
         for (Patient patient : backupPatientsData)
         {
@@ -112,7 +112,6 @@ public class PatientsController {
                 patientsData.add(patient);
             }
         }
-
     }
     @FXML
     public void addPatient() throws Exception
@@ -125,6 +124,7 @@ public class PatientsController {
     {
         CurrentStage.getOwnerStage().close();
     }
+
     @FXML
     public void editPatient(ActionEvent event)
     {
@@ -165,6 +165,7 @@ public class PatientsController {
         patientsData.addListener(new ListChangeListener<Patient>() {
             @Override
             public void onChanged(Change<? extends Patient> c){
+
                 updateCount(patientsData.size());
             }
         });

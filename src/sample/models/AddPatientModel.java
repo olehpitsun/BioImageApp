@@ -71,6 +71,10 @@ public class AddPatientModel extends  SQLDatabase{
                     gender,
                     results_of_research, diagnosis,
                     date_of_completion, full_name_of_doctor, resultSet.getString("Status")));
+            PatientsController.backupPatientsData.add(new Patient(Integer.valueOf(resultSet.getString("ID")), full_name_of_patient, date_of_birth,
+                    gender,
+                    results_of_research, diagnosis,
+                    date_of_completion, full_name_of_doctor, resultSet.getString("Status")));
             //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");
             CurrentStage.getStage().close();
         } catch (Exception ex) {
