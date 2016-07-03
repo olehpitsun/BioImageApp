@@ -144,6 +144,7 @@ public class PatientsController {
         EditPatientController.patient = patient;
         patientsModel.remove(patient);
         patientsData.remove(patient);
+        backupPatientsData.remove(patient);
     }
     public void updateCount(int counts)
     {
