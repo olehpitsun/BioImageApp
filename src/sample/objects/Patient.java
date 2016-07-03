@@ -4,7 +4,9 @@ package sample.objects;
  * Created by Admin on 04.05.2016.
  */
 public class Patient {
-    private String full_name_of_patient;
+    private String surname_of_patient;
+    private String name_of_patient;
+    private String fathername_of_patient;
     private String date_of_birth;
     private String gender;
     private String results_of_research;
@@ -14,10 +16,12 @@ public class Patient {
     private String status;
     private int id;
 
-    public Patient(int id, String name, String birth, String gender,
+    public Patient(int id, String surname, String name, String fathername, String birth, String gender,
                 String research, String diagnosis, String completion,
                 String doctor, String status) {
-        this.full_name_of_patient = name;
+        this.surname_of_patient = surname;
+        this.name_of_patient = name;
+        this.fathername_of_patient = fathername;
         this.id = id;
         this.date_of_birth = birth;
         this.gender = gender;
@@ -27,7 +31,9 @@ public class Patient {
         this.full_name_of_doctor = doctor;
         this.status = status;
     }
-    public void setFull_name_of_patient(String name) {this.full_name_of_patient = name;}
+    public void setSurname_of_patient(String surname) {this.surname_of_patient = surname;}
+    public void setName_of_patient(String name) {this.name_of_patient = name;}
+    public void setFathername_of_patient(String fathername) {this.fathername_of_patient = fathername;}
     public void setStatus(String status) {this.status = status;}
     public void setId(int id) {this.id = id;}
     public void setDate_of_birth(String date_of_birth) { this.date_of_birth = date_of_birth; }
@@ -45,7 +51,9 @@ public class Patient {
         this.full_name_of_doctor = full_name_of_doctor;
     }
 
-    public String getFull_name_of_patient() {return this.full_name_of_patient;}
+    public String getSurname_of_patient() {return this.surname_of_patient;}
+    public String getName_of_patient() {return this.name_of_patient;}
+    public String getFathername_of_patient() {return this.fathername_of_patient;}
     public int getId() {
         return this.id;
     }

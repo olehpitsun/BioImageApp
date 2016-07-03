@@ -21,7 +21,11 @@ import sample.objects.Patient;
 public class EditPatientController {
 
     @FXML
-    private TextField full_name_of_patient;
+    private TextField surname_of_patient;
+    @FXML
+    private TextField name_of_patient;
+    @FXML
+    private TextField fathername_of_patient;
     @FXML
     private TextField date_of_birth;
     @FXML
@@ -46,7 +50,9 @@ public class EditPatientController {
     @FXML
     public void update()
     {
-        editPatientModel.setFull_name_of_patient(full_name_of_patient.getText());
+        editPatientModel.setSurname_of_patient(surname_of_patient.getText());
+        editPatientModel.setName_of_patient(name_of_patient.getText());
+        editPatientModel.setFathername_of_patient(fathername_of_patient.getText());
         editPatientModel.setDate_of_birth(date_of_birth.getText());
         editPatientModel.setGender(Gender);
         editPatientModel.setId(patient.getId());
@@ -64,7 +70,9 @@ public class EditPatientController {
         {
             male_gender.setSelected(true);
         } else female_gender.setSelected(true);
-       full_name_of_patient.setText(patient.getFull_name_of_patient());
+       surname_of_patient.setText(patient.getSurname_of_patient());
+        name_of_patient.setText(patient.getName_of_patient());
+        fathername_of_patient.setText(patient.getFathername_of_patient());
        date_of_birth.setText(patient.getDate_of_birth());
        results_of_research.setText(patient.getResults_of_research());
        diagnosis.setText(patient.getDiagnosis());

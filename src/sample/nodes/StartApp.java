@@ -53,7 +53,7 @@ public class StartApp extends Application {
             auth.authDialog();
 
         }else{
-            Messages.error("Помилка БД!", "Не встановлено з\'єднання з БД", "БД");
+            Messages.error("Помилка БД!", "Не встановлено з'єднання з БД", "БД");
         }
     }
 
