@@ -98,7 +98,6 @@ public class PatientsController {
                     patient.getGender().toLowerCase().contains(text) ||
                     patient.getResults_of_research().toLowerCase().contains(text) ||
                     patient.getStatus().toLowerCase().contains(text) ||
-
                     patient.getDate_of_birth().toUpperCase().contains(text) ||
                     patient.getDate_of_completion().toUpperCase().contains(text) ||
                     patient.getDiagnosis().toUpperCase().contains(text) ||
@@ -109,7 +108,6 @@ public class PatientsController {
                     patient.getGender().toUpperCase().contains(text) ||
                     patient.getResults_of_research().toUpperCase().contains(text) ||
                     patient.getStatus().toUpperCase().contains(text) ||
-
                     patient.getDate_of_birth().contains(text) ||
                     patient.getDate_of_completion().contains(text) ||
                     patient.getDiagnosis().contains(text) ||
