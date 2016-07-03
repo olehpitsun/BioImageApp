@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="363.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainWindowController">
    <children>
-      <SplitPane dividerPositions="0.4126984126984127, 0.5" layoutX="153.0" layoutY="70.0" prefHeight="363.0" prefWidth="293.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane  layoutX="153.0" layoutY="70.0" prefHeight="363.0" prefWidth="293.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="362.0" prefWidth="143.0" styleClass="background">
                <children>
@@ -33,15 +33,30 @@
                         <RowConstraints />
                      </rowConstraints>
                      <children>
-                        <Label fx:id="infoLabel" GridPane.columnIndex="0" GridPane.rowIndex="0" >Увійдіть в систему</Label>
+                        <Label fx:id="infoLabel" GridPane.columnIndex="0" GridPane.rowIndex="0">Увійдіть в систему</Label>
 
                         <Button fx:id="signInButton" disable="true" mnemonicParsing="false" onAction="#handleSignIn" text="Увійти" GridPane.columnIndex="0" GridPane.rowIndex="1">
                         </Button>
                         <Button fx:id="dbButton" mnemonicParsing="false" onAction="#handleDBConnect" text="Налаштування БД" GridPane.columnIndex="0" GridPane.rowIndex="2">
                         </Button>
-
+                        <Button fx:id="writeMessageButton" mnemonicParsing="false" onAction="#writeMessage" text="Написати Повідомлення" GridPane.columnIndex="0" GridPane.rowIndex="3" visible="false">
+                        </Button>
+                        <Button fx:id="refreshMessageButton" mnemonicParsing="false" onAction="#refreshMessages" text="Оновити" GridPane.columnIndex="1" GridPane.rowIndex="3" visible="false">
+                        </Button>
                      </children>
                   </GridPane>
+
+                  <TableView fx:id="messenger" prefHeight="32.0" prefWidth="50.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="330.0" visible="false">
+                     <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="5.0" text="#" />
+                        <TableColumn fx:id="messageDateColumn" prefWidth="30.0" text="Дата" />
+                        <TableColumn fx:id="send_FromColumn" prefWidth="15.0" text="Відправник" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+
                   <ButtonBar layoutX="54.0" layoutY="250.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <buttons>
                      </buttons>
@@ -60,10 +75,11 @@
 
                         <Button fx:id="showButton1" disable="true" mnemonicParsing="false" onAction="#handlePacientList" text="Список пацієнтів" GridPane.columnIndex="0" GridPane.rowIndex="0">
                         </Button>
-                        <Button fx:id="simpleResearchButton" disable="true" mnemonicParsing="false" onAction="#handleSimpleResearch" text="Досліди" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Button fx:id="showButton3" disable="true" mnemonicParsing="false" text="Направлення" GridPane.columnIndex="1" GridPane.rowIndex="0">
                         </Button>
-                        <Button fx:id="showButton3" disable="true" mnemonicParsing="false" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada  фото" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <Button fx:id="simpleResearchButton" disable="true" mnemonicParsing="false" onAction="#handleSimpleResearch" text="Досліди" GridPane.columnIndex="0" GridPane.rowIndex="1">
                         </Button>
+
                         <Button fx:id="showButton4" disable="true" mnemonicParsing="false" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada " GridPane.columnIndex="1" GridPane.rowIndex="1">
                         </Button>
                      </children>
@@ -100,7 +116,7 @@
                      </rowConstraints>
                      <children>
 
-                        <Button fx:id="settingsButton" disable="true"  mnemonicParsing="false" onAction="#handleDBConnect" text="Налаштування" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Button fx:id="settingsButton" disable="true" mnemonicParsing="false" onAction="#handleDBConnect" text="Налаштування" GridPane.columnIndex="0" GridPane.rowIndex="0">
                         </Button>
                         <Button fx:id="webcamButton" disable="true" mnemonicParsing="false" onAction="#handleDBConnect" text="Відеоконференція" GridPane.columnIndex="0" GridPane.rowIndex="1">
                         </Button>

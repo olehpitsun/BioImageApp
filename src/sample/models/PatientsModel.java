@@ -11,7 +11,9 @@ import java.sql.SQLException;
  * Created by Admin on 04.05.2016.
  */
 public class PatientsModel extends SQLDatabase {
-    private String full_name_of_patient;
+    private String surname_of_patient;
+    private String name_of_patient;
+    private String fathername_of_patient;
     private String date_of_birth;
     private String gender;
     private String results_of_research;
@@ -32,7 +34,9 @@ public class PatientsModel extends SQLDatabase {
     }
     public void setData() throws SQLException
     {
-            this.full_name_of_patient = resultSet.getString("Full_name");
+            this.surname_of_patient = resultSet.getString("Surname");
+            this.name_of_patient = resultSet.getString("Name");
+            this.fathername_of_patient = resultSet.getString("Fathername");
             this.id = Integer.valueOf(resultSet.getString("ID"));
             this.date_of_birth = resultSet.getString("Date_of_birth");
             this.gender = resultSet.getString("Gender");
@@ -48,7 +52,7 @@ public class PatientsModel extends SQLDatabase {
         while(resultSet.next()) {
             setData();
             counts++;
-            PatientsController.patientsData.add(new Patient(id, full_name_of_patient, date_of_birth,
+            PatientsController.patientsData.add(new Patient(id, surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
                     gender,
                     results_of_research, diagnosis,
                     date_of_completion, full_name_of_doctor, status));

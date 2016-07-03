@@ -24,7 +24,9 @@ import java.sql.ResultSet;
 public class AddPatientModel extends  SQLDatabase{
 
 
-    private String full_name_of_patient;
+    private String surname_of_patient;
+    private String name_of_patient;
+    private String fathername_of_patient;
     private String date_of_birth;
     private String gender;
     private String results_of_research;
@@ -33,7 +35,11 @@ public class AddPatientModel extends  SQLDatabase{
     private String full_name_of_doctor;
 
 
-    public void setFull_name_of_patient(String full_name_of_patient) { this.full_name_of_patient = full_name_of_patient; }
+    public void setSurname_of_patient(String surname_of_patient) { this.surname_of_patient = surname_of_patient; }
+
+    public void setName_of_patient(String name_of_patient) { this.name_of_patient = name_of_patient; }
+
+    public void setFathername_of_patient(String fathername_of_patient) { this.fathername_of_patient = fathername_of_patient; }
 
     public void setDate_of_birth(String date_of_birth) { this.date_of_birth = date_of_birth; }
 
@@ -64,22 +70,23 @@ public class AddPatientModel extends  SQLDatabase{
     public void addToDB() {
         try {
 
-            sqlInsertExecute("INSERT INTO patients (Status, Full_name, Date_of_birth, Gender, Results_of_research, Diagnosis, Date_of_completion, Name_of_doctor) VALUES ("+"'Patient',"+"'"+full_name_of_patient+"',"+"'"+date_of_birth+"',"+"'"+gender+"',"+"'"+results_of_research+"',"+"'"+diagnosis+"',"+"'"+date_of_completion+"',"+"'"+full_name_of_doctor+"')");
-            sqlExecute("SELECT id, status FROM patients WHERE Full_name='"+full_name_of_patient+"' AND Date_of_birth='"+date_of_birth+"'");
-            if(resultSet.next())
-            PatientsController.patientsData.add(new Patient(Integer.valueOf(resultSet.getString("ID")), full_name_of_patient, date_of_birth,
-                    gender,
-                    results_of_research, diagnosis,
-                    date_of_completion, full_name_of_doctor, resultSet.getString("Status")));
-            PatientsController.backupPatientsData.add(new Patient(Integer.valueOf(resultSet.getString("ID")), full_name_of_patient, date_of_birth,
-                    gender,
-                    results_of_research, diagnosis,
-                    date_of_completion, full_name_of_doctor, resultSet.getString("Status")));
-            //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");
+            sqlInsertExecute("INSERT INTO patients (Status, Surname, Name, Fathername, Date_of_birth, Gender, Results_of_research, Diagnosis, Date_of_completion, Name_of_doctor) VALUES ("+"'Patient',"+"'"+surname_of_patient+"',"+"'"+name_of_patient+"',"+"'"+fathername_of_patient+"',"+"'"+date_of_birth+"',"+"'"+gender+"',"+"'"+results_of_research+"',"+"'"+diagnosis+"',"+"'"+date_of_completion+"',"+"'"+full_name_of_doctor+"')");
+            sqlExecute("SELECT id, status FROM patients WHERE Surname='"+surname_of_patient+"' AND Name='"+name_of_patient+"' AND Fathername='"+fathername_of_patient+"' AND Date_of_birth='"+date_of_birth+"'");
+            if(resultSet.next()) {
+                PatientsController.patientsData.add(new Patient(Integer.valueOf(resultSet.getString("ID")), surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
+                        gender,
+                        results_of_research, diagnosis,
+                        date_of_completion, full_name_of_doctor, resultSet.getString("Status")));
+                PatientsController.backupPatientsData.add(new Patient(Integer.valueOf(resultSet.getString("ID")), surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
+                        gender,
+                        results_of_research, diagnosis,
+                        date_of_completion, full_name_of_doctor, resultSet.getString("Status")));
+                //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");
+            }
             CurrentStage.getStage().close();
         } catch (Exception ex) {
             ex.printStackTrace();
-            Messages.error("Error", "The patient can not be added", "БД");
+            Messages.error("Помилка", "Пацієнт не може бути доданий!", "БД");
         }
 
 
