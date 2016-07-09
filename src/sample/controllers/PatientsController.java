@@ -148,7 +148,7 @@ public class PatientsController {
 
     }
     @FXML
-    public void deletePatient()
+    public void deletePatient() throws SQLException
     {
         Patient patient = (Patient) table.getSelectionModel().getSelectedItem();
         //EditPatientController.patient = patient;
