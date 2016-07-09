@@ -6,10 +6,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import sample.controllers.PatientsController;
-import sample.libs.CurrentStage;
-import sample.libs.Messages;
-import sample.libs.SQLDatabase;
-import sample.libs.Session;
+import sample.libs.*;
 import sample.objects.Patient;
 
 import java.sql.ResultSet;
@@ -82,7 +79,9 @@ public class AddPatientModel extends  SQLDatabase{
                         results_of_research, diagnosis,
                         date_of_completion, full_name_of_doctor, resultSet.getString("Status")));
                 //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");
+                EventLogger.createEvent(Session.getKeyValue("name"), "Added patient" + surname_of_patient + " " + name_of_patient, Date.getTime());
             }
+
             CurrentStage.getStage().close();
         } catch (Exception ex) {
             ex.printStackTrace();
