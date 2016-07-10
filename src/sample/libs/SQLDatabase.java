@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class SQLDatabase {
     protected Connection connection;
-    protected Statement statement;
+    protected static Statement statement;
     protected ResultSet resultSet;
 
   public void sqlSetConnect() {
@@ -40,6 +40,10 @@ public class SQLDatabase {
     public void sqlInsertExecute(String query) throws  SQLException
     {
          statement.execute(query);
+    }
+    public static void CreateEvent(String query) throws  SQLException
+    {
+        statement.execute(query);
     }
     public void sqlExecute(String query)
     {

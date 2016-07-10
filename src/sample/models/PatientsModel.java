@@ -1,7 +1,10 @@
 package sample.models;
 
 import sample.controllers.PatientsController;
+import sample.libs.Date;
+import sample.libs.EventLogger;
 import sample.libs.SQLDatabase;
+import sample.libs.Session;
 import sample.objects.Patient;
 
 import java.sql.ResultSet;
@@ -28,9 +31,10 @@ public class PatientsModel extends SQLDatabase {
         sqlSetConnect();
         sqlExecute("SELECT * FROM patients");
     }
-    public void remove(Patient patient)
+    public void remove(Patient patient) throws SQLException
     {
         removeExecute("DELETE FROM patients WHERE ID='"+patient.getId()+"'");
+        EventLogger.createEvent(Session.getKeyValue("name"), "Patient " +patient.getSurname_of_patient() + " " + patient.getName_of_patient() +" deleted", Date.getTime());
     }
     public void setData() throws SQLException
     {
