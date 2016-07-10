@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.interfaces.PatientsBook;
 import sample.libs.CurrentStage;
+import sample.libs.Messages;
 import sample.libs.SQLDatabase;
 import sample.models.AddPatientModel;
 import sample.models.EditPatientModel;
@@ -138,23 +139,29 @@ public class PatientsController {
     @FXML
     public void editPatient(ActionEvent event)
     {
-        Patient patient = (Patient) table.getSelectionModel().getSelectedItem();
+        try {
+            Patient patient = (Patient) table.getSelectionModel().getSelectedItem();
         EditPatientController.patient = patient;
         EditPatientView editPatientView = new EditPatientView();
-        try {
             editPatientView.render();
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (Exception ex) {
+            Messages.error("Помилка","Не вибрано пацієнта","TABLE");
+        }
 
 
     }
     @FXML
     public void deletePatient() throws SQLException
     {
+        try {
         Patient patient = (Patient) table.getSelectionModel().getSelectedItem();
         //EditPatientController.patient = patient;
         patientsModel.remove(patient);
         patientsData.remove(patient);
         backupPatientsData.remove(patient);
+        } catch (Exception ex) {
+            Messages.error("Помилка","Не вибрано пацієнта","TABLE");
+        }
     }
     public void updateCount(int counts)
     {
