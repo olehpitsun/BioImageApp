@@ -56,6 +56,7 @@ public class AuthModel extends SQLDatabase {
                 System.out.println(Session.getKeyValue("id"));
                 System.out.println(Session.getKeyValue("name"));
                 System.out.println(Session.getKeyValue("role_id"));
+                EventLogger.createEvent(Session.getKeyValue("name"), "Authorization complete", Date.getTime());
 
                // MainApp mainApp = new MainApp();
 

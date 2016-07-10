@@ -4,10 +4,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import sample.controllers.EditPatientController;
 import sample.controllers.PatientsController;
-import sample.libs.CurrentStage;
-import sample.libs.Messages;
-import sample.libs.SQLDatabase;
-import sample.libs.Session;
+import sample.libs.*;
 import sample.objects.Patient;
 
 /**
@@ -82,7 +79,7 @@ public class EditPatientModel extends SQLDatabase {
                     gender,
                     results_of_research, diagnosis,
                     date_of_completion, full_name_of_doctor, status));
-
+            EventLogger.createEvent(Session.getKeyValue("name"), "Patient " +surname_of_patient + " " + name_of_patient +" edited", Date.getTime());
             CurrentStage.getStage().close();
             //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");
         } catch (Exception ex) {
