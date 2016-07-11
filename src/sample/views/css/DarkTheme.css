@@ -157,10 +157,27 @@
     -fx-background-size: 50px 50px;
     -fx-background-repeat: no-repeat;
     -fx-border-color: #d8d8d8;
-
-
 }
 
+#writeMessageButton{
+    -fx-min-height: 30px;
+    -fx-min-width: 110px;
+    -fx-padding: 1px;
+    -fx-background-image: url("../images/edit.png");
+    -fx-background-size: 30px 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-border-color: #d8d8d8;
+}
+
+#refreshMessageButton{
+    -fx-min-height: 30px;
+    -fx-min-width: 110px;
+    -fx-padding: 1px;
+    -fx-background-image: url("../images/repeat.png");
+    -fx-background-size: 30px 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-border-color: #d8d8d8;
+}
 
 #settingsButton{
     -fx-min-height: 50px;
@@ -179,6 +196,42 @@
     -fx-background-repeat: no-repeat;
     -fx-border-color: #d8d8d8;
 }
+#diagnosisRulesButton{
+    -fx-min-height: 50px;
+    -fx-min-width: 220px;
+    -fx-background-image: url("../images/book.png");
+    -fx-background-size: 50px 50px;
+    -fx-background-repeat: no-repeat;
+    -fx-border-color: #d8d8d8;
+}
+
+#objectTemplatesButton{
+    -fx-min-height: 50px;
+    -fx-min-width: 220px;
+    -fx-background-image: url("../images/chart_pie.png");
+    -fx-background-size: 50px 50px;
+    -fx-background-repeat: no-repeat;
+    -fx-border-color: #d8d8d8;
+    }
+
+#cytologyButton, #histologyButton{
+    -fx-padding: 3 10 3 10;
+    -fx-border-color: #317589;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #317589;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-text-alignment: right;
+    -fx-min-height: 200px;
+    -fx-min-width: 250px;
+    -fx-alignment: center;
+    -fx-background-image: url("../images/tag.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
 #photoCameraButton{
     -fx-min-height: 50px;
     -fx-min-width: 220px;
@@ -300,7 +353,7 @@
     -fx-background-repeat: no-repeat;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
-#showButton3{
+#directionButton{
     -fx-padding: 3 10 3 10;
     -fx-border-color: #317589;
     -fx-border-width: 2;
@@ -312,7 +365,7 @@
     -fx-min-height: 200px;
     -fx-min-width: 250px;
     -fx-alignment: center;
-    -fx-background-image: url("../images/id_card.png");
+    -fx-background-image: url("../images/mail.png");
     -fx-background-repeat: no-repeat;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
  }
@@ -430,3 +483,21 @@
 .combo-box-base:disabled {
     -fx-opacity: .4;
 }
+
+#patientListComboBox{
+    -fx-skin: "com.sun.javafx.scene.control.skin.ComboBoxBaseSkin";
+    -fx-background-color: white, white, white, white;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+    }
+
+    #loadFolderButton{
+    -fx-min-height: 50px;
+        -fx-min-width: 220px;
+        -fx-background-image: url("../images/address_book.png");
+        -fx-background-size: 50px 50px;
+        -fx-background-repeat: no-repeat;
+        -fx-border-color: #d8d8d8;
+    }
+

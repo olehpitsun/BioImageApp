@@ -39,7 +39,7 @@
                         </Button>
                         <Button fx:id="dbButton" mnemonicParsing="false" onAction="#handleDBConnect" text="Налаштування БД" GridPane.columnIndex="0" GridPane.rowIndex="2">
                         </Button>
-                        <Button fx:id="writeMessageButton" mnemonicParsing="false" onAction="#writeMessage" text="Написати Повідомлення" GridPane.columnIndex="0" GridPane.rowIndex="3" visible="false">
+                        <Button fx:id="writeMessageButton" mnemonicParsing="false" onAction="#writeMessage" text="Написати" GridPane.columnIndex="0" GridPane.rowIndex="3" visible="false">
                         </Button>
                         <Button fx:id="refreshMessageButton" mnemonicParsing="false" onAction="#refreshMessages" text="Оновити" GridPane.columnIndex="1" GridPane.rowIndex="3" visible="false">
                         </Button>
@@ -75,12 +75,11 @@
 
                         <Button fx:id="showButton1" disable="true" mnemonicParsing="false" onAction="#handlePacientList" text="Список пацієнтів" GridPane.columnIndex="0" GridPane.rowIndex="0">
                         </Button>
-                        <Button fx:id="showButton3" disable="true" mnemonicParsing="false" text="Направлення" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Button fx:id="directionButton" disable="true" mnemonicParsing="false" text="Направлення" GridPane.columnIndex="1" GridPane.rowIndex="0">
                         </Button>
-                        <Button fx:id="simpleResearchButton" disable="true" mnemonicParsing="false" onAction="#handleSimpleResearch" text="Досліди" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <Button fx:id="cytologyButton" disable="true" mnemonicParsing="false" onAction="#handleSimpleResearch" text="Цитологія" GridPane.columnIndex="0" GridPane.rowIndex="1">
                         </Button>
-
-                        <Button fx:id="showButton4" disable="true" mnemonicParsing="false" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada " GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button fx:id="histologyButton" disable="true" mnemonicParsing="false" text="Гістологія" onAction="#handleSimpleResearch" GridPane.columnIndex="1" GridPane.rowIndex="1">
                         </Button>
                      </children>
                      <columnConstraints>
@@ -123,6 +122,10 @@
                         <Button fx:id="photoCameraButton" disable="true" mnemonicParsing="false" onAction="#handleDBConnect" text="Зробити фото" GridPane.columnIndex="0" GridPane.rowIndex="2">
                         </Button>
                         <Button fx:id="address_bookButton" disable="true" mnemonicParsing="false" onAction="#handleDBConnect" text="Блокнот" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                        </Button>
+                        <Button fx:id="diagnosisRulesButton" visible="false" mnemonicParsing="false" onAction="#handleDBConnect" text="Правила діагностування" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                        </Button>
+                        <Button fx:id="objectTemplatesButton" visible="false" mnemonicParsing="false" onAction="#handleDBConnect" text="Шаблони опису об'єктів" GridPane.columnIndex="0" GridPane.rowIndex="6">
                         </Button>
                      </children>
                   </GridPane>

@@ -72,6 +72,14 @@ public class StartApp extends Application {
         });
     }
 
+    public static void likDoctorPage() throws IOException{
+        try {
+            LikDoctorPageModule likDoctorPageModule = new LikDoctorPageModule();
+        }catch (Exception e){
+            System.err.println(e);
+        }
+    }
+
     public static void showDBSettingsPage() throws IOException{
 
         DBConnectionModule db = new DBConnectionModule();

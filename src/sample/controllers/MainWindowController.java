@@ -29,7 +29,8 @@ public class MainWindowController {
     MessengerModel messengerModel;
     @FXML
     private Button signInButton, settingsButton, webcamButton, photoCameraButton, address_bookButton, showButton1,
-            simpleResearchButton, writeMessageButton, refreshMessageButton;
+            directionButton, writeMessageButton, refreshMessageButton, histologyButton, cytologyButton, diagnosisRulesButton,
+            objectTemplatesButton;
     @FXML
     private TableView<Messenger> messenger;
     @FXML
@@ -92,9 +93,10 @@ public class MainWindowController {
                 photoCameraButton.setDisable(false);
                 address_bookButton.setDisable(false);
                 showButton1.setDisable(false);
-                simpleResearchButton.setDisable(false);
+                directionButton.setDisable(false);
+                cytologyButton.setDisable(false);
+                histologyButton.setDisable(false);
                 //AuthModule auth = new AuthModule();
-
                 messengersData.clear();// очистка списку повідомлень
                 messengerModel = new MessengerModel();
                 messenger.setVisible(true);
@@ -147,8 +149,10 @@ public class MainWindowController {
     }
 
     @FXML
-    private void handleSimpleResearch(){
-        StartApp.showSimpleResearch();
+    private void handleSimpleResearch() throws IOException {
+
+        //StartApp.showSimpleResearch();
+        StartApp.likDoctorPage();
     }
 
     @FXML
