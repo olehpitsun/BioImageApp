@@ -3,6 +3,7 @@
  */
 
 package sample.nodes;
+import com.sun.prism.Material;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -76,7 +77,6 @@ public class StartApp extends Application {
 
         DBConnectionModule db = new DBConnectionModule();
         db.showDbConnectDialog();
-
     }
 
     public static void showMessage(Messenger messenger){
