@@ -1,7 +1,34 @@
 .background {
     -fx-background-color:#317589;
-
 }
+
+#senderField{
+    -fx-background-color: #317589;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-padding: 5 5 5 5;
+}
+#grid{
+    -fx-background-color: #317589;
+}
+
+#MessageTextLabel{
+    -fx-background-color: #317589;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-padding: 5 5 5 5;
+}
+
+#dateLabel{
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #317589;
+    -fx-font-size: 8pt;
+    -fx-padding: 5 5 5 5;
+}
+
+#messageTextError{
+    -fx-text-fill: red;
+    -fx-text-color: red;
+}
+
 #nameLabel{
     -fx-font-size: 17pt;
     -fx-font-family: "Segoe UI Semibold";
@@ -170,11 +197,16 @@
 }
 
 #loadImageButton{
+    -fx-background-color: #264348;
     -fx-min-height: 50px;
     -fx-min-width: 220px;
     -fx-background-image: url("../images/photo.png");
     -fx-background-size: 50px 50px;
     -fx-background-repeat: no-repeat;
+}
+#autoButton{
+    -fx-min-height: 50px;
+    -fx-min-width: 220px;
 }
 
 #pacientButton{
@@ -194,6 +226,13 @@
 #automaticButton, #handeButton{
     -fx-background-color: #6B9362;
     -fx-text-fill: #ffffff;
+}
+
+#cellEstimatorButton{
+    -fx-background-color: #CA6924;
+    -fx-text-fill: #ffffff;
+    -fx-min-height: 50px;
+    -fx-min-width: 220px;
 }
 
 .button {

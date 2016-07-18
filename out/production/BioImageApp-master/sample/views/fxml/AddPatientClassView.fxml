@@ -10,7 +10,7 @@
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddPatientClassController">
    <children>
       <Label layoutX="233.0" layoutY="14.0" text="ДОДАВАННЯ ПАЦІЄНТА" textFill="#e8dbdb" />
-      <TextField fx:id="full_name_of_patient" layoutX="50.0" layoutY="66.0" prefHeight="30.0" prefWidth="500.0" promptText="Прізвище ім'я по батькові" />
+      <TextField fx:id="surname_of_patient" layoutX="50.0" layoutY="66.0" prefHeight="30.0" prefWidth="145.0" promptText="Прізвище" />
       <TextField fx:id="date_of_birth" layoutX="50.0" layoutY="132.0" prefHeight="30.0" prefWidth="230.0" promptText="дд.мм.рррр" />
       <TextArea fx:id="results_of_research" layoutX="50.0" layoutY="200.0" prefHeight="100.0" prefWidth="500.0" promptText="Результати досліджень" />
       <TextArea fx:id="diagnosis" layoutX="50.0" layoutY="335.0" prefHeight="56.0" prefWidth="500.0" promptText="Діагноз" />
@@ -21,7 +21,7 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <Label layoutX="50.0" layoutY="43.0" text="Введіть прізвище, ім'я, по батькові пацієнта" textFill="#e8dbdb" />
+      <Label layoutX="50.0" layoutY="43.0" text="Введіть прізвище пацієнта" textFill="#e8dbdb" />
       <Label layoutX="50.0" layoutY="104.0" text="Введіть дату народження" textFill="#e8dbdb" />
       <Label layoutX="353.0" layoutY="104.0" text="Виберіть стать пацієнта" textFill="#e8dbdb" />
       <Label layoutX="52.0" layoutY="174.0" text="Результати досліджень" textFill="#e8dbdb" />
@@ -48,5 +48,9 @@
             <Insets left="35.0" />
          </padding>
       </HBox>
+      <Label layoutX="417.0" layoutY="43.0" text="по батькові пацієнта" textFill="#e8dbdb" />
+      <Label layoutX="233.0" layoutY="43.0" text="ім'я пацієнта" textFill="#e8dbdb" />
+      <TextField fx:id="name_of_patient" layoutX="233.0" layoutY="66.0" prefHeight="30.0" prefWidth="145.0" promptText="Ім'я" />
+      <TextField fx:id="fathername_of_patient" layoutX="417.0" layoutY="66.0" prefHeight="30.0" prefWidth="134.0" promptText="По батькові" />
    </children>
 </Pane>

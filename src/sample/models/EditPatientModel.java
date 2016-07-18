@@ -4,10 +4,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import sample.controllers.EditPatientController;
 import sample.controllers.PatientsController;
-import sample.libs.CurrentStage;
-import sample.libs.Messages;
-import sample.libs.SQLDatabase;
-import sample.libs.Session;
+import sample.libs.*;
 import sample.objects.Patient;
 
 /**
@@ -16,7 +13,9 @@ import sample.objects.Patient;
 public class EditPatientModel extends SQLDatabase {
 
 
-    private String full_name_of_patient;
+    private String surname_of_patient;
+    private String name_of_patient;
+    private String fathername_of_patient;
     private String date_of_birth;
     private String gender;
     private String results_of_research;
@@ -34,7 +33,11 @@ public class EditPatientModel extends SQLDatabase {
     {
         this.status = status;
     }
-    public void setFull_name_of_patient(String full_name_of_patient) { this.full_name_of_patient = full_name_of_patient; }
+    public void setSurname_of_patient(String surname_of_patient) { this.surname_of_patient = surname_of_patient; }
+
+    public void setName_of_patient(String name_of_patient) { this.name_of_patient = name_of_patient; }
+
+    public void setFathername_of_patient(String fathername_of_patient) { this.fathername_of_patient = fathername_of_patient; }
 
     public void setDate_of_birth(String date_of_birth) { this.date_of_birth = date_of_birth; }
 
@@ -65,23 +68,23 @@ public class EditPatientModel extends SQLDatabase {
     public void addToDB() {
         try {
 
-            updateExecute("UPDATE patients SET Full_name='"+full_name_of_patient+"', Date_of_birth='"+date_of_birth+"', Gender='"+gender+"', Results_of_research='"+results_of_research+"', Diagnosis='"+diagnosis+"', Date_of_completion='"+date_of_completion+"', Name_of_doctor='"+full_name_of_doctor+"' WHERE ID='"+id+"'");
+            updateExecute("UPDATE patients SET Surname='"+surname_of_patient+"', Name='"+name_of_patient+"', Fathername='"+fathername_of_patient+"', Date_of_birth='"+date_of_birth+"', Gender='"+gender+"', Results_of_research='"+results_of_research+"', Diagnosis='"+diagnosis+"', Date_of_completion='"+date_of_completion+"', Name_of_doctor='"+full_name_of_doctor+"' WHERE ID='"+id+"'");
             PatientsController.patientsData.remove(EditPatientController.patient);
             PatientsController.backupPatientsData.remove(EditPatientController.patient);
-            PatientsController.patientsData.add(new Patient(id, full_name_of_patient, date_of_birth,
+            PatientsController.patientsData.add(new Patient(id, surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
                     gender,
                     results_of_research, diagnosis,
                     date_of_completion, full_name_of_doctor, status));
-            PatientsController.backupPatientsData.add(new Patient(id, full_name_of_patient, date_of_birth,
+            PatientsController.backupPatientsData.add(new Patient(id, surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
                     gender,
                     results_of_research, diagnosis,
                     date_of_completion, full_name_of_doctor, status));
-
+            EventLogger.createEvent(Session.getKeyValue("name"), "Patient " +surname_of_patient + " " + name_of_patient +" edited", Date.getTime());
             CurrentStage.getStage().close();
             //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");
         } catch (Exception ex) {
             ex.printStackTrace();
-            Messages.error("Error", "The patient can not be added", "БД");
+            Messages.error("Помилка", "Пацієнт не може бути доданий!", "БД");
         }
 
 

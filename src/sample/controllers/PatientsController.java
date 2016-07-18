@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.interfaces.PatientsBook;
 import sample.libs.CurrentStage;
+import sample.libs.Messages;
 import sample.libs.SQLDatabase;
 import sample.models.AddPatientModel;
 import sample.models.EditPatientModel;
@@ -39,7 +40,11 @@ public class PatientsController {
     @FXML
     private TableView<Patient> table;
     @FXML
+    private TableColumn<Patient, String> surname;
+    @FXML
     private TableColumn<Patient, String> name;
+    @FXML
+    private TableColumn<Patient, String> fathername;
     @FXML
     private TableColumn<Patient, Integer> id;
     @FXML
@@ -87,7 +92,9 @@ public class PatientsController {
                     patient.getDate_of_birth().toLowerCase().contains(text) ||
                     patient.getDate_of_completion().toLowerCase().contains(text) ||
                     patient.getDiagnosis().toLowerCase().contains(text) ||
-                    patient.getFull_name_of_patient().toLowerCase().contains(text) ||
+                    patient.getSurname_of_patient().toLowerCase().contains(text) ||
+                    patient.getName_of_patient().toLowerCase().contains(text) ||
+                    patient.getFathername_of_patient().toLowerCase().contains(text) ||
                     patient.getFull_name_of_doctor().toLowerCase().contains(text) ||
                     patient.getGender().toLowerCase().contains(text) ||
                     patient.getResults_of_research().toLowerCase().contains(text) ||
@@ -95,7 +102,9 @@ public class PatientsController {
                     patient.getDate_of_birth().toUpperCase().contains(text) ||
                     patient.getDate_of_completion().toUpperCase().contains(text) ||
                     patient.getDiagnosis().toUpperCase().contains(text) ||
-                    patient.getFull_name_of_patient().toUpperCase().contains(text) ||
+                    patient.getSurname_of_patient().toUpperCase().contains(text) ||
+                    patient.getName_of_patient().toUpperCase().contains(text) ||
+                    patient.getFathername_of_patient().toUpperCase().contains(text) ||
                     patient.getFull_name_of_doctor().toUpperCase().contains(text) ||
                     patient.getGender().toUpperCase().contains(text) ||
                     patient.getResults_of_research().toUpperCase().contains(text) ||
@@ -103,7 +112,9 @@ public class PatientsController {
                     patient.getDate_of_birth().contains(text) ||
                     patient.getDate_of_completion().contains(text) ||
                     patient.getDiagnosis().contains(text) ||
-                    patient.getFull_name_of_patient().contains(text) ||
+                    patient.getSurname_of_patient().contains(text) ||
+                    patient.getName_of_patient().contains(text) ||
+                    patient.getFathername_of_patient().contains(text) ||
                     patient.getFull_name_of_doctor().contains(text) ||
                     patient.getGender().contains(text) ||
                     patient.getResults_of_research().contains(text) ||
@@ -128,22 +139,29 @@ public class PatientsController {
     @FXML
     public void editPatient(ActionEvent event)
     {
-        Patient patient = (Patient) table.getSelectionModel().getSelectedItem();
+        try {
+            Patient patient = (Patient) table.getSelectionModel().getSelectedItem();
         EditPatientController.patient = patient;
         EditPatientView editPatientView = new EditPatientView();
-        try {
             editPatientView.render();
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (Exception ex) {
+            Messages.error("Помилка","Не вибрано пацієнта","TABLE");
+        }
 
 
     }
     @FXML
-    public void deletePatient()
+    public void deletePatient() throws SQLException
     {
+        try {
         Patient patient = (Patient) table.getSelectionModel().getSelectedItem();
-        EditPatientController.patient = patient;
+        //EditPatientController.patient = patient;
         patientsModel.remove(patient);
         patientsData.remove(patient);
+        backupPatientsData.remove(patient);
+        } catch (Exception ex) {
+            Messages.error("Помилка","Не вибрано пацієнта","TABLE");
+        }
     }
     public void updateCount(int counts)
     {
@@ -154,7 +172,9 @@ public class PatientsController {
     public void initialize() throws Exception{
         patientsData.clear();
         id.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("id"));
-        name.setCellValueFactory(new PropertyValueFactory<Patient, String>("full_name_of_patient"));
+        surname.setCellValueFactory(new PropertyValueFactory<Patient, String>("surname_of_patient"));
+        name.setCellValueFactory(new PropertyValueFactory<Patient, String>("name_of_patient"));
+        fathername.setCellValueFactory(new PropertyValueFactory<Patient, String>("fathername_of_patient"));
         birth.setCellValueFactory(new PropertyValueFactory<Patient, String>("date_of_birth"));
         status.setCellValueFactory(new PropertyValueFactory<Patient, String>("status"));
         gender.setCellValueFactory(new PropertyValueFactory<Patient, String>("gender"));
