@@ -105,20 +105,20 @@ public class MainWindowController implements Initializable{
             e.printStackTrace();
         }
 
-            HamburgerBackArrowBasicTransition authBurgerTask = new HamburgerBackArrowBasicTransition(authHamburger);
-            authBurgerTask.setRate(-1);
-            authHamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
-                authBurgerTask.setRate(authBurgerTask.getRate() * -1);
-                authBurgerTask.play();
-                if(authDrawer.isShown() || authDrawer.isShowing()){
-                    authDrawer.close();
-                    authDrawer.setOverLayVisible(false);
-                }
-                else{
-                    updateDrawerPosition(authDrawer);
-                    authDrawer.open();
-                }
-            });
+        HamburgerBackArrowBasicTransition authBurgerTask = new HamburgerBackArrowBasicTransition(authHamburger);
+        authBurgerTask.setRate(-1);
+        authHamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
+            authBurgerTask.setRate(authBurgerTask.getRate() * -1);
+            authBurgerTask.play();
+            if(authDrawer.isShown() || authDrawer.isShowing()){
+                authDrawer.close();
+                authDrawer.setOverLayVisible(false);
+            }
+            else{
+                updateDrawerPosition(authDrawer);
+                authDrawer.open();
+            }
+        });
 
         idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         messageDateColumn.setCellValueFactory(cellData -> cellData.getValue().messageDateProperty());
@@ -232,7 +232,7 @@ public class MainWindowController implements Initializable{
     }
 
     @FXML
-    private void handleSimpleResearch() throws IOException{
+    private void handleSimpleResearch()throws IOException{
         StartApp.likDoctorPage();
         //StartApp.showSimpleResearch();
     }
