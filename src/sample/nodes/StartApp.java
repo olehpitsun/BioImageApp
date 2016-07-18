@@ -3,6 +3,7 @@
  */
 
 package sample.nodes;
+import com.sun.prism.Material;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import org.opencv.core.Core;
 import sample.libs.Messages;
 import sample.libs.Messenger.Messenger;
+import sample.libs.Session;
 import sample.models.CheckerModel;
 import sample.models.DbModel;
 import sample.views.CheckerView;
@@ -84,18 +86,25 @@ public class StartApp extends Application {
 
         DBConnectionModule db = new DBConnectionModule();
         db.showDbConnectDialog();
-
     }
 
     public static void showMessage(Messenger messenger){
-
-        ShowMessageModule showMessageModule = new ShowMessageModule();
-        showMessageModule.showMessageDialog(messenger);
+        if(Session.getKeyValue("activeStatus") == "1") {
+            ShowMessageModule showMessageModule = new ShowMessageModule();
+            showMessageModule.showMessageDialog(messenger);
+        }else{
+            Messages.error("Помилка авторизації!", "Увійдіть в систему", " ");
+        }
     }
 
     public static void writeMessage(){
-        writeMessageModule writeMessageModule = new writeMessageModule();
-        writeMessageModule.writeMessageeDialog();
+        if(Session.getKeyValue("activeStatus") == "1"){
+            writeMessageModule writeMessageModule = new writeMessageModule();
+            writeMessageModule.writeMessageeDialog();
+        }else{
+            Messages.error("Помилка авторизації!", "Увійдіть в систему", " ");
+        }
+
     }
 
     /**
