@@ -1,5 +1,9 @@
 package sample.controllers;
 
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.RequiredFieldValidator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,11 +20,11 @@ import java.sql.SQLException;
 public class writeMessageController {
 
     @FXML
-    private TextField titleMessage;
+    private JFXTextField titleMessage;
     @FXML
-    private TextArea messageText;
+    private JFXTextArea messageText;
     @FXML
-    private ComboBox<UsersColection> receiverComboBox;
+    private JFXComboBox<UsersColection> receiverComboBox;
     @FXML
     private Label messageTextError;
     private Stage dialogStage;
@@ -70,7 +74,7 @@ public class writeMessageController {
             }
         }else{
             messageTextError.setVisible(true);
-            messageTextError.setText("аповніть коректно усі поля");
+            messageTextError.setText(" Заповніть коректно усі поля");
         }
     }
 

@@ -7,13 +7,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="mainAnchorPane" prefHeight="500.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainWindowController">
+<AnchorPane fx:id="mainAnchorPane" prefHeight="610.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainWindowController">
    <children>
       <JFXHamburger fx:id="authHamburger" layoutX="14.0" layoutY="14.0" />
       <JFXDrawer fx:id="authDrawer" layoutX="-38.0" layoutY="51.0" prefHeight="313.0" prefWidth="122.0" />
 
-
-      <TableView fx:id="messenger" layoutY="382.0" prefHeight="117.0" prefWidth="294.0" visible="false" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="730.0" AnchorPane.topAnchor="382.0">
+      <TableView fx:id="messenger" layoutX="180.0" layoutY="382.0" prefHeight="244.0" prefWidth="324.0" visible="false" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="520.0" AnchorPane.topAnchor="382.0">
          <columns>
             <TableColumn fx:id="idColumn" prefWidth="5.0" text="#" />
             <TableColumn fx:id="messageDateColumn" prefWidth="30.0" text="Дата" />
@@ -24,10 +23,10 @@
          </columnResizePolicy>
       </TableView>
 
-      <Label fx:id="nameLabel" layoutX="310.0" layoutY="14.0" prefHeight="38.0" prefWidth="545.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" AnchorPane.bottomAnchor="448.0" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="169.0" AnchorPane.topAnchor="14.0">Система автоматизованої мікроскопії</Label>
-      <Button fx:id="logo" layoutX="380.0" layoutY="137.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="96.0" text="" />
+      <Label fx:id="nameLabel" layoutX="304.0" layoutY="-6.0" prefHeight="91.0" prefWidth="545.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" AnchorPane.bottomAnchor="585.0" AnchorPane.leftAnchor="304.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="-6.0">Система автоматизованої мікроскопії</Label>
+      <Button fx:id="logo" layoutX="807.0" layoutY="14.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="96.0" text="" />
 
-      <GridPane layoutX="550.0" layoutY="180.0" prefHeight="358.0" prefWidth="444.0">
+      <GridPane layoutX="638.0" layoutY="312.0" prefHeight="358.0" prefWidth="386.0">
          <columnConstraints>
             <ColumnConstraints />
             <ColumnConstraints />

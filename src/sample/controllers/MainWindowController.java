@@ -1,7 +1,7 @@
 package sample.controllers;
 
 /**
- * Автор: Павло Лящинський
+ * Автор: Павло Лящинський, Піцун Олег
  * Дата створення: 23.04.2016.
  * ---------------------------
  * Клас є контролером для головного вікна, яке з'являється після успішної авторизації в системі.
@@ -16,16 +16,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import sample.libs.Messenger.Messenger;
 import sample.libs.Session;
-import sample.models.DbModel;
 import sample.models.MessengerModel;
 import sample.nodes.*;
 import java.io.IOException;
@@ -33,8 +30,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import com.jfoenix.controls.JFXDrawer.DrawerDirection;
 
 public class MainWindowController implements Initializable{
 
@@ -54,8 +49,7 @@ public class MainWindowController implements Initializable{
     private Node content ;
 
     @FXML
-    private Button signInButton, settingsButton, webcamButton, photoCameraButton, address_bookButton, showButton1,
-            simpleResearchButton, writeMessageButton, refreshMessageButton;
+    private Button  directionButton, showButton1,cytologyButton, histologyButton;
     @FXML
     private TableView<Messenger> messenger;
     @FXML
@@ -70,7 +64,6 @@ public class MainWindowController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
 
         try {
             VBox box = FXMLLoader.load(getClass().getResource("../views/fxml/DrawerContent.fxml"));
@@ -91,6 +84,9 @@ public class MainWindowController implements Initializable{
                             case "auth" :
                                 handleSignIn();
                                 break;
+                            case "logout" :
+                                logout();
+                                break;
                             case "writeMessage" :
                                 writeMessage();
                                 break;
@@ -101,7 +97,6 @@ public class MainWindowController implements Initializable{
                                     System.err.print(sqlEx);
                                 }
                                 break;
-
                         }
                     });
                 }
@@ -115,16 +110,13 @@ public class MainWindowController implements Initializable{
             authHamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
                 authBurgerTask.setRate(authBurgerTask.getRate() * -1);
                 authBurgerTask.play();
-
                 if(authDrawer.isShown() || authDrawer.isShowing()){
                     authDrawer.close();
                     authDrawer.setOverLayVisible(false);
-
                 }
                 else{
                     updateDrawerPosition(authDrawer);
                     authDrawer.open();
-
                 }
             });
 
@@ -133,10 +125,6 @@ public class MainWindowController implements Initializable{
         send_FromColumn.setCellValueFactory(cellData -> cellData.getValue().send_from_idProperty());
     }
 
-    @FXML
-    private void dothis(){
-        but.setText("wwwwwwwwwwwww");
-    }
     /**
      * update drawers position in the stack once a drawer is drawn
      * @param drawer
@@ -155,9 +143,7 @@ public class MainWindowController implements Initializable{
         }
     }
 
-    public MainWindowController()
-    {
-    }
+    public MainWindowController() {}
 
     @FXML
     private void writeMessage(){
@@ -180,10 +166,7 @@ public class MainWindowController implements Initializable{
         });
     }
 
-    @FXML
-    public void registerADoctor(){
-
-    }
+    @FXML    public void registerADoctor(){}
 
     @FXML
     public void handleSignIn(){
@@ -192,14 +175,8 @@ public class MainWindowController implements Initializable{
 
             if(Session.getKeyValue("activeStatus") == "1"){
 
-                /*
-                infoLabel.setText("Вітаю, " + Session.getKeyValue("name"));
-                settingsButton.setDisable(false);
-                webcamButton.setDisable(false);
-                photoCameraButton.setDisable(false);
-                address_bookButton.setDisable(false);
-                showButton1.setDisable(false);
-                simpleResearchButton.setDisable(false);*/
+                showButton1.setDisable(false); directionButton.setDisable(false);
+                cytologyButton.setDisable(false); histologyButton.setDisable(false);
                 //AuthModule auth = new AuthModule();
 
                 messengersData.clear();// очистка списку повідомлень
@@ -207,7 +184,6 @@ public class MainWindowController implements Initializable{
                 messenger.setVisible(true);
                 messengerModel.selectData();
                 messenger.setItems(MainWindowController.messengersData);
-                //writeMessageButton.setVisible(true); refreshMessageButton.setVisible(true);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -229,6 +205,14 @@ public class MainWindowController implements Initializable{
     }
 
     @FXML
+    private void logout(){
+        Session.clear();
+        showButton1.setDisable(true); directionButton.setDisable(true);
+        cytologyButton.setDisable(true); histologyButton.setDisable(true);
+        messenger.setVisible(false);
+    }
+
+    @FXML
     private void refreshMessages() throws SQLException {
         messengersData.clear();// очистка списку повідомлень
         messengerModel = new MessengerModel();
@@ -244,13 +228,7 @@ public class MainWindowController implements Initializable{
 
     @FXML
     public void handleDBConnect() throws Exception {
-
         StartApp.showDBSettingsPage();
-
-        DbModel db = new DbModel();
-        if(db.checkDbConnection()) {
-            signInButton.setDisable(false);
-        }
     }
 
     @FXML

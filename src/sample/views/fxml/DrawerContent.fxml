@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <JFXButton fx:id="dbSettings" accessibleText="dbSettings" prefHeight="77.0" prefWidth="200.0" text="Налаштування БД" />
-      <JFXButton fx:id="authButto" accessibleText="auth" prefHeight="77.0" prefWidth="200.0" visible="true" disable="false" text="Увійти" />
+      <JFXButton fx:id="authButton" accessibleText="auth" prefHeight="77.0" prefWidth="200.0" visible="true" disable="false" text="Увійти" />
+      <JFXButton fx:id="logoutButton" accessibleText="logout" prefHeight="77.0" prefWidth="200.0" visible="true" disable="false" text="Вийти" />
       <JFXButton fx:id="writeMessageButtonn" accessibleText="writeMessage" prefHeight="77.0" prefWidth="200.0" visible="true" disable="false" text="Написати Пов." />
       <JFXButton fx:id="refreshMessagesButtonn" accessibleText="refreshMessages" prefHeight="77.0" prefWidth="200.0" visible="true" disable="false" text="Оновити Пов." />
    </children>

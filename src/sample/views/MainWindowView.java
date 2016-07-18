@@ -22,7 +22,7 @@ public class MainWindowView {
 
     public void render() throws Exception {
         Parent pr1 = FXMLLoader.load(getClass().getResource("fxml/MainWindowView.fxml"));
-        primaryStage.setTitle("MW");
+        primaryStage.setTitle("САМ");
         Scene scene = new Scene(pr1);
         scene.getStylesheets().add(0, "sample/views/css/DarkTheme.css");
 

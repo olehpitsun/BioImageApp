@@ -5,17 +5,15 @@
     -fx-background-color:#317589;
 }
 
-#senderField{
-    -fx-background-color: #317589;
+#senderField, #MessageTextLabel{
+    -fx-background-color: #ffffff;
     -fx-font-family: "Segoe UI Semibold";
     -fx-padding: 5 5 5 5;
 }
-#grid{
-    -fx-background-color: #317589;
-}
+
 
 #MessageTextLabel{
-    -fx-background-color: #317589;
+    -fx-background-color: #ffffff;
     -fx-font-family: "Segoe UI Semibold";
     -fx-padding: 5 5 5 5;
 }
@@ -41,7 +39,7 @@
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: white;
+    -fx-text-fill: #317589;
     -fx-opacity: 0.6;
 }
 
@@ -57,6 +55,14 @@
     -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white;
     -fx-opacity: 1;
+}
+
+#hostLabel, #portLabel, #userLabel, #passwordLabel, #dbnameLabel{
+    -fx-text-color: #ffffff;
+    -fx-text-fill: #ffffff;
+}
+#hostField, #portField, #userField, #passwordField, #dbnameField{
+    -fx-background-color: #ffffff;
 }
 
 .table-view {
