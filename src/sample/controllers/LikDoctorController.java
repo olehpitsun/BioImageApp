@@ -1,5 +1,6 @@
 package sample.controllers;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 public class LikDoctorController {
 
     @FXML
-    private Button createResearchButton, handleCreateResearchButton, loadFolderButton;
+    private JFXButton createResearchButton, handleCreateResearchButton, loadFolderButton;
     @FXML
     private TextField researchGlassField, researchNameField;
     @FXML
