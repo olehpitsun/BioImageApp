@@ -1,134 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.control.*?>
 <?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="363.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainWindowController">
+<AnchorPane fx:id="mainAnchorPane" prefHeight="610.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainWindowController">
    <children>
-      <SplitPane dividerPositions="0.5, 0.5" layoutX="153.0" layoutY="70.0" prefHeight="363.0" prefWidth="293.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="362.0" prefWidth="143.0" styleClass="background">
-               <children>
-                  <GridPane layoutX="14.0" layoutY="26.0" prefHeight="353.0" prefWidth="184.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="26.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="47.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="0.0" prefWidth="50.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="23.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                     </rowConstraints>
-                     <children>
-                        <Label fx:id="infoLabel" GridPane.columnIndex="0" GridPane.rowIndex="0">Увійдіть в систему</Label>
+      <JFXHamburger fx:id="authHamburger" layoutX="14.0" layoutY="14.0" />
+      <JFXDrawer fx:id="authDrawer" layoutX="-38.0" layoutY="51.0" prefHeight="313.0" prefWidth="122.0" />
 
-                        <Button fx:id="signInButton" disable="true" mnemonicParsing="false" onAction="#handleSignIn" text="Увійти" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                        </Button>
-                        <Button fx:id="dbButton" mnemonicParsing="false" onAction="#handleDBConnect" text="Налаштування БД" GridPane.columnIndex="0" GridPane.rowIndex="2">
-                        </Button>
-                        <Button fx:id="writeMessageButton" mnemonicParsing="false" onAction="#writeMessage" text="Написати Повідомлення" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="3">
-                        </Button>
-                        <Button fx:id="refreshMessageButton" mnemonicParsing="false" onAction="#refreshMessages" text="Оновити" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                        </Button>
-                     </children>
-                  </GridPane>
+      <TableView fx:id="messenger" layoutX="180.0" layoutY="382.0" prefHeight="244.0" prefWidth="324.0" visible="false" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="520.0" AnchorPane.topAnchor="382.0">
+         <columns>
+            <TableColumn fx:id="idColumn" prefWidth="5.0" text="#" />
+            <TableColumn fx:id="messageDateColumn" prefWidth="30.0" text="Дата" />
+            <TableColumn fx:id="send_FromColumn" prefWidth="15.0" text="Відправник" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
 
-                  <TableView fx:id="messenger" prefHeight="32.0" prefWidth="50.0" visible="false" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="330.0">
-                     <columns>
-                        <TableColumn fx:id="idColumn" prefWidth="5.0" text="#" />
-                        <TableColumn fx:id="messageDateColumn" prefWidth="30.0" text="Дата" />
-                        <TableColumn fx:id="send_FromColumn" prefWidth="15.0" text="Відправник" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
+      <Label fx:id="nameLabel" layoutX="304.0" layoutY="-6.0" prefHeight="91.0" prefWidth="545.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" AnchorPane.bottomAnchor="585.0" AnchorPane.leftAnchor="304.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="-6.0">Система автоматизованої мікроскопії</Label>
+      <Button fx:id="logo" layoutX="807.0" layoutY="14.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="96.0" text="" />
 
-                  <ButtonBar layoutX="54.0" layoutY="250.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                     <buttons>
-                     </buttons>
-                  </ButtonBar>
-               </children>
-            </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="125.0" prefHeight="362.0" prefWidth="530.0" styleClass="background" SplitPane.resizableWithParent="false">
-               <children>
-                  <Label fx:id="nameLabel" layoutX="78.0" layoutY="26.0" prefHeight="19.0" prefWidth="422.0">Система автоматизованої мікроскопії</Label>
+      <GridPane layoutX="638.0" layoutY="312.0" prefHeight="358.0" prefWidth="386.0">
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+         <children>
+            <Button fx:id="showButton1" disable="true" mnemonicParsing="false" onAction="#handlePacientList" text="Список пацієнтів" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            </Button>
+            <Button fx:id="directionButton" disable="true" mnemonicParsing="false" text="Направлення" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            </Button>
+            <Button fx:id="cytologyButton" disable="true" mnemonicParsing="false" onAction="#handleSimpleResearch" text="Цитологія" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            </Button>
+            <Button fx:id="histologyButton" disable="true" mnemonicParsing="false" onAction="#handleSimpleResearch" text="Гістологія" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            </Button>
+         </children>
 
-                  <Button fx:id="logo" layoutX="157.0" layoutY="53.0" mnemonicParsing="false" prefHeight="256.0" prefWidth="29.0" text="">
-                  </Button>
-                  <GridPane layoutX="163.0" layoutY="261.0" prefHeight="350.0" prefWidth="125.0" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="-63.0" AnchorPane.topAnchor="241.0">
-
-                     <children>
-
-                        <Button fx:id="showButton1" disable="true" mnemonicParsing="false" onAction="#handlePacientList" text="Список пацієнтів" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                        </Button>
-                        <Button fx:id="showButton3" disable="true" mnemonicParsing="false" text="Направлення" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                        </Button>
-                        <Button fx:id="simpleResearchButton" disable="true" mnemonicParsing="false" onAction="#handleSimpleResearch" text="Досліди" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                        </Button>
-
-                        <Button fx:id="showButton4" disable="true" mnemonicParsing="false" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada " GridPane.columnIndex="1" GridPane.rowIndex="1">
-                        </Button>
-                     </children>
-                     <columnConstraints>
-                        <ColumnConstraints />
-                        <ColumnConstraints />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints />
-                        <RowConstraints />
-                     </rowConstraints>
-                  </GridPane>
-               </children>
-            </AnchorPane>
-
-            <AnchorPane minHeight="0.0" minWidth="155.0" prefHeight="362.0" prefWidth="530.0" styleClass="background" SplitPane.resizableWithParent="false">
-               <children>
-                  <GridPane layoutX="14.0" layoutY="26.0" prefHeight="363.0" prefWidth="244.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="26.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="47.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="0.0" prefWidth="50.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="23.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                     </rowConstraints>
-                     <children>
-
-                        <Button fx:id="settingsButton" disable="true" mnemonicParsing="false" onAction="#handleDBConnect" text="Налаштування" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                        </Button>
-                        <Button fx:id="webcamButton" disable="true" mnemonicParsing="false" onAction="#handleDBConnect" text="Відеоконференція" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                        </Button>
-                        <Button fx:id="photoCameraButton" disable="true" mnemonicParsing="false" onAction="#handleDBConnect" text="Зробити фото" GridPane.columnIndex="0" GridPane.rowIndex="2">
-                        </Button>
-                        <Button fx:id="address_bookButton" disable="true" mnemonicParsing="false" onAction="#handleDBConnect" text="Блокнот" GridPane.columnIndex="0" GridPane.rowIndex="3">
-                        </Button>
-                     </children>
-                  </GridPane>
-               </children>
-            </AnchorPane>
-         </items>
-      </SplitPane>
+      </GridPane>
    </children>
 </AnchorPane>

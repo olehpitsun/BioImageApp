@@ -11,6 +11,9 @@
 <?import javafx.collections.*?>
 <?import javafx.scene.text.Font?>
 
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <AnchorPane fx:id="showmessageAnchorPane" prefHeight="380.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.writeMessageController">
     <children>
 
@@ -25,7 +28,7 @@
         </rowConstraints>
         <children>
             <Label layoutX="30.0" layoutY="29.0" text="Кому: " />
-              <ComboBox fx:id="receiverComboBox" onAction="#handleReceiversComboBoxAction" prefHeight="33.0" prefWidth="311.0" GridPane.columnIndex="1">
+              <JFXComboBox fx:id="receiverComboBox" onAction="#handleReceiversComboBoxAction" prefHeight="33.0" prefWidth="311.0" GridPane.columnIndex="1">
                   <items>
                       <FXCollections fx:factory="observableArrayList">
                           <String fx:value="Item 1" />
@@ -33,14 +36,10 @@
                           <String fx:value="Item 3" />
                       </FXCollections>
                   </items>
-              </ComboBox>
+              </JFXComboBox>
 
-            <Label text="Тема: " visible="true" GridPane.rowIndex="1" />
-            <TextField fx:id="titleMessage" alignment="CENTER" layoutX="150.0" layoutY="113.0" prefHeight="30.0" prefWidth="113.0" promptText="" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                <font>
-                    <Font name="Arial" size="12.0" />
-                </font>
-            </TextField>
+            <Label fx:id="messageThemeLabel" text="Тема: " visible="true" GridPane.rowIndex="1" />
+            <JFXTextField fx:id="titleMessage" alignment="CENTER" layoutX="150.0" layoutY="113.0" prefHeight="30.0" prefWidth="113.0" promptText="" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
         </children>
     </GridPane>
 
@@ -49,11 +48,11 @@
 
         <HBox layoutX="197.1875" layoutY="241.0" spacing="5.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#handleOk" prefWidth="90.0" text="Відправити" />
-                <Button layoutX="249.375" layoutY="241.0" mnemonicParsing="false" onAction="#handleCancel" prefWidth="90.0" text="Закрити" />
+                <Button fx:id="sendMessageButton" mnemonicParsing="false" onAction="#handleOk" prefWidth="90.0" text="Відправити" />
+                <Button fx:id="closeMessButton" layoutX="249.375" layoutY="241.0" mnemonicParsing="false" onAction="#handleCancel" prefWidth="90.0" text="Закрити" />
             </children>
         </HBox>
-      <TextArea fx:id="messageText" layoutX="14.0" layoutY="131.0" prefHeight="179.0" prefWidth="436.0" promptText="Текст повідомлення" wrapText="true" />
+      <JFXTextArea fx:id="messageText" layoutX="14.0" layoutY="131.0" prefHeight="179.0" prefWidth="436.0" promptText="Текст повідомлення" wrapText="true" />
         <Label fx:id="messageTextError" layoutX="11.0" layoutY="319.0" text="5" visible="false" />
     </children>
 </AnchorPane>

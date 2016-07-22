@@ -64,6 +64,7 @@ public class PatientsModel extends SQLDatabase {
         PatientsController.backupPatientsData.clear();
         PatientsController.backupPatientsData.addAll(PatientsController.patientsData);
     }
+
     public int getCounts()
     {
         return counts;
