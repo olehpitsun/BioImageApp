@@ -10,5 +10,6 @@
     <orderEntry type="library" name="mysql-connector-java-5.1.38-bin1" level="project" />
     <orderEntry type="library" name="jfoenix" level="project" />
     <orderEntry type="library" name="opencv-249" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.38-bin" level="project" />
   </component>
 </module>
