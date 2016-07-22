@@ -84,9 +84,10 @@ public class MainWindowController {
         try {
             StartApp.startAuth();
 
+            //замутити перевірку чи користувач адмін (Administrator)
             if(Session.getKeyValue("activeStatus") == "1"){
 
-                infoLabel.setText("Вітаю, " + Session.getKeyValue("name"));
+                infoLabel.setText("Вітаю, " + Session.getKeyValue("name "));
                 settingsButton.setDisable(false);
                 webcamButton.setDisable(false);
                 photoCameraButton.setDisable(false);
@@ -155,6 +156,7 @@ public class MainWindowController {
     private void handlePacientList() throws Exception{
 
         Patients patient = new Patients();
+        //Admin admin = new Admin();
     }
 
     @FXML

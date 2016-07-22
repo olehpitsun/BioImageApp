@@ -21,7 +21,7 @@
          <font>
             <Font name="Arial" size="16.0" />
          </font></PasswordField>
-      <Button fx:id="SignIn" layoutX="150.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="40.0" prefWidth="300.0" text="УВІЙТИ">
+      <Button fx:id="SignIn" layoutX="150.0" layoutY="307.0" mnemonicParsing="false" onAction="#SignIn" prefHeight="40.0" prefWidth="300.0" text="УВІЙТИ">
          <font>
             <Font size="16.0" />
          </font>
