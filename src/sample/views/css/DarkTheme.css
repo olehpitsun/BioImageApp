@@ -5,6 +5,10 @@
     -fx-background-color:#317589;
 }
 
+#imageListTableView{
+-fx-background-color:#BBDEFB;
+}
+
 #senderField, #MessageTextLabel{
     -fx-background-color: #ffffff;
     -fx-font-family: "Segoe UI Semibold";

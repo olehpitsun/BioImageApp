@@ -49,7 +49,7 @@ public class CellEstimatorModel extends SQLDatabase {
         double xc,yc,major_axis,minor_axis,theta;
         //Mat src = src1;
         Mat src_gray = new Mat();
-        Imgproc.cvtColor(src, src_gray, Imgproc.COLOR_BGR2GRAY);
+       // Imgproc.cvtColor(src, src_gray, Imgproc.COLOR_BGR2GRAY);
         Imgproc.blur(src_gray, src_gray, new Size(3, 3));
 
         java.util.List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
@@ -124,7 +124,7 @@ public class CellEstimatorModel extends SQLDatabase {
                                    double minor_axis, double theta, double equiDiameter) throws SQLException {
 
         int image_id = 22;
-        String query = "INSERT INTO research_nuclei_params (image_id, contour_num, contour_area, contour_perimetr," +
+        String query = "INSERT INTO nuclei_params (image_id, contour_num, contour_area, contour_perimetr," +
                 " contour_height,contour_width, contour_circularity, xc, yc, major_axis, minor_axis, theta," +
                 " equiDiameter  ) VALUES ("+image_id+", "+contour_num+", "+contourArea+", "+contour_perimetr+", "+contour_height+"," +
                 ""+contour_width+", "+contour_circularity+", "+xc+", "+yc+", "+major_axis+", " + minor_axis+", "+theta+", "+equiDiameter+" )";

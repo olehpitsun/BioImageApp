@@ -11,11 +11,11 @@ import javafx.beans.property.StringProperty;
 public class ImageList {
 
     private final StringProperty fullPath;
-    private final StringProperty imageName;
+    private final IntegerProperty imageDbID;
 
-    public ImageList(String fullPath, String imageName) {
+    public ImageList(String fullPath, Integer imageDbID) {
         this.fullPath = new SimpleStringProperty(fullPath);
-        this.imageName = new SimpleStringProperty(imageName);
+        this.imageDbID = new SimpleIntegerProperty(imageDbID);
     }
 
     public void setFullPath(String fullPath1){
@@ -28,7 +28,7 @@ public class ImageList {
         return fullPath;
     }
 
-    public void setImageName(String imageName1){this.imageName.set(imageName1);}
-    public String getImageName(){return imageName.get();}
-    public StringProperty imageNameProperty(){return imageName;}
+    public void setImageDbID(int imageDbID1){this.imageDbID.set(imageDbID1);}
+    public int getImageDbID(){return imageDbID.get();}
+    public IntegerProperty imageDbIDProperty(){return imageDbID;}
 }
