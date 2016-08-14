@@ -25,7 +25,7 @@ public class StatisticsModel extends SQLDatabase{
     public StatisticsModel() throws SQLException
     {
         sqlSetConnect();
-        sqlExecute("SELECT * FROM logs");
+        sqlExecute("SELECT * FROM logs ORDER BY id DESC");
     }
 
     public void setData() throws SQLException
