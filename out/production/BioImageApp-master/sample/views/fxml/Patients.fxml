@@ -5,27 +5,35 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.PatientsController">
+<VBox minHeight="394.0" minWidth="600.0" prefHeight="394.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.PatientsController">
    <children>
-      <AnchorPane prefHeight="59.0" prefWidth="600.0">
+      <AnchorPane maxHeight="50.0" minHeight="50.0" prefHeight="59.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
          <children>
             <Button fx:id="addPatient" layoutX="34.0" layoutY="17.0" mnemonicParsing="false" onAction="#addPatient" text="Додати" AnchorPane.leftAnchor="15.0" />
             <Button fx:id="editPatient" layoutX="81.0" layoutY="17.0" mnemonicParsing="false" onAction="#editPatient" text="Редагувати" />
             <Button fx:id="removePatient" layoutX="168.0" layoutY="17.0" mnemonicParsing="false" onAction="#deletePatient" text="Видалити" />
             <TextField fx:id="search" layoutX="257.0" layoutY="17.0" prefHeight="25.0" prefWidth="263.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="80.0" />
-            <Button fx:id="searchButton" layoutX="502.0" layoutY="17.0" mnemonicParsing="false" text="Пошук" AnchorPane.rightAnchor="15.0" />
+            <Button fx:id="searchButton" layoutX="502.0" layoutY="17.0" mnemonicParsing="false" onAction="#search" text="Пошук" AnchorPane.rightAnchor="15.0" />
          </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
       </AnchorPane>
-      <Separator prefWidth="200.0" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <Separator prefWidth="200.0" VBox.vgrow="NEVER">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin></Separator>
+      <AnchorPane prefHeight="435.0" prefWidth="570.0" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="10.0" />
          </VBox.margin>
          <children>
-            <TableView fx:id="table" prefHeight="257.0" prefWidth="570.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <TableView fx:id="table" prefHeight="282.0" prefWidth="570.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
                   <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="surname" prefWidth="75.0" text="Surname" />
                 <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="fathername" prefWidth="75.0" text="Fathername" />
                 <TableColumn fx:id="birth" prefWidth="75.0" text="Date of birth" />
                   <TableColumn fx:id="status" prefWidth="75.0" text="Status" />
                   <TableColumn fx:id="gender" prefWidth="75.0" text="Gender" />
@@ -40,19 +48,12 @@
             </TableView>
          </children>
       </AnchorPane>
-      <HBox prefHeight="43.0" prefWidth="585.0">
+      <AnchorPane maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="17.0" prefWidth="99.0" text="Кількість записів:" />
-            <Label fx:id="count" text="0" />
-            <Button fx:id="close" cancelButton="true" mnemonicParsing="false" onAction="#close" text="Вихід">
-               <HBox.margin>
-                  <Insets left="420.0" />
-               </HBox.margin>
-            </Button>
+            <Label prefHeight="17.0" prefWidth="99.0" text="Кількість записів:" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="15.0" />
+            <Label fx:id="count" text="0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="125.0" />
+            <Button fx:id="close" cancelButton="true" layoutX="540.0" layoutY="12.0" mnemonicParsing="false" onAction="#close" text="Вихід" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="15.0" />
          </children>
-         <VBox.margin>
-            <Insets left="15.0" top="25.0" />
-         </VBox.margin>
-      </HBox>
+      </AnchorPane>
    </children>
 </VBox>

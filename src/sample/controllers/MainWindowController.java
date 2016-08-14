@@ -1,132 +1,246 @@
 package sample.controllers;
 
 /**
- * Автор: Павло Лящинський
+ * Автор: Павло Лящинський, Піцун Олег
  * Дата створення: 23.04.2016.
  * ---------------------------
  * Клас є контролером для головного вікна, яке з'являється після успішної авторизації в системі.
  * Це вікно є робочим простором лікаря, яке містить свій функціонал.
  */
 
+import com.jfoenix.controls.*;
+import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import org.opencv.core.Mat;
+import sample.libs.Messenger.Messenger;
 import sample.libs.Session;
-import sample.models.DbModel;
+import sample.models.MessengerModel;
 import sample.nodes.*;
-
 import java.io.IOException;
-import java.util.List;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
+public class MainWindowController implements Initializable{
 
-public class MainWindowController {
-
-    @FXML
-    private Button signInButton, settingsButton, webcamButton, photoCameraButton, address_bookButton, showButton1,showButton2;
-    @FXML
-    private TextField researchNameField;
-
-    @FXML
-    private TextField researchPathField;
-
+    MessengerModel messengerModel;
 
     @FXML
-    private Label researchName;
+    private AnchorPane mainAnchorPane;
     @FXML
-    private Label researchPathLabel;
-
+    private JFXHamburger authHamburger;
     @FXML
-    protected ImageView preProcImage;
+    private JFXDrawer authDrawer;
     @FXML
-    protected ImageView segmentationImage;
+    private JFXPasswordField passwordTextField;
     @FXML
-    protected ImageView originalImage;
-    private boolean okClicked = false;
-
-    private String filterType;
-    private String segType;
-
-    private Stage stage;
-
-    // the JavaFX file chooser
-    private FileChooser fileChooser;
-    // support variables
-    protected Mat image;
-    private Stage dialogStage;
-
-    protected List<Mat> planes;
-    // Reference to the main application.
-    protected Mat changedimage;
-
-    protected MainApp mainApp;
-
-    private String researchname;
-    private String researchPath;
-
-    private String originalImagePath;
-    private String generatedImagePath;
-
-    private float meanSquaredError;
-    private double psnr;
+    private JFXButton dbSettings, authButton, dbSettingButton, but;
+    private ArrayList<JFXDrawer> drawers = new ArrayList<>();
+    private Node content ;
 
     @FXML
-    public Image img;
+    private Button  directionButton, showButton1,cytologyButton, histologyButton;
+    @FXML
+    private TableView<Messenger> messenger;
+    @FXML
+    private TableColumn<Messenger, Integer> idColumn;
     @FXML
     private Label infoLabel;
-
     @FXML
-    public ImageView imgview;
-    @FXML
-    public void registerADoctor(){
+    private TableColumn<Messenger, String> messageDateColumn, send_FromColumn;
+    public static ObservableList<Messenger> messengersData = FXCollections.observableArrayList();
+    private boolean okClicked = false;
+    private Stage stage;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+        try {
+            VBox box = FXMLLoader.load(getClass().getResource("../views/fxml/DrawerContent.fxml"));
+            authDrawer.setSidePane(box);
+            authDrawer.setOverLayVisible(false);
+
+            for(Node node : box.getChildren()){
+                if(node.getAccessibleText() != null){
+                    node.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
+                        switch (node.getAccessibleText()){
+                            case "dbSettings" :
+                                try {
+                                    handleDBConnect();
+                                }catch (Exception exc){
+                                    System.err.println(exc);
+                                }
+                                break;
+                            case "auth" :
+                                handleSignIn();
+                                break;
+                            case "logout" :
+                                logout();
+                                break;
+                            case "writeMessage" :
+                                writeMessage();
+                                break;
+                            case "refreshMessages" :
+                                try {
+                                    refreshMessages();
+                                }catch (SQLException sqlEx){
+                                    System.err.print(sqlEx);
+                                }
+                                break;
+                        }
+                    });
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        HamburgerBackArrowBasicTransition authBurgerTask = new HamburgerBackArrowBasicTransition(authHamburger);
+        authBurgerTask.setRate(-1);
+        authHamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
+            authBurgerTask.setRate(authBurgerTask.getRate() * -1);
+            authBurgerTask.play();
+            if(authDrawer.isShown() || authDrawer.isShowing()){
+                authDrawer.close();
+                authDrawer.setOverLayVisible(false);
+            }
+            else{
+                updateDrawerPosition(authDrawer);
+                authDrawer.open();
+            }
+        });
+
+        idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
+        messageDateColumn.setCellValueFactory(cellData -> cellData.getValue().messageDateProperty());
+        send_FromColumn.setCellValueFactory(cellData -> cellData.getValue().send_from_idProperty());
     }
+
+    /**
+     * update drawers position in the stack once a drawer is drawn
+     * @param drawer
+     */
+    private void updateDrawerPosition(JFXDrawer drawer){
+        int index = drawers.indexOf(drawer);
+        if(index + 1 < drawers.size()){
+            if(index - 1 >= 0) drawers.get(index+1).setContent(drawers.get(index-1));
+            else if(index == 0) drawers.get(index+1).setContent(content);
+        }
+        if(index < drawers.size() - 1){
+            drawer.setContent(drawers.get(drawers.size()-1));
+            drawers.remove(drawer);
+            drawers.add(drawer);
+            //this.getChildren().add(drawer);
+        }
+    }
+
+    public MainWindowController() {}
+
+    @FXML
+    private void writeMessage(){
+        StartApp.writeMessage();
+    }
+
+    @FXML
+    private void showMessages() throws SQLException {
+
+        /*** обробка вибраного повідомлення*/
+        messenger.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+                    System.out.println(messenger.getSelectionModel().getSelectedItem().idProperty().get());
+                    Messenger selected = messenger.getSelectionModel().getSelectedItem();
+                    StartApp.showMessage(selected);
+                }
+            }
+        });
+    }
+
+    @FXML    public void registerADoctor(){}
 
     @FXML
     public void handleSignIn(){
         try {
             StartApp.startAuth();
-            infoLabel.setText("Вітаю, " + Session.getKeyValue("name"));
-            settingsButton.setDisable(false);
-            webcamButton.setDisable(false);
-            photoCameraButton.setDisable(false);
-            address_bookButton.setDisable(false);
-            showButton1.setDisable(false);
-            showButton2.setDisable(false);
-        } catch (Exception e) {
+
+            if(Session.getKeyValue("activeStatus") == "1"){
+
+                showButton1.setDisable(false); directionButton.setDisable(false);
+                cytologyButton.setDisable(false); histologyButton.setDisable(false);
+                //AuthModule auth = new AuthModule();
+
+                messengersData.clear();// очистка списку повідомлень
+                messengerModel = new MessengerModel();
+                messenger.setVisible(true);
+                messengerModel.selectData();
+                messenger.setItems(MainWindowController.messengersData);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        /*** обробка вибраного повідомлення*/
+        messenger.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+                    System.out.println(messenger.getSelectionModel().getSelectedItem().idProperty().get());
+                    Messenger selected = messenger.getSelectionModel().getSelectedItem();
+                    StartApp.showMessage(selected);
+                }
+            }
+        });
+    }
+
+    @FXML
+    private void logout(){
+        Session.clear();
+        showButton1.setDisable(true); directionButton.setDisable(true);
+        cytologyButton.setDisable(true); histologyButton.setDisable(true);
+        messenger.setVisible(false);
+    }
+
+    @FXML
+    private void refreshMessages() throws SQLException {
+        messengersData.clear();// очистка списку повідомлень
+        messengerModel = new MessengerModel();
+        messenger.setVisible(true);
+        messengerModel.selectData();
+        messenger.setItems(MainWindowController.messengersData);
     }
 
     @FXML
     public void addPatient() throws Exception{
         AddPatientModule addPatientModule = new AddPatientModule();
-
     }
 
     @FXML
-    private void handleDBConnect() throws Exception {
-
+    public void handleDBConnect() throws Exception {
         StartApp.showDBSettingsPage();
-        DbModel db = new DbModel();
-                if(db.checkDbConnection() == true) {
-                       signInButton.setDisable(false);
-                  }
     }
 
     @FXML
-    private void handlePacientList(){
+    private void handleSimpleResearch()throws IOException{
+        StartApp.likDoctorPage();
+        //StartApp.showSimpleResearch();
+    }
 
-        try {
-            Patients patients = new Patients();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @FXML
+    private void handlePacientList() throws Exception{
+
+        Patients patient = new Patients();
     }
 
     @FXML

@@ -1,7 +1,35 @@
 .background {
     -fx-background-color:#317589;
-
 }
+#mainAnchorPane{
+    -fx-background-color:#317589;
+}
+
+#senderField, #MessageTextLabel{
+    -fx-background-color: #ffffff;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-padding: 5 5 5 5;
+}
+
+
+#MessageTextLabel{
+    -fx-background-color: #ffffff;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-padding: 5 5 5 5;
+}
+
+#dateLabel{
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #317589;
+    -fx-font-size: 8pt;
+    -fx-padding: 5 5 5 5;
+}
+
+#messageTextError{
+    -fx-text-fill: red;
+    -fx-text-color: red;
+}
+
 #nameLabel{
     -fx-font-size: 17pt;
     -fx-font-family: "Segoe UI Semibold";
@@ -11,7 +39,7 @@
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: white;
+    -fx-text-fill: #317589;
     -fx-opacity: 0.6;
 }
 
@@ -27,6 +55,14 @@
     -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white;
     -fx-opacity: 1;
+}
+
+#hostLabel, #portLabel, #userLabel, #passwordLabel, #dbnameLabel{
+    -fx-text-color: #ffffff;
+    -fx-text-fill: #ffffff;
+}
+#hostField, #portField, #userField, #passwordField, #dbnameField{
+    -fx-background-color: #ffffff;
 }
 
 .table-view {
@@ -105,6 +141,11 @@
  * Author: Pedro Duque Vieira
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
+.button:hover{
+-fx-background-color: #8BC34A;
+-fx-text-fill: #ffffff;
+-fx-text-alignment: center;
+}
 
 
 
@@ -169,6 +210,19 @@
     -fx-border-color: #d8d8d8;
 }
 
+#loadImageButton{
+    -fx-background-color: #264348;
+    -fx-min-height: 50px;
+    -fx-min-width: 220px;
+    -fx-background-image: url("../images/photo.png");
+    -fx-background-size: 50px 50px;
+    -fx-background-repeat: no-repeat;
+}
+#autoButton{
+    -fx-min-height: 50px;
+    -fx-min-width: 220px;
+}
+
 #pacientButton{
     -fx-min-height: 100px;
     -fx-min-width: 350px;
@@ -183,17 +237,33 @@
     -fx-border-color: #1b323b;
 }
 
+#automaticButton, #handeButton{
+    -fx-background-color: #6B9362;
+    -fx-text-fill: #ffffff;
+}
 
+#cellEstimatorButton{
+    -fx-background-color: #CA6924;
+    -fx-text-fill: #ffffff;
+    -fx-min-height: 50px;
+    -fx-min-width: 220px;
+}
+#hostTextField, #portFieldTextField, #userFieldTextField, #dbnameTextField{
+    -fx-background-color: white;
+}
+#passwordTextField{
+    -fx-background-color: white;
+}
 
 .button {
     -fx-padding: 3 10 3 10;
     -fx-border-color: #317589;
     -fx-border-width: 2;
     -fx-background-radius: 0;
-    -fx-background-color: #317589;
+    -fx-background-color: #8BC34A;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 10pt;
-    -fx-text-fill: #d8d8d8;
+    -fx-text-fill: white;
     -fx-min-height: 30px;
     -fx-min-width: 50px;
     -fx-alignment: center;
@@ -217,79 +287,16 @@
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
-#showButton1{
-    -fx-padding: 3 10 3 10;
-    -fx-border-color: #317589;
-    -fx-border-width: 2;
-    -fx-background-radius: 0;
-    -fx-background-color: #317589;
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 10pt;
-    -fx-text-fill: #d8d8d8;
-    -fx-text-alignment: right;
-    -fx-min-height: 200px;
-    -fx-min-width: 250px;
-    -fx-alignment: center;
-    -fx-background-image: url("../images/id_card.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-insets: 0 0 0 0, 0, 1, 2;
-}
-#showButton2{
-    -fx-padding: 3 10 3 10;
-    -fx-border-color: #317589;
-    -fx-border-width: 2;
-    -fx-background-radius: 0;
-    -fx-background-color: #317589;
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 10pt;
-    -fx-text-fill: #d8d8d8;
-    -fx-min-height: 200px;
-    -fx-min-width: 250px;
-    -fx-alignment: center;
-    -fx-background-image: url("../images/settings.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-insets: 0 0 0 0, 0, 1, 2;
-}
-#showButton3{
-    -fx-padding: 3 10 3 10;
-    -fx-border-color: #317589;
-    -fx-border-width: 2;
-    -fx-background-radius: 0;
-    -fx-background-color: #317589;
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 10pt;
-    -fx-text-fill: #d8d8d8;
-    -fx-min-height: 200px;
-    -fx-min-width: 250px;
-    -fx-alignment: center;
-    -fx-background-image: url("../images/id_card.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-insets: 0 0 0 0, 0, 1, 2;
- }
-#showButton4{
-    -fx-padding: 3 10 3 10;
-    -fx-border-color: #317589;
-    -fx-border-width: 2;
-    -fx-background-radius: 0;
-    -fx-background-color: #317589;
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 10pt;
-    -fx-text-fill: #d8d8d8;
-    -fx-min-height: 200px;
-    -fx-min-width: 250px;
-    -fx-alignment: center;
-    -fx-background-image: url("../images/id_card.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-insets: 0 0 0 0, 0, 1, 2;
-  }
-
 .button:hover {
-    -fx-background-color: #264348;
+    -fx-background-color: #DCEDC8;
+    -fx-text-color: #212121;
+     -fx-text-fill: #212121;
+
 }
 
 .button:pressed, .button:default:hover:pressed {
   -fx-background-color: white;
-  -fx-text-fill: #1b323b;
+  -fx-text-fill: #212121;
 }
 
 .button:focused {
@@ -298,6 +305,7 @@
     -fx-border-style: solid, segments(1, 1);
     -fx-border-radius: 0, 0;
     -fx-border-insets: 1 1 1 1, 0;
+    -fx-text-color: #212121;
 }
 
 .button:disabled, .button:default:disabled {
@@ -380,3 +388,72 @@
 .combo-box-base:disabled {
     -fx-opacity: .4;
 }
+
+
+#showButton1{
+    -fx-padding: 3 10 3 10;
+    -fx-border-color: #317589;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #317589;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-text-alignment: right;
+    -fx-min-height: 200px;
+    -fx-min-width: 250px;
+    -fx-alignment: center;
+    -fx-background-image: url("../images/id_card.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+#simpleResearchButton{
+    -fx-padding: 3 10 3 10;
+    -fx-border-color: #317589;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #317589;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-min-height: 200px;
+    -fx-min-width: 250px;
+    -fx-alignment: center;
+    -fx-background-image: url("../images/settings.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+#directionButton{
+    -fx-padding: 3 10 3 10;
+    -fx-border-color: #317589;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #317589;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-min-height: 200px;
+    -fx-min-width: 250px;
+    -fx-alignment: center;
+    -fx-background-image: url("../images/mail.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+ }
+
+ #cytologyButton, #histologyButton{
+     -fx-padding: 3 10 3 10;
+     -fx-border-color: #317589;
+     -fx-border-width: 2;
+     -fx-background-radius: 0;
+     -fx-background-color: #317589;
+     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+     -fx-font-size: 10pt;
+     -fx-text-fill: #d8d8d8;
+     -fx-text-alignment: right;
+     -fx-min-height: 200px;
+     -fx-min-width: 250px;
+     -fx-alignment: center;
+     -fx-background-image: url("../images/tag.png");
+     -fx-background-repeat: no-repeat;
+     -fx-background-insets: 0 0 0 0, 0, 1, 2;
+ }

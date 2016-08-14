@@ -1,5 +1,7 @@
 package sample.controllers;
 
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -17,16 +19,9 @@ import java.sql.SQLException;
  */
 public class DBConnectionController {
     @FXML
-    private TextField hostField;
+    private JFXTextField hostField, portField, userField, dbnameField;
     @FXML
-    private TextField portField;
-    @FXML
-    private TextField userField;
-    @FXML
-    private TextField passwordField;
-    @FXML
-    private TextField dbnameField;
-
+    private JFXPasswordField passwordField;
     private Stage dialogStage;
     //private Person person;
     private boolean okClicked = false;
@@ -51,9 +46,9 @@ public class DBConnectionController {
     public void setConnectField() {
         hostField.setText("localhost");
         portField.setText("3306");
-        userField.setText("manager");
-        passwordField.setText("root");
-        dbnameField.setText("javafx");
+        userField.setText("oleh");
+        passwordField.setText("oleh123");
+        dbnameField.setText("BioImageApp");
     }
 
     /**

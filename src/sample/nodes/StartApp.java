@@ -3,13 +3,19 @@
  */
 
 package sample.nodes;
+import com.sun.prism.Material;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
 import sample.libs.Messages;
+import sample.libs.Messenger.Messenger;
+import sample.libs.Session;
 import sample.models.CheckerModel;
 import sample.models.DbModel;
 import sample.views.CheckerView;
@@ -28,8 +34,6 @@ public class StartApp extends Application {
         launch(args);
     }
 
-
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         CheckerView checkerView = new CheckerView();
@@ -39,24 +43,19 @@ public class StartApp extends Application {
         tasks.start();
 
     }
+
+
+
     public static void startAuth() throws IOException
     {
         DbModel db = new DbModel();
         if(db.checkDbConnection() == true) {
-           /* Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        AuthModule auth = new AuthModule();
-                        auth.authDialog();
-                    } catch (Exception e) {
-                    }
-                }
-            }); */
-        AuthModule auth = new AuthModule();
-        auth.authDialog();
+
+            AuthModule auth = new AuthModule();
+            auth.authDialog();
+
         }else{
-            Messages.error("Помилка БД!", "Не встановлено з'эднання", "БД");
+            Messages.error("Помилка БД!", "Не встановлено з'єднання з БД", "БД");
         }
     }
 
@@ -75,19 +74,49 @@ public class StartApp extends Application {
         });
     }
 
+    public static void likDoctorPage() throws IOException{
+        try {
+            LikDoctorPageModule likDoctorPageModule = new LikDoctorPageModule();
+        }catch (Exception e){
+            System.err.println(e);
+        }
+    }
+
     public static void showDBSettingsPage() throws IOException{
-       /* Platform.runLater(new Runnable() {
-            @Override
-            public void run(){
-                try {
-                    DBConnectionModule db = new DBConnectionModule();
-                    db.showDbConnectDialog();
-                } catch (Exception e) {}
-            }
-        });*/
+
         DBConnectionModule db = new DBConnectionModule();
         db.showDbConnectDialog();
     }
 
+    public static void showMessage(Messenger messenger){
+        if(Session.getKeyValue("activeStatus") == "1") {
+            ShowMessageModule showMessageModule = new ShowMessageModule();
+            showMessageModule.showMessageDialog(messenger);
+        }else{
+            Messages.error("Помилка авторизації!", "Увійдіть в систему", " ");
+        }
+    }
 
+    public static void writeMessage(){
+        if(Session.getKeyValue("activeStatus") == "1"){
+            writeMessageModule writeMessageModule = new writeMessageModule();
+            writeMessageModule.writeMessageeDialog();
+        }else{
+            Messages.error("Помилка авторизації!", "Увійдіть в систему", " ");
+        }
+
+    }
+
+    /**
+     * функція для відображення сторінки з дослідами
+     */
+    public static void showSimpleResearch(){
+        try {
+            SimpleResearchModule srm = new SimpleResearchModule();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+

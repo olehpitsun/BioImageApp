@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="showmessageAnchorPane" prefHeight="380.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ShowMessageController">
+  <children>
+    <Label fx:id="senderField" layoutX="25.0" layoutY="25.0" prefHeight="25.0" prefWidth="429.0" visible="true" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <Label fx:id="dateLabel" layoutX="25.0" layoutY="50.0" prefHeight="25.0" prefWidth="82.0" visible="true" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Label fx:id="MessageTextLabel" layoutX="25.0" layoutY="80.0" prefHeight="250.0" prefWidth="429.0" visible="true" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+
+    <HBox layoutX="197.1875" layoutY="241.0" spacing="5.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+      <children>
+        <Button layoutX="249.375" layoutY="241.0" mnemonicParsing="false" onAction="#handleCancel" prefWidth="90.0" text="Закрити" />
+      </children>
+    </HBox>
+  </children>
+</AnchorPane>

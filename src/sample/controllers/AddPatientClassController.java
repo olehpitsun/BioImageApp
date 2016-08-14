@@ -21,7 +21,11 @@ import sample.objects.Patient;
 public class AddPatientClassController {
 
     @FXML
-    private TextField full_name_of_patient;
+    private TextField surname_of_patient;
+    @FXML
+    private TextField name_of_patient;
+    @FXML
+    private TextField fathername_of_patient;
     @FXML
     private TextField date_of_birth;
     @FXML
@@ -43,7 +47,9 @@ public class AddPatientClassController {
     private ToggleGroup Gender;
     public void addAPatientInDB(){
         addPatientModel = new AddPatientModel();
-        addPatientModel.setFull_name_of_patient(full_name_of_patient.getText());
+        addPatientModel.setSurname_of_patient(surname_of_patient.getText());
+        addPatientModel.setName_of_patient(name_of_patient.getText());
+        addPatientModel.setFathername_of_patient(fathername_of_patient.getText());
         addPatientModel.setDate_of_birth(date_of_birth.getText());
         addPatientModel.setGender(Gender);
         addPatientModel.setResults_of_researsh(results_of_research.getText());
