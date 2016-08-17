@@ -4,6 +4,7 @@ import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
 import sample.controllers.LikDoctorController;
+import sample.libs.Estimate;
 import sample.libs.Filters.FiltersOperations;
 import sample.libs.Image.Image;
 import sample.libs.Image.ImageOperations;
@@ -17,18 +18,13 @@ import java.io.File;
  */
 public class ImageManagerModule {
 
-    private String pathToFolder;
+    //private String pathToImage;
     private Mat image;
 
-    public ImageManagerModule(String pathToFolder){
-        this.pathToFolder = pathToFolder;
+    public ImageManagerModule(){
+        //this.pathToImage = pathToImage;
 
-        try {
-            new File(this.pathToFolder +"/pretreated").mkdir();
-        }catch (Exception e){
-            System.err.println(e);
-        }
-
+        /*
         for(int i = 0; i < LikDoctorController.imageListData.size(); i++ ){
 
             System.out.println(LikDoctorController.imageListData.get(i).getFullPath());
@@ -38,14 +34,39 @@ public class ImageManagerModule {
                     Highgui.CV_LOAD_IMAGE_COLOR));
 
             ImageOperations.saveMatOnDisk(divideString.path() + "\\pretreated\\" + divideString.filename() + ".png",image);
-        }
+        }*/
     }
 
+    public void saveOneImageOnDisk(String path, Mat src){
+        DivideString divideString = new DivideString(path, '\\', '.');
+        ImageOperations.saveMatOnDisk(divideString.path() + "\\pretreated\\" + divideString.filename() + ".png",src);
+    }
 
-    private Mat autoImageCorrection(Mat src){
+    public Mat autoImageCorrection(Mat src){
 
+        FiltersOperations filtroperation = new FiltersOperations(src, "4", "5", "", "", ""); // медіанний фільтр
+        FiltersOperations filtersOperations_1;
+        if(Imgproc.PSNR( filtroperation.getOutputImage(),src) < 30){
+            filtersOperations_1 = filtroperation;
+        }else{
+            filtersOperations_1 = new FiltersOperations(filtroperation.getOutputImage(), "1", "3",
+                    "1.0", "", "" ); // гаусовий фільтр
+        }
+        //dst.release();/** очистка памяті **/
 
+        SegmentationOperations segoperation = new SegmentationOperations(filtersOperations_1.getOutputImage(), "3",
+                "0", "0");
 
-        return src;
+        filtroperation.getOutputImage().release(); /** очистка памяті **/
+        filtersOperations_1.getOutputImage().release(); /** очистка памяті **/
+
+        SegmentationOperations segoperation_1 = new SegmentationOperations(segoperation.getOutputImage(), "1",
+                "0", "178");
+
+        segoperation.getOutputImage().release(); /** очистка памяті **/
+
+        Estimate.setFirstHistAverageValue(null);
+        Estimate.setSecondHistAverageValue(null);
+        return segoperation_1.getOutputImage();
     }
 }

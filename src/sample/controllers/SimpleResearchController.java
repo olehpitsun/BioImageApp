@@ -136,7 +136,7 @@ public class SimpleResearchController {
 
         /**
          * відображення виділеного обєкта
-         */
+         *//*
         nucleiTable.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -146,7 +146,7 @@ public class SimpleResearchController {
                     setSegmentedImage(cellEstimatorModel.getOneObjectImage());
                 }
             }
-        });
+        });*/
 
         SimpleResearchModel sm = new SimpleResearchModel();
         try {
@@ -208,7 +208,7 @@ public class SimpleResearchController {
 
     @FXML
     private void cellEstimator() throws SQLException {
-
+/*
         CellEstimatorModel cellEstimatorModel = new CellEstimatorModel();
         cellEstimatorModel.SimpleDetect(this.segmentedImage);
 
@@ -216,6 +216,6 @@ public class SimpleResearchController {
 
         nucleiTable.setItems(cellEstimatorModel.getNucleiData());
 
-        this.cellEstimatorButton.setDisable(true);
+        this.cellEstimatorButton.setDisable(true);*/
     }
 }

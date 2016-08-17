@@ -11,12 +11,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.image.ImageView?>
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXDrawer?>
 <AnchorPane prefHeight="675.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.LikDoctorController">
     <children>
+
+
         <SplitPane  layoutX="153.0" layoutY="70.0" prefHeight="675.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <AnchorPane fx:id="researchSettingsPane" minHeight="0.0" minWidth="0.0" prefHeight="675.0" prefWidth="100.0" styleClass="background">
                     <children>
+                        <JFXHamburger fx:id="LikDoctorHamburger" layoutX="14.0" layoutY="14.0" />
+                        <JFXDrawer fx:id="LikDoctorDrawer" layoutX="-38.0" layoutY="451.0" prefHeight="113.0" prefWidth="122.0" />
                         <GridPane layoutX="14.0" layoutY="26.0" prefHeight="353.0" prefWidth="100.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="26.0">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="47.0" />
@@ -73,7 +79,7 @@
                                 </TextField>
                                 <JFXButton fx:id="handleCreateResearchButton" mnemonicParsing="false" onAction="#handleCreateResearch" text="OK" GridPane.columnIndex="1" GridPane.rowIndex="4" visible="false"/>
                                 <JFXButton fx:id="loadFolderButton" mnemonicParsing="false" onAction="#loadFolder" text="Вибрати папку" GridPane.columnIndex="0" GridPane.rowIndex="6" visible="false"/>
-                                <JFXButton fx:id="autoImageCorectionButton" mnemonicParsing="false" onAction="#autoImageCorection" text="Автоматичне покращення" GridPane.columnIndex="1" GridPane.rowIndex="6" visible="true"/>
+                                <JFXButton fx:id="autoImageCorectionButton" mnemonicParsing="false" onAction="#autoImageCorection" text="Автоматичне покращення" GridPane.columnIndex="1" GridPane.rowIndex="6" visible="false"/>
 
                             </children>
                         </GridPane>
@@ -87,10 +93,7 @@
                     <children>
                         <ImageView fx:id="selectedImageView" fitHeight="450.0" fitWidth="450.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
 
-                        <JFXButton onAction="#autoImagePreprocessing"/>
-                        <JFXButton onAction="#cellEstimator" layoutX="38.0" layoutY="5.0"  />
-                        <JFXButton onAction="#maskToOriginalImageImposition" layoutX="68.0" layoutY="5.0"  />
-
+                        <ImageView fx:id="autoPreprocImageView" fitHeight="450.0" fitWidth="450.0" layoutX="8.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </AnchorPane>
 
