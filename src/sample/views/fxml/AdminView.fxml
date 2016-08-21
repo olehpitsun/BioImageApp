@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox minHeight="394.0" minWidth="600.0" prefHeight="394.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AdminController">
+    <children>
+        <AnchorPane maxHeight="50.0" minHeight="50.0" prefHeight="59.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Button fx:id="addUser" layoutX="34.0" layoutY="17.0" mnemonicParsing="false" onAction="#addUser" text="Додати" AnchorPane.leftAnchor="15.0" />
+                <Button fx:id="editUser" layoutX="81.0" layoutY="17.0" mnemonicParsing="false" onAction="#editUser" text="Редагувати" />
+                <Button fx:id="removeUser" layoutX="168.0" layoutY="17.0" mnemonicParsing="false" onAction="#deleteUser" text="Видалити" />
+                <TextField fx:id="search" layoutX="257.0" layoutY="17.0" prefHeight="25.0" prefWidth="263.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="80.0" />
+                <Button fx:id="searchButton" layoutX="502.0" layoutY="17.0" mnemonicParsing="false" onAction="#search" text="Пошук" AnchorPane.rightAnchor="15.0" />
+            </children>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+        </AnchorPane>
+        <Separator prefWidth="200.0" VBox.vgrow="NEVER">
+            <VBox.margin>
+                <Insets />
+            </VBox.margin></Separator>
+        <AnchorPane prefHeight="435.0" prefWidth="570.0" VBox.vgrow="ALWAYS">
+            <VBox.margin>
+                <Insets left="15.0" right="15.0" top="10.0" />
+            </VBox.margin>
+            <children>
+                <TableView fx:id="table" prefHeight="282.0" prefWidth="570.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                        <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="surname_of_user" prefWidth="75.0" text="Surname" />
+                        <TableColumn fx:id="name_of_user" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="fathername_of_user" prefWidth="75.0" text="Fathername" />
+                        <TableColumn fx:id="status_of_user" prefWidth="75.0" text="Status" />
+                        <TableColumn fx:id="login_of_user" prefWidth="75.0" text="Login" />
+                        <TableColumn fx:id="password_of_user" prefWidth="75.0" text="Password" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </children>
+        </AnchorPane>
+        <AnchorPane maxHeight="72.0" minHeight="50.0" prefHeight="72.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Label prefHeight="17.0" prefWidth="99.0" text="Кількість записів:" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="15.0" />
+                <Label fx:id="count" text="0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="125.0" />
+                <Button fx:id="close" cancelButton="true" layoutX="540.0" layoutY="12.0" mnemonicParsing="false" onAction="#close" text="Вихід" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="15.0" />
+            <Button fx:id="viewstatistics" layoutX="227.0" layoutY="7.0" mnemonicParsing="false" onAction="#viewstatistics" text="Переглянути статистику" AnchorPane.bottomAnchor="18.0" />
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
