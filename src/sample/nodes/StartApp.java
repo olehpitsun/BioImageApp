@@ -82,6 +82,14 @@ public class StartApp extends Application {
         }
     }
 
+    public static void laborantPage(){
+        try {
+            Laborant laborant = new Laborant();
+        }catch (Exception e){
+            System.err.println(e);
+        }
+    }
+
     public static void likDoctorPage() throws IOException{
         try {
             LikDoctorPageModule likDoctorPageModule = new LikDoctorPageModule();

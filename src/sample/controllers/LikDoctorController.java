@@ -6,16 +6,22 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 import sample.libs.Image.ImageList;
@@ -27,6 +33,8 @@ import sample.libs.ResearchCollection;
 import sample.models.CellEstimatorModel;
 import sample.models.ImageManagerModule;
 import sample.models.LikDoctorModel;
+import sample.models.TemplateMatching;
+
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -69,7 +77,7 @@ public class LikDoctorController {
     private Node content ;
     public static ObservableList<ImageList> imageListData = FXCollections.observableArrayList();
     public static ArrayList<String> imageList = new ArrayList<String>();
-    private Mat selectedImageMat, autoPreprocImageMat;
+    private Mat selectedImageMat, autoPreprocImageMat, templateMatching;
     private boolean okClicked = false;
     private Stage stage;
     private String researchName, researchGlass, pathToFolder;
@@ -104,7 +112,7 @@ public class LikDoctorController {
                                 break;
                             case "templateMatch" :
                                 try {
-                                    TemplateMatch();
+                                    setTMVisible();
                                 }catch (Exception exc){
                                     System.err.println(exc);
                                 }
@@ -288,14 +296,10 @@ public class LikDoctorController {
         });
     }
 
-    /**
-     * вивід зображення на екран
-     * @param path - повний шлях до файлу
-     */
+    /*** вивід зображення на екран
+     * @param path - повний шлях до файлу*/
     @FXML
     private void setSelectedImageView(String path){
-        System.out.println("1" +path);
-
         this.selectedImageMat = Highgui.imread(path, Highgui.CV_LOAD_IMAGE_COLOR);
         StartImageParams.getStartValues(this.selectedImageMat);
         ImageOperations.deleteFile("temp.png");
@@ -306,23 +310,15 @@ public class LikDoctorController {
     }
 
     @FXML
-    private void setAutoPreprocImageView(){
-        this.autoPreprocImageView.setImage(ImageOperations.mat2Image(this.autoPreprocImageMat));
-        this.autoPreprocImageView.setFitWidth(450.0);
-        this.autoPreprocImageView.setFitHeight(450.0);
-        this.autoPreprocImageView.setPreserveRatio(true);
-    }
-
-    @FXML
-    private void setSegmentedImage(Mat dst ){
+    private void setSelImageView(Mat dst){
         this.selectedImageView.setImage(ImageOperations.mat2Image(dst));
-        this.selectedImageView.setFitWidth(650.0);
-        this.selectedImageView.setFitHeight(650.0);
+        this.selectedImageView.setFitWidth(450.0);
+        this.selectedImageView.setFitHeight(450.0);
         this.selectedImageView.setPreserveRatio(true);
     }
 
     @FXML
-    private void setCellImage(Mat dst ){
+    private void setAutoPreprocImageView(Mat dst){
         this.autoPreprocImageView.setImage(ImageOperations.mat2Image(dst));
         this.autoPreprocImageView.setFitWidth(450.0);
         this.autoPreprocImageView.setFitHeight(450.0);
@@ -330,17 +326,16 @@ public class LikDoctorController {
     }
 
 
-    /**
-     * Автоматичне покращення якості та обробки
-     * (сегментації) зображення
-     */
+
+    /*** Автоматичне покращення якості та обробки
+     * (сегментації) зображення*/
     @FXML
     private void autoImageCorection(){
         try {
             ImageManagerModule imageManagerModule = new ImageManagerModule();
             this.autoPreprocImageMat = imageManagerModule.autoImageCorrection(this.selectedImageMat);
             //imageManagerModule.saveOneImageOnDisk(path, this.autoPreprocImageMat);
-            setAutoPreprocImageView();
+            setAutoPreprocImageView(this.autoPreprocImageMat);
         }catch (Exception e){
             System.err.println(e);
         }
@@ -357,7 +352,7 @@ public class LikDoctorController {
 
         CellEstimatorModel cellEstimatorModel = new CellEstimatorModel();
         cellEstimatorModel.SimpleDetect(imgID, this.autoPreprocImageMat);
-        setCellImage(cellEstimatorModel.getnewDrawImage());
+        setAutoPreprocImageView(cellEstimatorModel.getnewDrawImage());
 
         nucleiTable.setItems(cellEstimatorModel.getNucleiData());
         /*** відображення виділеного обєкта*/
@@ -367,7 +362,7 @@ public class LikDoctorController {
                 if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
                     CellEstimatorModel cellEstimatorModel = new CellEstimatorModel();
                     cellEstimatorModel.showOnlyOneObject(autoPreprocImageMat, nucleiTable.getSelectionModel().getSelectedItem().contourNumProperty().get());
-                    setCellImage(cellEstimatorModel.getOneObjectImage());
+                    setAutoPreprocImageView(cellEstimatorModel.getOneObjectImage());
                 }
             }
         });
@@ -391,7 +386,46 @@ public class LikDoctorController {
     }
 
     @FXML
+    private void setTMVisible(){
+        templateMatch.setVisible(true);
+    }
+
+    @FXML
     private void TemplateMatch(){
 
+        TemplateMatching tm =new TemplateMatching();
+        setSelImageView(tm.run(this.selectedImageMat, this.templateMatching));
+    }
+
+    public void chooseTMFile(ActionEvent actionEvent) throws java.io.IOException {
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open File");
+        chooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files","*.bmp", "*.png", "*.jpg", "*.gif", "*.jpeg"));
+        File file = chooser.showOpenDialog(new Stage());
+        if(file != null) {
+            this.templateMatching = Highgui.imread(file.getAbsolutePath(), Highgui.CV_LOAD_IMAGE_COLOR);
+            setAutoPreprocImageView(this.templateMatching);
+            TemplateMatch();
+
+            //Image img = new Image("../views/images/ok-512.png");
+            Notifications ntBuilder = Notifications.create()
+                    .title("Template Matching")
+                    .text("Пошук завершено")
+                    .graphic(null)
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.BOTTOM_RIGHT);
+            ntBuilder.darkStyle();
+            ntBuilder.show();
+
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText("Please Select a File");
+            alert.showAndWait();
+        }
     }
 }

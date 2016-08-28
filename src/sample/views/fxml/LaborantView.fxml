@@ -13,11 +13,10 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXDrawer?>
-<AnchorPane prefHeight="675.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.LikDoctorController">
+<AnchorPane prefHeight="675.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.LaborantController">
     <children>
 
-
-        <SplitPane  layoutX="153.0" layoutY="70.0" prefHeight="675.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <SplitPane layoutX="153.0" layoutY="70.0" prefHeight="675.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <AnchorPane fx:id="researchSettingsPane" minHeight="0.0" minWidth="0.0" prefHeight="675.0" prefWidth="100.0" styleClass="background">
                     <children>
@@ -79,8 +78,6 @@
                                 </TextField>
                                 <JFXButton fx:id="handleCreateResearchButton" mnemonicParsing="false" onAction="#handleCreateResearch" text="OK" GridPane.columnIndex="1" GridPane.rowIndex="4" visible="false"/>
                                 <JFXButton fx:id="loadFolderButton" mnemonicParsing="false" onAction="#loadFolder" text="Вибрати папку" GridPane.columnIndex="0" GridPane.rowIndex="6" visible="false"/>
-                                <JFXButton fx:id="autoImageCorectionButton" mnemonicParsing="false" onAction="#autoImageCorection" text="Автоматичне покращення" GridPane.columnIndex="1" GridPane.rowIndex="6" visible="false"/>
-                                <JFXButton fx:id="templateMatch" mnemonicParsing="false" onAction="#chooseTMFile" text="Завантажити фото" GridPane.columnIndex="1" GridPane.rowIndex="8" visible="false"/>
 
                             </children>
                         </GridPane>
