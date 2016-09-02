@@ -57,9 +57,9 @@ public class SimpleResearchModel extends SQLDatabase {
     /**
      * зчитування вхідного зображення в формат Mat
      * @param actionEvent
-     * @throws java.io.IOException
+     * @throws IOException
      */
-    public void chooseFile(ActionEvent actionEvent) throws java.io.IOException, SQLException {
+    public void chooseFile(ActionEvent actionEvent) throws IOException, SQLException {
 
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
@@ -87,10 +87,10 @@ public class SimpleResearchModel extends SQLDatabase {
 
     /**
      * відображає усі класи(досліди)
-     * @throws java.sql.SQLException
+     * @throws SQLException
      * @throws ClassNotFoundException
      */
-    public ObservableList<SimpleResearchCollection> showNucleiClasses()throws java.sql.SQLException, ClassNotFoundException{
+    public ObservableList<SimpleResearchCollection> showNucleiClasses()throws SQLException, ClassNotFoundException{
 
         comboBoxData.add(new SimpleResearchCollection("0", "Новий дослід"));
         sqlExecute("SELECT * FROM simple_research");

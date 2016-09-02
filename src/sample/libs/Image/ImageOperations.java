@@ -61,6 +61,19 @@ public class ImageOperations {
 
     /**
      *
+     * @param pathToFile - шлях до файлу збереження
+     * @param src - зображення в форматі Mat
+     */
+    public static void saveMatOnDisk(String pathToFile, Mat src){
+        try {
+            Highgui.imwrite(pathToFile,src);
+        }catch (Exception e){
+            System.err.println("save File On Disk " + e);
+        }
+    }
+
+    /**
+     *
      * @param file
      * @return
      */
@@ -93,5 +106,56 @@ public class ImageOperations {
             e.printStackTrace();
 
         }
+    }
+
+    /**
+     *
+     * @param mask
+     */
+    public static void convertToHumanValues(Mat mask) {
+        byte[] buffer = new byte[3];
+        for (int x = 0; x < mask.rows(); x++) {
+            for (int y = 0; y < mask.cols(); y++) {
+                mask.get(x, y, buffer);
+                int value = buffer[0];
+                if (value == Imgproc.GC_BGD) {
+                    buffer[0] = (byte) 255 ; // for sure background
+                } else if (value == Imgproc.GC_PR_BGD) {
+                    buffer[0] = (byte) 170 ; // probably background
+                } else if (value == Imgproc.GC_PR_FGD) {
+                    buffer[0] = 85; // probably foreground
+                } else {
+                    buffer[0] = 0; // for sure foreground
+
+                }
+                mask.put(x, y, buffer);
+            }
+        }
+    }
+
+    /**
+     *
+     * @param mask
+     */
+    public static void convertToOpencvValues(Mat mask) {
+        byte[] buffer = new byte[3];
+        for (int x = 0; x < mask.rows(); x++) {
+            for (int y = 0; y < mask.cols(); y++) {
+                mask.get(x, y, buffer);
+                int value = buffer[0];
+                if (value >= 0 && value < 64) {
+                    buffer[0] = Imgproc.GC_BGD; // for sure background
+                } else if (value >= 64 && value < 128) {
+                    buffer[0] = Imgproc.GC_PR_BGD; // probably background
+                } else if (value >= 128 && value < 192) {
+                    buffer[0] = Imgproc.GC_PR_FGD; // probably foreground
+                } else {
+                    buffer[0] = Imgproc.GC_FGD; // for sure foreground
+
+                }
+                mask.put(x, y, buffer);
+            }
+        }
+
     }
 }

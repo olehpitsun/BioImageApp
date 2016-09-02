@@ -72,7 +72,7 @@ public class AuthModule {
             dialogStage.setScene(scene);
 
             // Set the person into the controller.
-            sample.controllers.AuthController controller = loader.getController();
+            AuthController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             //controller.setConnectField();
 
