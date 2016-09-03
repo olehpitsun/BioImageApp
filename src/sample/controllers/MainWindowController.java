@@ -182,6 +182,9 @@ public class MainWindowController implements Initializable{
                     case "2":
                         this.activateMainPage();
                         break;
+                    case "3":
+                        StartApp.laborantPage();
+                        break;
                 }
 
             }
