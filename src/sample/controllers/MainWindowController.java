@@ -174,16 +174,19 @@ public class MainWindowController implements Initializable{
             StartApp.startAuth();
 
             if(Session.getKeyValue("activeStatus") == "1"){
+                switch (Session.getKeyValue("role_id")){
+                    case "1":
+                        this.activateMainPage();
+                        StartApp.adminPage();
+                        break;
+                    case "2":
+                        this.activateMainPage();
+                        break;
+                    case "3":
+                        StartApp.laborantPage();
+                        break;
+                }
 
-                showButton1.setDisable(false); directionButton.setDisable(false);
-                cytologyButton.setDisable(false); histologyButton.setDisable(false);
-                //AuthModule auth = new AuthModule();
-
-                messengersData.clear();// очистка списку повідомлень
-                messengerModel = new MessengerModel();
-                messenger.setVisible(true);
-                messengerModel.selectData();
-                messenger.setItems(MainWindowController.messengersData);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -202,6 +205,19 @@ public class MainWindowController implements Initializable{
                 }
             }
         });
+    }
+
+    @FXML
+    private void activateMainPage() throws SQLException {
+        showButton1.setDisable(false); directionButton.setDisable(false);
+        cytologyButton.setDisable(false); histologyButton.setDisable(false);
+        //AuthModule auth = new AuthModule();
+
+        messengersData.clear();// очистка списку повідомлень
+        messengerModel = new MessengerModel();
+        messenger.setVisible(true);
+        messengerModel.selectData();
+        messenger.setItems(MainWindowController.messengersData);
     }
 
     @FXML
