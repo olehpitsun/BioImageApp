@@ -49,9 +49,9 @@ public class AuthModel extends SQLDatabase {
                 Messages.error("Неправильний логін або пароль!", "Будь ласка, перевірте їх і спробуйте знову.", "Перевірка даних");
             }
             else {
-                if (resultSet.getString("Status").compareTo("Administrator") == 0) {
-                    Admin admin = new Admin();
-                }
+               // if (resultSet.getString("Status").compareTo("Administrator") == 0) {
+                 //   Admin admin = new Admin();
+                //}
                 Session.setKeyValue("activeStatus", "1");
                 Session.setKeyValue("id", resultSet.getString("id"));
                 Session.setKeyValue("name", resultSet.getString("name"));

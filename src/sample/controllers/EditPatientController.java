@@ -70,14 +70,14 @@ public class EditPatientController {
         {
             male_gender.setSelected(true);
         } else female_gender.setSelected(true);
-       surname_of_patient.setText(patient.getSurname_of_patient());
+        surname_of_patient.setText(patient.getSurname_of_patient());
         name_of_patient.setText(patient.getName_of_patient());
         fathername_of_patient.setText(patient.getFathername_of_patient());
-       date_of_birth.setText(patient.getDate_of_birth());
-       results_of_research.setText(patient.getResults_of_research());
-       diagnosis.setText(patient.getDiagnosis());
+        date_of_birth.setText(patient.getDate_of_birth());
+        results_of_research.setText(patient.getResults_of_research());
+        diagnosis.setText(patient.getDiagnosis());
         date_of_completion.setText(patient.getDate_of_completion());
-       full_name_of_doctor.setText(patient.getFull_name_of_doctor());
+        full_name_of_doctor.setText(patient.getFull_name_of_doctor());
     }
 
 } // class AdClassController

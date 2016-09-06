@@ -5,10 +5,13 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.controlsfx.ControlsFXSample;
 import sample.libs.CurrentStage;
 import sample.libs.Messages;
+import sample.libs.Notifi;
 import sample.models.AdminModel;
 import sample.nodes.AddUsers;
 import sample.nodes.Statistics;
@@ -16,6 +19,7 @@ import sample.objects.Users;
 import sample.views.AddUsersView;
 import sample.views.AdminView;
 import sample.views.EditUsersView;
+import org.controlsfx.control.*;
 
 import java.sql.SQLException;
 
@@ -104,6 +108,12 @@ public class AdminController {
     public void addUser() throws Exception
     {
         AddUsers addUsers = new AddUsers();
+        Notifi.notification(Pos.TOP_RIGHT, "Увага!", "У всіх полях, крім логіна та пароля, заборонено використання цифр.");
+
+        /*Notifications.create()
+                .title("бля")
+                .text("нахуй")
+                .showWarning();*/
     }
     @FXML
     public void close()
@@ -124,6 +134,7 @@ public class AdminController {
             EditUsersController.users = users;
             EditUsersView editUsersView = new EditUsersView();
             editUsersView.render();
+            Notifi.notification(Pos.TOP_RIGHT, "Увага!", "У всіх полях, крім логіна та пароля, заборонено використання цифр.");
         } catch (Exception ex) {
             Messages.error("Помилка","Не вибрано користувача","TABLE");
         }

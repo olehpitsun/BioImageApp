@@ -6,11 +6,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.interfaces.PatientsBook;
 import sample.libs.CurrentStage;
 import sample.libs.Messages;
+import sample.libs.Notifi;
 import sample.libs.SQLDatabase;
 import sample.models.AddPatientModel;
 import sample.models.EditPatientModel;
@@ -129,6 +131,8 @@ public class PatientsController {
     {
         AddPatientView addPatientView = new AddPatientView();
         addPatientView.render();
+        Notifi.notification(Pos.TOP_RIGHT, "Увага!", "У всіх полях, крім дати народження та дати заповнення,\n " +
+                "заборонено використання цифр.");
     }
     @FXML
     public void close()
@@ -144,6 +148,8 @@ public class PatientsController {
         EditPatientController.patient = patient;
         EditPatientView editPatientView = new EditPatientView();
             editPatientView.render();
+            Notifi.notification(Pos.TOP_RIGHT, "Увага!", "У всіх полях, крім дати народження та дати заповнення,\n " +
+                    "заборонено використання цифр.");
         } catch (Exception ex) {
             Messages.error("Помилка","Не вибрано пацієнта","TABLE");
         }
