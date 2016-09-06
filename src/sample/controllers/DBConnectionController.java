@@ -46,9 +46,9 @@ public class DBConnectionController {
     public void setConnectField() {
         hostField.setText("localhost");
         portField.setText("3306");
-        userField.setText("oleh");
-        passwordField.setText("oleh123");
-        dbnameField.setText("BioImageApp");
+        userField.setText("");
+        passwordField.setText("");
+        dbnameField.setText("bioimageapp");
     }
 
     /**
@@ -77,12 +77,7 @@ public class DBConnectionController {
 
             DbModel db = new DbModel();
             if(db.checkDbConnection() == true){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                //alert.initOwner(dialogStage);
-                alert.setTitle("БД");
-                alert.setHeaderText("Зв'язок з БД");
-                alert.setContentText("З'єднання успішно встановлено");
-                alert.showAndWait();
+                Messages.information("Зв'язок з БД", "З'єднання успішно встановлено", "БД");
             }
 
             okClicked = true;
@@ -135,6 +130,7 @@ public class DBConnectionController {
             alert.setContentText(errorMessage);
 
             alert.showAndWait();
+
 
             return false;
         }

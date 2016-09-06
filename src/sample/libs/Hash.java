@@ -8,7 +8,7 @@ public class Hash {
 
     public static String generateSalt(int len)
     {
-        String symbols = "abcdefghijklmno-_01234567890!@#$%^&*()=+";
+        String symbols = "abcdefghijklmno0123456789ABCDEFGHIGKLMNOPQRSTUVWXYZ";
         StringBuilder randString = new StringBuilder();
         int count = len;
         for(int i=0;i<count;i++)
