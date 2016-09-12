@@ -44,6 +44,11 @@
             </Button>
             <Button fx:id="histologyButton" disable="true" mnemonicParsing="false" onAction="#handleSimpleResearch" text="Гістологія" GridPane.columnIndex="1" GridPane.rowIndex="1">
             </Button>
+
+            <Button fx:id="DiagnosisRulesButton" mnemonicParsing="false" onAction="#handleDiagnosisRules" text="Правила діагностування" GridPane.columnIndex="0" GridPane.rowIndex="1" visible="false">
+            </Button>
+            <Button fx:id="PatternsDescriptionButton" mnemonicParsing="false" onAction="#handlePatternsDescription" text="Список пацієнтів" GridPane.columnIndex="1" GridPane.rowIndex="1" visible="false">
+            </Button>
          </children>
 
       </GridPane>

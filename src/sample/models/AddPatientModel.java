@@ -30,7 +30,7 @@ public class AddPatientModel extends  SQLDatabase{
     private String results_of_research;
     private String diagnosis;
     private String date_of_completion;
-    private String full_name_of_doctor;
+    private String full_name_of_doctor, medical_card;
 
 
     public void setSurname_of_patient(String surname_of_patient) { this.surname_of_patient = surname_of_patient; }
@@ -61,6 +61,7 @@ public class AddPatientModel extends  SQLDatabase{
     public void setFull_name_of_doctor(String full_name_of_doctor) {
         this.full_name_of_doctor = full_name_of_doctor;
     }
+    public void setMedical_card(String medical_card1){ this.medical_card = medical_card1;}
     public AddPatientModel()
     {
         sqlSetConnect();
@@ -82,11 +83,11 @@ public class AddPatientModel extends  SQLDatabase{
                     PatientsController.patientsData.add(new Patient(Integer.valueOf(resultSet.getString("ID")), surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
                             gender,
                             results_of_research, diagnosis,
-                            date_of_completion, full_name_of_doctor, resultSet.getString("Status")));
+                            date_of_completion, full_name_of_doctor, resultSet.getString("Status"), medical_card));
                     PatientsController.backupPatientsData.add(new Patient(Integer.valueOf(resultSet.getString("ID")), surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
                             gender,
                             results_of_research, diagnosis,
-                            date_of_completion, full_name_of_doctor, resultSet.getString("Status")));
+                            date_of_completion, full_name_of_doctor, resultSet.getString("Status"), medical_card));
                     //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");
                     EventLogger.createEvent(Session.getKeyValue("name"), "Added patient" + surname_of_patient + " " + name_of_patient, Date.getTime());
                 }

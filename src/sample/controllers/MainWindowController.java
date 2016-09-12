@@ -49,7 +49,8 @@ public class MainWindowController implements Initializable{
     private Node content ;
 
     @FXML
-    private Button  directionButton, showButton1,cytologyButton, histologyButton;
+    private Button  directionButton, showButton1,cytologyButton, histologyButton, DiagnosisRulesButton,
+            PatternsDescriptionButton;
     @FXML
     private TableView<Messenger> messenger;
     @FXML
@@ -185,6 +186,9 @@ public class MainWindowController implements Initializable{
                     case "3":
                         StartApp.laborantPage();
                         break;
+                    case "4":
+                        this.ShowDiagnosisDoctorElements();
+                        break;
                 }
 
             }
@@ -212,11 +216,25 @@ public class MainWindowController implements Initializable{
         showButton1.setDisable(false); directionButton.setDisable(false);
         cytologyButton.setDisable(false); histologyButton.setDisable(false);
         //AuthModule auth = new AuthModule();
+        this.showMessenger();
 
+    }
+
+
+    @FXML
+    private void showMessenger(){
         messengersData.clear();// очистка списку повідомлень
-        messengerModel = new MessengerModel();
+        try {
+            messengerModel = new MessengerModel();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         messenger.setVisible(true);
-        messengerModel.selectData();
+        try {
+            messengerModel.selectData();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         messenger.setItems(MainWindowController.messengersData);
     }
 
@@ -261,6 +279,30 @@ public class MainWindowController implements Initializable{
 
     @FXML
     private void handleResearchList(){
+    }
+
+    @FXML
+    private void ShowDiagnosisDoctorElements(){
+        showButton1.setDisable(false);
+        directionButton.setDisable(false);
+        cytologyButton.setDisable(false); histologyButton.setDisable(false);
+        cytologyButton.setVisible(false);histologyButton.setVisible(false);
+
+        DiagnosisRulesButton.setVisible(true);
+        PatternsDescriptionButton.setVisible(true);
+
+        this.showMessenger();
+    }
+
+    @FXML
+    private void handleDiagnosisRules(){
+        System.out.println("handleDiagnosisRules");
 
     }
+
+    @FXML
+    private void handlePatternsDescription(){
+        System.out.println("handlePatternsDescription");
+    }
+
 } // class MainWindowController

@@ -22,7 +22,7 @@ public class EditPatientModel extends SQLDatabase {
     private String diagnosis;
     private String date_of_completion;
     private String full_name_of_doctor;
-    private String status;
+    private String status, medical_card;
     private int id;
 
     public void setId(int id)
@@ -61,6 +61,7 @@ public class EditPatientModel extends SQLDatabase {
     public void setFull_name_of_doctor(String full_name_of_doctor) {
         this.full_name_of_doctor = full_name_of_doctor;
     }
+    public void setMedical_card(String medical_card1) {this.medical_card = medical_card1;}
     public EditPatientModel()
     {
         sqlSetConnect();
@@ -82,11 +83,11 @@ public class EditPatientModel extends SQLDatabase {
                 PatientsController.patientsData.add(new Patient(id, surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
                         gender,
                         results_of_research, diagnosis,
-                        date_of_completion, full_name_of_doctor, status));
+                        date_of_completion, full_name_of_doctor, status,medical_card));
                 PatientsController.backupPatientsData.add(new Patient(id, surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
                         gender,
                         results_of_research, diagnosis,
-                        date_of_completion, full_name_of_doctor, status));
+                        date_of_completion, full_name_of_doctor, status, medical_card));
                 EventLogger.createEvent(Session.getKeyValue("name"), "Patient " + surname_of_patient + " " + name_of_patient + " edited", Date.getTime());
                 CurrentStage.getStage().close();
                 //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");

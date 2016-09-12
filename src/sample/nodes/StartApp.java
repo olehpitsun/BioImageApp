@@ -90,11 +90,27 @@ public class StartApp extends Application {
         }
     }
 
+    public static void diagnosisDoctor(){
+        try {
+            DiagnosisDoctor diagnosisDoctor = new DiagnosisDoctor();
+        }catch (Exception e){
+            System.err.println(e);
+        }
+    }
+
     public static void likDoctorPage() throws IOException{
         try {
             LikDoctorPageModule likDoctorPageModule = new LikDoctorPageModule();
         }catch (Exception e){
             System.err.println(e);
+        }
+    }
+
+    public static void handeImagePreprocessing()throws IOException{
+        try {
+            HandeImagePreprocessing handeImagePreprocessing = new HandeImagePreprocessing();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
