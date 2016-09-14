@@ -50,7 +50,7 @@ public class MainWindowController implements Initializable{
 
     @FXML
     private Button  directionButton, showButton1,cytologyButton, histologyButton, DiagnosisRulesButton,
-            PatternsDescriptionButton;
+            PatternsDescriptionButton, objectCharacterParamButton;
     @FXML
     private TableView<Messenger> messenger;
     @FXML
@@ -215,6 +215,7 @@ public class MainWindowController implements Initializable{
     private void activateMainPage() throws SQLException {
         showButton1.setDisable(false); directionButton.setDisable(false);
         cytologyButton.setDisable(false); histologyButton.setDisable(false);
+        objectCharacterParamButton.setVisible(false);
         //AuthModule auth = new AuthModule();
         this.showMessenger();
 
@@ -288,6 +289,7 @@ public class MainWindowController implements Initializable{
         cytologyButton.setDisable(false); histologyButton.setDisable(false);
         cytologyButton.setVisible(false);histologyButton.setVisible(false);
 
+        objectCharacterParamButton.setVisible(true);
         DiagnosisRulesButton.setVisible(true);
         PatternsDescriptionButton.setVisible(true);
 
@@ -303,6 +305,11 @@ public class MainWindowController implements Initializable{
     @FXML
     private void handlePatternsDescription(){
         System.out.println("handlePatternsDescription");
+    }
+
+    @FXML
+    private void handleQuantitativeParameters(){
+        StartApp.QuantitativeParametersPage();
     }
 
 } // class MainWindowController

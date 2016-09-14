@@ -106,14 +106,6 @@ public class StartApp extends Application {
         }
     }
 
-    public static void handeImagePreprocessing()throws IOException{
-        try {
-            HandeImagePreprocessing handeImagePreprocessing = new HandeImagePreprocessing();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void showDBSettingsPage() throws IOException{
 
         DBConnectionModule db = new DBConnectionModule();
@@ -147,6 +139,14 @@ public class StartApp extends Application {
             SimpleResearchModule srm = new SimpleResearchModule();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void QuantitativeParametersPage(){
+        try {
+            QuantitativeParametersPageModule quantitativeParametersPageModule = new QuantitativeParametersPageModule();
+        }catch (Exception e){
+            System.err.println(e);
         }
     }
 }

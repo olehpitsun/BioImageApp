@@ -435,14 +435,7 @@ public class LikDoctorController {
         }
     }
 
-    @FXML
-    private void handeImageCorection(){
-        try {
-            StartApp.handeImagePreprocessing();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
 
 }

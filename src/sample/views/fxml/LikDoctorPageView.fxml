@@ -81,7 +81,7 @@
                                 </JFXTextField>
                                 <JFXButton fx:id="handleCreateResearchButton" mnemonicParsing="false" onAction="#handleCreateResearch" text="OK" GridPane.columnIndex="1" GridPane.rowIndex="4" visible="false"/>
                                 <JFXButton fx:id="loadFolderButton" mnemonicParsing="false" onAction="#loadFolder" text="Вибрати папку" GridPane.columnIndex="0" GridPane.rowIndex="5" visible="false"/>
-                                <JFXButton fx:id="handeImageCorectionButton" mnemonicParsing="false" onAction="#handeImageCorection" text="Вручну" GridPane.columnIndex="0" GridPane.rowIndex="6" visible="false"/>
+                                <JFXButton fx:id="handeImageCorectionButton" mnemonicParsing="false" text="Вручну" GridPane.columnIndex="0" GridPane.rowIndex="6" visible="false"/>
                                 <JFXButton fx:id="autoImageCorectionButton" mnemonicParsing="false" onAction="#autoImageCorection" text="Автоматичне покращення" GridPane.columnIndex="1" GridPane.rowIndex="6" visible="false"/>
                                 <JFXButton fx:id="templateMatch" mnemonicParsing="false" onAction="#chooseTMFile" text="Завантажити фото" GridPane.columnIndex="1" GridPane.rowIndex="6" visible="false"/>
 
