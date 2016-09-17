@@ -56,7 +56,7 @@ public class PatientsModel extends SQLDatabase {
             this.date_of_completion = resultSet.getString("Date_of_completion");
             this.full_name_of_doctor = resultSet.getString("Name_of_doctor");
             this.status = resultSet.getString("Status");
-            this.medical_card = resultSet.getString("medical_card");
+//            this.medical_card = resultSet.getString("medical_card");
     }
     public void selectData() throws SQLException
     {

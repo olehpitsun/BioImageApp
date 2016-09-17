@@ -34,7 +34,7 @@ public class LikDoctorModel extends SQLDatabase{
     public void getPatientList() throws SQLException{
 
         int doctor_id = Integer.valueOf(Session.getKeyValue("id"));
-        sqlExecute("SELECT * FROM patients WHERE doctor_id = "+doctor_id+"");
+        sqlExecute("SELECT * FROM patients");// WHERE doctor_id = "+doctor_id+"");
 
         LikDoctorController.comboBoxData.clear();
         while(resultSet.next()) {
@@ -47,7 +47,7 @@ public class LikDoctorModel extends SQLDatabase{
 
     public void setData() throws SQLException
     {
-        this.medical_card = resultSet.getString("medical_card");
+       // this.medical_card = resultSet.getString("medical_card");
         this.surname = resultSet.getString("Surname");
         this.id = Integer.valueOf(resultSet.getString("ID"));
         this.name = resultSet.getString("Name");
