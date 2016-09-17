@@ -51,6 +51,7 @@ public class EditPatientController {
     public void update()
     {
         editPatientModel.setSurname_of_patient(surname_of_patient.getText());
+        editPatientModel.setStatus();
         editPatientModel.setName_of_patient(name_of_patient.getText());
         editPatientModel.setFathername_of_patient(fathername_of_patient.getText());
         editPatientModel.setDate_of_birth(date_of_birth.getText());

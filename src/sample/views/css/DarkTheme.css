@@ -82,10 +82,10 @@
     -fx-size: 35;
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
-    -fx-border-color: 
+    -fx-border-color:
         transparent
         transparent
-        derive(-fx-base, 80%) 
+        derive(-fx-base, 80%)
         transparent;
     -fx-border-insets: 0 10 1 0;
 }
@@ -136,7 +136,7 @@
     -fx-font-width: 20;
 }
 
-/* 
+/*
  * Metro style Push Button
  * Author: Pedro Duque Vieira
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
@@ -255,7 +255,7 @@
     -fx-background-color: white;
 }
 
-.button {
+/*.button {
     -fx-padding: 3 10 3 10;
     -fx-border-color: #317589;
     -fx-border-width: 2;
@@ -269,8 +269,8 @@
     -fx-alignment: center;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
-
-#closeMessButton, #dbSettingButton, #sendMessageButton, #loadFolderButton, #handleCreateResearchButton, #createResearchButton {
+*/
+#closeMessButton, /*#dbSettingButton,*/ #sendMessageButton, #loadFolderButton, #handleCreateResearchButton, #createResearchButton {
     -fx-padding: 0.5em 0.37em;
     -fx-font-size: 12px;
     -fx-button-type: RAISED;
@@ -304,7 +304,7 @@
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
-.button:hover {
+/* .button:hover {
     -fx-background-color: #DCEDC8;
     -fx-text-color: #212121;
      -fx-text-fill: #212121;
@@ -339,7 +339,7 @@
 .button:default:hover {
     -fx-background-color: derive(-fx-focus-color,30%);
 }
-
+*/
 .combo-box .list-cell
 {
     -fx-background: white;

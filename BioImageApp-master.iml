@@ -9,8 +9,10 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mysql-connector-java-5.1.38-bin1" level="project" />
     <orderEntry type="library" name="jfoenix" level="project" />
-    <orderEntry type="library" name="opencv-249" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.38-bin" level="project" />
+    <orderEntry type="library" name="opencv-249" level="project" />
     <orderEntry type="library" name="controlsfx-8.40.11" level="project" />
+    <orderEntry type="library" name="controlsfx-samples-8.40.11" level="project" />
+    <orderEntry type="library" name="fxsampler-1.0.9" level="project" />
   </component>
 </module>

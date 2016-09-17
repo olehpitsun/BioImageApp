@@ -50,7 +50,7 @@ public class AuthModel extends SQLDatabase {
             }
             else {
                 if (resultSet.getString("Status").compareTo("Administrator") == 0) {
-                    Admin admin = new Admin();
+                    //Admin admin = new Admin();
                 }
                 Session.setKeyValue("activeStatus", "1");
                 Session.setKeyValue("id", resultSet.getString("id"));

@@ -29,9 +29,9 @@ public class EditPatientModel extends SQLDatabase {
     {
         this.id = id;
     }
-    public void setStatus(String status)
+    public void setStatus()
     {
-        this.status = status;
+        this.status = EditPatientController.patient.getStatus();
     }
     public void setSurname_of_patient(String surname_of_patient) { this.surname_of_patient = surname_of_patient; }
 
@@ -68,7 +68,7 @@ public class EditPatientModel extends SQLDatabase {
     public void addToDB() {
         try {
 
-            updateExecute("UPDATE patients SET Surname='"+surname_of_patient+"', Name='"+name_of_patient+"', Fathername='"+fathername_of_patient+"', Date_of_birth='"+date_of_birth+"', Gender='"+gender+"', Results_of_research='"+results_of_research+"', Diagnosis='"+diagnosis+"', Date_of_completion='"+date_of_completion+"', Name_of_doctor='"+full_name_of_doctor+"' WHERE ID='"+id+"'");
+            updateExecute("UPDATE patients SET Status='"+status+"', Surname='"+surname_of_patient+"', Name='"+name_of_patient+"', Fathername='"+fathername_of_patient+"', Date_of_birth='"+date_of_birth+"', Gender='"+gender+"', Results_of_research='"+results_of_research+"', Diagnosis='"+diagnosis+"', Date_of_completion='"+date_of_completion+"', Name_of_doctor='"+full_name_of_doctor+"' WHERE ID='"+id+"'");
             PatientsController.patientsData.remove(EditPatientController.patient);
             PatientsController.backupPatientsData.remove(EditPatientController.patient);
             PatientsController.patientsData.add(new Patient(id, surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
