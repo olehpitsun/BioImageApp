@@ -7,6 +7,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.libs.CurrentStage;
 import sample.libs.SQLDatabaseParam;
 import sample.models.AuthModel;
 import sample.models.DbModel;
@@ -54,13 +55,14 @@ public class AuthController {
      * Called when the user clicks ok.
      */
     @FXML
-    public void handleOk() throws Exception {
+    public void SignIn() throws Exception {
 
         System.out.print("Ok");
         this.checkIt();
-       // okClicked = true;
         dialogStage.close();
+        //CurrentStage.getStage().close();
 
     }
+
 
 }

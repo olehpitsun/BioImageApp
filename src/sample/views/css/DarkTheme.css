@@ -141,13 +141,18 @@
  * Author: Pedro Duque Vieira
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
+
 .button:hover{
--fx-background-color: #8BC34A;
--fx-text-fill: #ffffff;
+-fx-background-color: #ffffff;
+-fx-text-fill: #8BC34A;
 -fx-text-alignment: center;
 }
 
-
+.button{
+    -fx-background-color: #8BC34A;
+    -fx-text-fill: #ffffff;
+    -fx-text-alignment: center;
+}
 
 #signInButton  {
 
@@ -284,7 +289,7 @@
 }
 
 #researchSettingsPane{
-    -fx-background-color: #7B1FA2;
+    -fx-background-color: #03A9F4;
 }
 
 #logo{
@@ -406,6 +411,79 @@
     -fx-opacity: .4;
 }
 
+#selectResearchByPacientLabel{
+    -fx-highlight-text-fill: #ffffff;
+}
+#DiagnosisRulesButton{
+    -fx-padding: 3 10 3 10;
+    -fx-border-color: #317589;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #317589;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-text-alignment: right;
+    -fx-min-height: 200px;
+    -fx-min-width: 250px;
+    -fx-alignment: center;
+    -fx-background-image: url("../images/network.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+#generateArffFileButton{
+    -fx-padding: 3 10 3 10;
+    -fx-border-color: #317589;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #317589;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-text-alignment: right;
+    -fx-min-height: 55px;
+    -fx-min-width: 100px;
+    -fx-alignment: center;
+    -fx-background-image: url("../images/page.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+#PatternsDescriptionButton{
+    -fx-padding: 3 10 3 10;
+    -fx-border-color: #317589;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #317589;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-text-alignment: right;
+    -fx-min-height: 200px;
+    -fx-min-width: 250px;
+    -fx-alignment: center;
+    -fx-background-image: url("../images/puzzle.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+#objectCharacterParamButton{
+    -fx-padding: 3 10 3 10;
+    -fx-border-color: #317589;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #317589;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-text-alignment: right;
+    -fx-min-height: 200px;
+    -fx-min-width: 250px;
+    -fx-alignment: center;
+    -fx-background-image: url("../images/quote.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
 
 #showButton1{
     -fx-padding: 3 10 3 10;

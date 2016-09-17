@@ -13,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -34,6 +33,7 @@ import sample.models.CellEstimatorModel;
 import sample.models.ImageManagerModule;
 import sample.models.LikDoctorModel;
 import sample.models.TemplateMatching;
+import sample.nodes.StartApp;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,7 +72,7 @@ public class LikDoctorController {
     @FXML
     private TableColumn<Nuclei, Double> contourAreaColumn, contourPerimetrColumn;
     @FXML
-    private JFXButton autoImageCorectionButton, cellParams, templateMatch;
+    private JFXButton autoImageCorectionButton,handeImageCorectionButton, cellParams, templateMatch;
     private ArrayList<JFXDrawer> drawers = new ArrayList<>();
     private Node content ;
     public static ObservableList<ImageList> imageListData = FXCollections.observableArrayList();
@@ -218,6 +218,7 @@ public class LikDoctorController {
     @FXML
     private void createNewResearch(){
         researchNameField.setVisible(true); researchGlassField.setVisible(true); handleCreateResearchButton.setVisible(true);
+        researchGlassValueLabel.setVisible(false);researchNameValueLabel.setVisible(false);
     }
 
     /*** занесення інформації про нове дослідження*/
@@ -261,7 +262,7 @@ public class LikDoctorController {
             try {
                 imageListData.clear();// очистка списку зображень
                 likDoctorModel = new LikDoctorModel();
-                likDoctorModel.createFolder(this.pathToFolder);
+                //likDoctorModel.createFolder(this.pathToFolder);
                 likDoctorModel.selectFileseFromDir(selectedDirectory, this.research_id);
 
                 this.setImageListToTable();
@@ -290,7 +291,9 @@ public class LikDoctorController {
                     setSelectedImageView(selectedImg.fullPathProperty().getValue().toString());//показати вибране оригінальне зображення
                     imgID = Integer.valueOf(selectedImg.imageDbIDProperty().getValue().toString());
                     //settingsAutoPreprocImageView(selectedImg.fullPathProperty().getValue().toString());
+                    templateMatch.setVisible(false);
                     autoImageCorectionButton.setVisible(true);
+                    handeImageCorectionButton.setVisible(true);
                 }
             }
         });
@@ -354,6 +357,7 @@ public class LikDoctorController {
         cellEstimatorModel.SimpleDetect(imgID, this.autoPreprocImageMat);
         setAutoPreprocImageView(cellEstimatorModel.getnewDrawImage());
 
+        nucleiTable.setVisible(true);
         nucleiTable.setItems(cellEstimatorModel.getNucleiData());
         /*** відображення виділеного обєкта*/
         nucleiTable.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -387,6 +391,8 @@ public class LikDoctorController {
 
     @FXML
     private void setTMVisible(){
+        handeImageCorectionButton.setVisible(false);
+        autoImageCorectionButton.setVisible(false);
         templateMatch.setVisible(true);
     }
 
@@ -428,4 +434,8 @@ public class LikDoctorController {
             alert.showAndWait();
         }
     }
+
+
+
+
 }

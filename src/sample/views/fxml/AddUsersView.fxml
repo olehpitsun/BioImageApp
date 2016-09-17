@@ -7,16 +7,17 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddUsersController">
     <children>
         <Label layoutX="233.0" layoutY="14.0" text="ДОДАВАННЯ КОРИСТУВАЧА" textFill="#e8dbdb" />
         <TextField fx:id="surname_of_user" layoutX="50.0" layoutY="66.0" prefHeight="30.0" prefWidth="145.0" promptText="Прізвище" />
         <TextField fx:id="login_of_user" layoutX="50.0" layoutY="234.0" prefHeight="30.0" prefWidth="230.0" promptText=" " />
-        <Button layoutX="150.0" layoutY="308.0" mnemonicParsing="false" onAction="#addAUserToDB" prefHeight="40.0" prefWidth="300.0" text="ДОДАТИ">
+        <JFXButton buttonType="RAISED" layoutX="150.0" layoutY="308.0" mnemonicParsing="false" onAction="#addAUserToDB" prefHeight="40.0" prefWidth="300.0" text="ДОДАТИ" ripplerFill="#bbdefb" style="-fx-background-color: #2196F3;" textFill="WHITE">
             <font>
                 <Font size="16.0" />
             </font>
-        </Button>
+        </JFXButton>
         <Label layoutX="50.0" layoutY="43.0" text="Введіть прізвище користувача" textFill="#e8dbdb" />
         <Label layoutX="50.0" layoutY="118.0" text="Роль користувача" textFill="#e8dbdb" />
         <Label layoutX="50.0" layoutY="209.0" text="Логін" textFill="#e8dbdb" />

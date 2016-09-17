@@ -90,6 +90,14 @@ public class StartApp extends Application {
         }
     }
 
+    public static void diagnosisDoctor(){
+        try {
+            DiagnosisDoctor diagnosisDoctor = new DiagnosisDoctor();
+        }catch (Exception e){
+            System.err.println(e);
+        }
+    }
+
     public static void likDoctorPage() throws IOException{
         try {
             LikDoctorPageModule likDoctorPageModule = new LikDoctorPageModule();
@@ -131,6 +139,14 @@ public class StartApp extends Application {
             SimpleResearchModule srm = new SimpleResearchModule();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void QuantitativeParametersPage(){
+        try {
+            QuantitativeParametersPageModule quantitativeParametersPageModule = new QuantitativeParametersPageModule();
+        }catch (Exception e){
+            System.err.println(e);
         }
     }
 }

@@ -28,7 +28,7 @@ public class AuthModel extends SQLDatabase {
     }
     public void comparePassword() throws SQLException
     {
-        sqlExecute("SELECT keymap FROM users WHERE login='" + login + "'");
+        sqlExecute("SELECT keymap FROM users WHERE Login='" + login + "'");
 
         if(resultSet.next())
         {
@@ -39,19 +39,19 @@ public class AuthModel extends SQLDatabase {
     {
         if (!RegExp.checkWithRegExp(login))
         {
-            Messages.information("Please, check your login", "It must have more than 6 characters", "Перевірка даних");
+            Messages.information("Будь ласка, перевірте свої логін та пароль!", "Вони повинні містити більше 6-ти символів.", "Перевірка даних");
         } else {
             sqlExecute("SELECT * FROM users WHERE Login='" + login + "' AND Password='" + password + "'");
 
 
             if(!resultSet.next())
             {
-                Messages.error("Wrong password or login", "Please, check it and try again", "Перевірка даних");
+                Messages.error("Неправильний логін або пароль!", "Будь ласка, перевірте їх і спробуйте знову.", "Перевірка даних");
             }
             else {
-                if (resultSet.getString("Status").compareTo("Administrator") == 0) {
-                    //Admin admin = new Admin();
-                }
+               // if (resultSet.getString("Status").compareTo("Administrator") == 0) {
+                 //   Admin admin = new Admin();
+                //}
                 Session.setKeyValue("activeStatus", "1");
                 Session.setKeyValue("id", resultSet.getString("id"));
                 Session.setKeyValue("name", resultSet.getString("name"));

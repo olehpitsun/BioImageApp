@@ -49,21 +49,29 @@ public class EditUsersModel extends SQLDatabase {
         sqlSetConnect();
     }
     public void addToDB() {
-        try {
+        if(surname_of_user.isEmpty() || name_of_user.isEmpty() || fathername_of_user.isEmpty() || status_of_user.isEmpty() || login_of_user.isEmpty() || password_of_user.isEmpty()
+                && !Regex.checkWithRegex(surname_of_user, "^[a-zA-Zа-яА-Я]+$") ||
+                !Regex.checkWithRegex(name_of_user, "^[a-zA-Zа-яА-Я]+$") ||
+                !Regex.checkWithRegex(fathername_of_user, "^[a-zA-Zа-яА-Я]+$") ||
+                !Regex.checkWithRegex(status_of_user, "^[a-zA-Zа-яА-Я]+$") || !RegExp.checkWithRegExp(login_of_user)) {
+            Messages.error("Помилка заповнення!", "Будь ласка, заповніть коректно всі поля!", "Помилка!");
+        } else {
+            try {
 
-            updateExecute("UPDATE users SET Surname='"+surname_of_user+"', Name='"+name_of_user+"', Fathername='"+fathername_of_user+"', Status='"+status_of_user+"', Login='"+login_of_user+"', Password='"+password_of_user+"' WHERE ID='"+id+"'");
-            AdminController.usersData.remove(EditUsersController.users);
-            AdminController.backupUsersData.remove(EditUsersController.users);
-            AdminController.usersData.add(new Users(id, surname_of_user, name_of_user, fathername_of_user,
-                    status_of_user, login_of_user, password_of_user));
-            AdminController.backupUsersData.add(new Users(id, surname_of_user, name_of_user, fathername_of_user,
-                    status_of_user, login_of_user, password_of_user));
-            EventLogger.createEvent(Session.getKeyValue("name "), "User " +surname_of_user + " " + name_of_user +" edited", Date.getTime());
-            CurrentStage.getStage().close();
-            //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Messages.error("Помилка", "Користувач не може бути доданий!", "БД");
+                updateExecute("UPDATE users SET Surname='" + surname_of_user + "', Name='" + name_of_user + "', Fathername='" + fathername_of_user + "', Status='" + status_of_user + "', Login='" + login_of_user + "', Password='" + password_of_user + "' WHERE ID='" + id + "'");
+                AdminController.usersData.remove(EditUsersController.users);
+                AdminController.backupUsersData.remove(EditUsersController.users);
+                AdminController.usersData.add(new Users(id, surname_of_user, name_of_user, fathername_of_user,
+                        status_of_user, login_of_user, password_of_user));
+                AdminController.backupUsersData.add(new Users(id, surname_of_user, name_of_user, fathername_of_user,
+                        status_of_user, login_of_user, password_of_user));
+                EventLogger.createEvent(Session.getKeyValue("name "), "User " + surname_of_user + " " + name_of_user + " edited", Date.getTime());
+                CurrentStage.getStage().close();
+                //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                Messages.error("Помилка", "Користувач не може бути доданий!", "БД");
+            }
         }
 
 

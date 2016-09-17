@@ -25,7 +25,8 @@
 
       <Label fx:id="nameLabel" layoutX="304.0" layoutY="-6.0" prefHeight="91.0" prefWidth="545.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" AnchorPane.bottomAnchor="585.0" AnchorPane.leftAnchor="304.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="-6.0">Система автоматизованої мікроскопії</Label>
       <Button fx:id="logo" layoutX="807.0" layoutY="14.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="96.0" text="" />
-
+      <Button fx:id="objectCharacterParamButton"  layoutX="885.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleQuantitativeParameters" text="К-сні характеристики" visible="false">
+      </Button>
       <GridPane layoutX="638.0" layoutY="312.0" prefHeight="358.0" prefWidth="386.0">
          <columnConstraints>
             <ColumnConstraints />
@@ -43,6 +44,11 @@
             <Button fx:id="cytologyButton" disable="true" mnemonicParsing="false" onAction="#handleSimpleResearch" text="Цитологія" GridPane.columnIndex="0" GridPane.rowIndex="1">
             </Button>
             <Button fx:id="histologyButton" disable="true" mnemonicParsing="false" onAction="#handleSimpleResearch" text="Гістологія" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            </Button>
+
+            <Button fx:id="DiagnosisRulesButton" mnemonicParsing="false" onAction="#handleDiagnosisRules" text="Правила діагностування" GridPane.columnIndex="0" GridPane.rowIndex="1" visible="false">
+            </Button>
+            <Button fx:id="PatternsDescriptionButton" mnemonicParsing="false" onAction="#handlePatternsDescription" text="Список пацієнтів" GridPane.columnIndex="1" GridPane.rowIndex="1" visible="false">
             </Button>
          </children>
 

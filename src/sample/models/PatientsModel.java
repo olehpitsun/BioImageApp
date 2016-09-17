@@ -22,7 +22,7 @@ public class PatientsModel extends SQLDatabase {
     private String results_of_research;
     private String diagnosis;
     private String date_of_completion;
-    private String full_name_of_doctor;
+    private String full_name_of_doctor, medical_card;
     private String status;
     private int id;
     public int counts;
@@ -31,6 +31,13 @@ public class PatientsModel extends SQLDatabase {
         sqlSetConnect();
         sqlExecute("SELECT * FROM patients");
     }
+
+    public PatientsModel(String doctor_id) throws SQLException
+    {
+        sqlSetConnect();
+        sqlExecute("SELECT * FROM patients WHERE doctor_id='"+doctor_id+"'");
+    }
+
     public void remove(Patient patient) throws SQLException
     {
         removeExecute("DELETE FROM patients WHERE ID='"+patient.getId()+"'");
@@ -49,6 +56,7 @@ public class PatientsModel extends SQLDatabase {
             this.date_of_completion = resultSet.getString("Date_of_completion");
             this.full_name_of_doctor = resultSet.getString("Name_of_doctor");
             this.status = resultSet.getString("Status");
+            this.medical_card = resultSet.getString("medical_card");
     }
     public void selectData() throws SQLException
     {
@@ -59,7 +67,7 @@ public class PatientsModel extends SQLDatabase {
             PatientsController.patientsData.add(new Patient(id, surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
                     gender,
                     results_of_research, diagnosis,
-                    date_of_completion, full_name_of_doctor, status));
+                    date_of_completion, full_name_of_doctor, status, medical_card));
         }
         PatientsController.backupPatientsData.clear();
         PatientsController.backupPatientsData.addAll(PatientsController.patientsData);

@@ -8,6 +8,6 @@ import java.sql.SQLException;
 public class EventLogger extends SQLDatabase {
     public static void createEvent(String user, String event, String date) throws SQLException
     {
-       CreateEvent("INSERT INTO logs (user, event, date) VALUES ('"+Session.getKeyValue("name")+"', '"+event+"', '"+Date.getTime()+"')");
+       CreateEvent("INSERT INTO logs (User, Event, Date) VALUES ('"+Session.getKeyValue("name")+"', '"+event+"', '"+Date.getTime()+"')");
     }
 }

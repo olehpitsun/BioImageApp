@@ -2,7 +2,7 @@
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+<VBox fx:id="settingBarVBOX" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <JFXButton fx:id="dbSettings" accessibleText="dbSettings" prefHeight="77.0" prefWidth="200.0" text="Налаштування БД" />
       <JFXButton fx:id="authButton" accessibleText="auth" prefHeight="77.0" prefWidth="200.0" visible="true" disable="false" text="Увійти" />

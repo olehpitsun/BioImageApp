@@ -13,6 +13,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXTextField?>
 <AnchorPane prefHeight="675.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.LikDoctorController">
     <children>
 
@@ -41,6 +42,7 @@
                                 <RowConstraints />
                             </rowConstraints>
                             <children>
+
                                 <Label fx:id="selectPacientLabel" layoutX="30.0" layoutY="29.0" text="Пацієнт: " GridPane.columnIndex="0" GridPane.rowIndex="0" />
                                 <ComboBox fx:id="patientListComboBox" onAction="#getResearchesByPatientList" prefHeight="33.0" prefWidth="111.0" GridPane.columnIndex="1" GridPane.rowIndex="0" visible="true">
                                     <items>
@@ -65,22 +67,23 @@
                                 <JFXButton fx:id="createResearchButton" mnemonicParsing="false" onAction="#createNewResearch" text="Новий дослід" GridPane.columnIndex="1" GridPane.rowIndex="1" visible="false"/>
                                 <Label fx:id="researchNameLabel" GridPane.columnIndex="0" GridPane.rowIndex="2" visible="false" text="Назва дослідження"></Label>
                                 <Label fx:id="researchNameValueLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" visible="false"></Label>
-                                <TextField fx:id="researchNameField" alignment="CENTER" prefHeight="30.0" prefWidth="113.0" promptText="" GridPane.columnIndex="1" GridPane.rowIndex="2" visible="false">
+                                <JFXTextField fx:id="researchNameField" alignment="CENTER" prefHeight="30.0" prefWidth="113.0" promptText="" GridPane.columnIndex="1" GridPane.rowIndex="2" visible="false">
                                     <font>
                                         <Font name="Arial" size="12.0" />
                                     </font>
-                                </TextField>
+                                </JFXTextField>
                                 <Label fx:id="researchGlassLabel" GridPane.columnIndex="0" GridPane.rowIndex="3" visible="false" text="№ скла"></Label>
                                 <Label fx:id="researchGlassValueLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" visible="false"></Label>
-                                <TextField fx:id="researchGlassField" alignment="CENTER" prefHeight="30.0" prefWidth="113.0" promptText="" GridPane.columnIndex="1" GridPane.rowIndex="3" visible="false">
+                                <JFXTextField fx:id="researchGlassField" alignment="CENTER" prefHeight="30.0" prefWidth="113.0" promptText="" GridPane.columnIndex="1" GridPane.rowIndex="3" visible="false">
                                     <font>
                                         <Font name="Arial" size="12.0" />
                                     </font>
-                                </TextField>
+                                </JFXTextField>
                                 <JFXButton fx:id="handleCreateResearchButton" mnemonicParsing="false" onAction="#handleCreateResearch" text="OK" GridPane.columnIndex="1" GridPane.rowIndex="4" visible="false"/>
-                                <JFXButton fx:id="loadFolderButton" mnemonicParsing="false" onAction="#loadFolder" text="Вибрати папку" GridPane.columnIndex="0" GridPane.rowIndex="6" visible="false"/>
+                                <JFXButton fx:id="loadFolderButton" mnemonicParsing="false" onAction="#loadFolder" text="Вибрати папку" GridPane.columnIndex="0" GridPane.rowIndex="5" visible="false"/>
+                                <JFXButton fx:id="handeImageCorectionButton" mnemonicParsing="false" text="Вручну" GridPane.columnIndex="0" GridPane.rowIndex="6" visible="false"/>
                                 <JFXButton fx:id="autoImageCorectionButton" mnemonicParsing="false" onAction="#autoImageCorection" text="Автоматичне покращення" GridPane.columnIndex="1" GridPane.rowIndex="6" visible="false"/>
-                                <JFXButton fx:id="templateMatch" mnemonicParsing="false" onAction="#chooseTMFile" text="Завантажити фото" GridPane.columnIndex="1" GridPane.rowIndex="8" visible="false"/>
+                                <JFXButton fx:id="templateMatch" mnemonicParsing="false" onAction="#chooseTMFile" text="Завантажити фото" GridPane.columnIndex="1" GridPane.rowIndex="6" visible="false"/>
 
                             </children>
                         </GridPane>
@@ -109,7 +112,7 @@
                             </columnResizePolicy>
                         </TableView>
 
-                        <TableView fx:id="nucleiTable" layoutY="258.0" prefHeight="144.0" prefWidth="525.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="330.0">
+                        <TableView fx:id="nucleiTable" layoutY="258.0" prefHeight="144.0" prefWidth="525.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="330.0" visible="false">
                             <columns>
                                 <TableColumn fx:id="contourNumColumn" prefWidth="55.0" text="#" />
                                 <TableColumn fx:id="contourAreaColumn" prefWidth="55.0" text="Площа" />

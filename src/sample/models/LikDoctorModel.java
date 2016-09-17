@@ -1,6 +1,7 @@
 package sample.models;
 
 import sample.controllers.LikDoctorController;
+import sample.controllers.QuantitativeParametersController;
 import sample.libs.*;
 import sample.libs.Image.ImageList;
 import java.io.File;
@@ -40,6 +41,7 @@ public class LikDoctorModel extends SQLDatabase{
             setData();
             counts++;
             LikDoctorController.comboBoxData.add(new PatientCollection(id, medical_card, surname, name, fathername));
+            QuantitativeParametersController.comboBoxData.add(new PatientCollection(id, medical_card, surname, name, fathername));
         }
     }
 
@@ -72,6 +74,7 @@ public class LikDoctorModel extends SQLDatabase{
         while(resultSet.next()) {
             setResearchData();
             LikDoctorController.comboBoxResearchData.add(new ResearchCollection(id, name, num_glass));
+            QuantitativeParametersController.comboBoxResearchData.add(new ResearchCollection(id, name, num_glass));
         }
     }
 
