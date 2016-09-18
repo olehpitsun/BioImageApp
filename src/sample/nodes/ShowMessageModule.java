@@ -7,7 +7,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.controllers.ShowMessageController;
+import sample.controllers.ShowSendingMessageController;
 import sample.libs.Messenger.Messenger;
+import sample.objects.Sendings;
 
 import java.io.IOException;
 

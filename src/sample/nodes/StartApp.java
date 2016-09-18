@@ -18,6 +18,7 @@ import sample.libs.Messenger.Messenger;
 import sample.libs.Session;
 import sample.models.CheckerModel;
 import sample.models.DbModel;
+import sample.objects.Sendings;
 import sample.views.CheckerView;
 
 import java.io.IOException;
@@ -121,6 +122,15 @@ public class StartApp extends Application {
         }
     }
 
+    public static void showSendingMessage(Sendings sendings){
+        if(Session.getKeyValue("activeStatus") == "1") {
+            ShowSendingMessageModule showMessageModule = new ShowSendingMessageModule();
+            showMessageModule.showSendingMessageDialog(sendings);
+        }else{
+            Messages.error("Помилка авторизації!", "Увійдіть в систему", " ");
+        }
+    }
+
     public static void writeMessage(){
         if(Session.getKeyValue("activeStatus") == "1"){
             writeMessageModule writeMessageModule = new writeMessageModule();
@@ -128,7 +138,15 @@ public class StartApp extends Application {
         }else{
             Messages.error("Помилка авторизації!", "Увійдіть в систему", " ");
         }
+    }
 
+    public static void writeSendingMessage(){
+        if(Session.getKeyValue("activeStatus") == "1"){
+            writeSendingMessageModule writeMessageModule = new writeSendingMessageModule();
+            writeMessageModule.writeSendingMessageeDialog();
+        }else{
+            Messages.error("Помилка авторизації!", "Увійдіть в систему", " ");
+        }
     }
 
     /**
@@ -145,6 +163,14 @@ public class StartApp extends Application {
     public static void QuantitativeParametersPage(){
         try {
             QuantitativeParametersPageModule quantitativeParametersPageModule = new QuantitativeParametersPageModule();
+        }catch (Exception e){
+            System.err.println(e);
+        }
+    }
+
+    public static void sending(){
+        try {
+            SendingModule sendingModule = new SendingModule();
         }catch (Exception e){
             System.err.println(e);
         }

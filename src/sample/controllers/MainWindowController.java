@@ -299,7 +299,6 @@ public class MainWindowController implements Initializable{
     @FXML
     private void handleDiagnosisRules(){
         System.out.println("handleDiagnosisRules");
-
     }
 
     @FXML
@@ -310,6 +309,11 @@ public class MainWindowController implements Initializable{
     @FXML
     private void handleQuantitativeParameters(){
         StartApp.QuantitativeParametersPage();
+    }
+
+    @FXML
+    private void Sending(){
+        StartApp.sending();
     }
 
 } // class MainWindowController
