@@ -6,27 +6,27 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sample.controllers.writeMessageController;
 import sample.controllers.writeSendingMessageController;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * Created by oleh on 02.07.2016.
+ * Created by oleh_pi on 18.09.2016.
  */
-public class writeMessageModule {
+public class writeSendingMessageModule {
+
     private Stage primaryStage;
 
-    public boolean writeMessageeDialog() {
+    public boolean writeSendingMessageeDialog() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(StartApp.class.getResource("../views/fxml/writeMessage.fxml"));
+            loader.setLocation(StartApp.class.getResource("../views/fxml/writeSendingMessage.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Повідомлення");
+            dialogStage.setTitle("Створити направлення");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
@@ -35,7 +35,7 @@ public class writeMessageModule {
             dialogStage.setScene(scene);
 
             // Set the person into the controller.
-            writeMessageController controller = loader.getController();
+            writeSendingMessageController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             try {
                 controller.setReceiverList();

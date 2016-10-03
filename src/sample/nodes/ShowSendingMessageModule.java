@@ -6,27 +6,26 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sample.controllers.writeMessageController;
-import sample.controllers.writeSendingMessageController;
+import sample.controllers.ShowSendingMessageController;
+import sample.objects.Sendings;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 /**
- * Created by oleh on 02.07.2016.
+ * Created by oleh_pi on 18.09.2016.
  */
-public class writeMessageModule {
-    private Stage primaryStage;
+public class ShowSendingMessageModule {
 
-    public boolean writeMessageeDialog() {
+    private Stage primaryStage;
+    public boolean showSendingMessageDialog(Sendings sendings){
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(StartApp.class.getResource("../views/fxml/writeMessage.fxml"));
+            loader.setLocation(StartApp.class.getResource("../views/fxml/ShowSendingMessage.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Повідомлення");
+            dialogStage.setTitle("Вхідне направлення");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
@@ -35,13 +34,9 @@ public class writeMessageModule {
             dialogStage.setScene(scene);
 
             // Set the person into the controller.
-            writeMessageController controller = loader.getController();
+            ShowSendingMessageController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            try {
-                controller.setReceiverList();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            controller.setPerson(sendings);
 
             // Set the dialog icon.
             dialogStage.getIcons().add(new Image("file:resources/images/edit.png"));

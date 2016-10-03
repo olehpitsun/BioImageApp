@@ -309,6 +309,24 @@
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
+#addNewSending{
+    -fx-padding: 3 10 3 10;
+    -fx-border-color: #317589;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #317589;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-text-alignment: right;
+    -fx-min-height: 55px;
+    -fx-min-width: 100px;
+    -fx-alignment: center;
+    -fx-background-image: url("../images/plus.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
 /* .button:hover {
     -fx-background-color: #DCEDC8;
     -fx-text-color: #212121;
@@ -431,6 +449,7 @@
     -fx-background-repeat: no-repeat;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
+
 
 #generateArffFileButton{
     -fx-padding: 3 10 3 10;
