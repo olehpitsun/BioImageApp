@@ -2,10 +2,9 @@ package sample.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import sample.models.EditUsersModel;
-import sample.objects.Users;
+import sample.objects.User.Users;
 
 /**
  * Автор: Павло Лящинський

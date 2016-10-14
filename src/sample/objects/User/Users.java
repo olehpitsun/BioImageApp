@@ -1,4 +1,4 @@
-package sample.objects;
+package sample.objects.User;
 
 /**
  * Created by Pavlo on 10.07.2016.

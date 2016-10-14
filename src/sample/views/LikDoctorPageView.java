@@ -18,7 +18,7 @@ public class LikDoctorPageView {
         Scene scene = new Scene(pr1);
         scene.getStylesheets().add(0, "sample/views/css/DarkTheme.css");
 
-        primaryStage.setMinWidth(1300);
+        primaryStage.setMinWidth(600);
         primaryStage.setMinHeight(675);
         primaryStage.setScene(scene);
         primaryStage.setResizable(true);

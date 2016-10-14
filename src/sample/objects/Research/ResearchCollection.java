@@ -1,4 +1,4 @@
-package sample.libs;
+package sample.objects.Research;
 
 /**
  * Created by oleh on 10.07.2016.

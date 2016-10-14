@@ -1,4 +1,4 @@
-package sample.libs.Segmentation;
+package sample.objects.Segmentation;
 
 
 public class SegmentationColection {

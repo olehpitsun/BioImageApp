@@ -1,15 +1,8 @@
 package sample.models;
 
-import sample.controllers.AdminController;
-import sample.controllers.PatientsController;
 import sample.controllers.StatisticsController;
-import sample.libs.Date;
-import sample.libs.EventLogger;
 import sample.libs.SQLDatabase;
-import sample.libs.Session;
-import sample.nodes.Statistics;
 import sample.objects.StatisticsList;
-import sample.objects.Users;
 
 import java.sql.SQLException;
 

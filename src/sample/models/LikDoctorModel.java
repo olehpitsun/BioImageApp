@@ -3,7 +3,10 @@ package sample.models;
 import sample.controllers.LikDoctorController;
 import sample.controllers.QuantitativeParametersController;
 import sample.libs.*;
-import sample.libs.Image.ImageList;
+import sample.objects.Image.ImageList;
+import sample.objects.Patients.PatientCollection;
+import sample.objects.Research.ResearchCollection;
+
 import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -131,6 +134,7 @@ public class LikDoctorModel extends SQLDatabase{
         File[] files = dir.listFiles();
         for (int i = 0; i < files.length; i++) {
             String fileName = files[i].getName();
+            System.out.println(files[i].getAbsolutePath());
             for (String s : mask) {
                 if (fileName.toLowerCase(Locale.US).endsWith(s)) {
                     if (files[i].isFile()) {

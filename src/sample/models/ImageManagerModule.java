@@ -1,17 +1,12 @@
 package sample.models;
 
 import org.opencv.core.Mat;
-import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
-import sample.controllers.LikDoctorController;
-import sample.libs.Estimate;
+import sample.objects.Estimate.Estimate;
 import sample.libs.Filters.FiltersOperations;
-import sample.libs.Image.Image;
 import sample.libs.Image.ImageOperations;
 import sample.libs.Segmentation.SegmentationOperations;
 import sample.tools.DivideString;
-
-import java.io.File;
 
 /**
  * Created by oleh on 11.08.2016.
@@ -46,12 +41,13 @@ public class ImageManagerModule {
 
         FiltersOperations filtroperation = new FiltersOperations(src, "4", "5", "", "", ""); // медіанний фільтр
         FiltersOperations filtersOperations_1;
-        if(Imgproc.PSNR( filtroperation.getOutputImage(),src) < 30){
+        //if(Imgproc.PSNR( filtroperation.getOutputImage(),src) < 30){
             filtersOperations_1 = filtroperation;
-        }else{
-            filtersOperations_1 = new FiltersOperations(filtroperation.getOutputImage(), "1", "3",
-                    "1.0", "", "" ); // гаусовий фільтр
-        }
+        //}
+        //else{
+            //filtersOperations_1 = new FiltersOperations(filtroperation.getOutputImage(), "1", "3",
+              //      "1.0", "", "" ); // гаусовий фільтр
+        //}
         //dst.release();/** очистка памяті **/
 
         SegmentationOperations segoperation = new SegmentationOperations(filtersOperations_1.getOutputImage(), "3",

@@ -3,20 +3,19 @@ package sample.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import org.opencv.core.Mat;
 import sample.libs.Image.ImageOperations;
-import sample.libs.Nuclei;
-import sample.libs.Segmentation.SegmentationColection;
-import sample.libs.SimpleResearch.ResearchParam;
-import sample.libs.SimpleResearch.SimpleResearchCollection;
-import sample.models.CellEstimatorModel;
+import sample.objects.Nuclei.Nuclei;
+import sample.objects.Segmentation.SegmentationColection;
+import sample.objects.SimpleResearch.ResearchParam;
+import sample.objects.SimpleResearch.SimpleResearchCollection;
 import sample.models.SimpleResearchModel;
 import sample.nodes.StartApp;
+import sample.objects.Image.Image;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -78,7 +77,7 @@ public class SimpleResearchController {
         SimpleResearchModel srm = new SimpleResearchModel();
         srm.chooseFile(actionEvent);
 
-        setOriginalImage(sample.libs.Image.Image.getImageMat());
+        setOriginalImage(Image.getImageMat());
         autoButton.setDisable(false);
     }
 
@@ -108,7 +107,7 @@ public class SimpleResearchController {
         this.setOriginalImage(simpleResearchModel.getPreprocimage());// вивід обробленого зображення
 
         this.segmentedImage = simpleResearchModel.getSegmentationimage();
-        sample.libs.Image.Image.setSegmentedImage(this.segmentedImage);
+        Image.setSegmentedImage(this.segmentedImage);
         this.setSegmentedImage(this.segmentedImage);
 
         this.autoButton.setDisable(true);

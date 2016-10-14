@@ -1,4 +1,4 @@
-package sample.libs.Image;
+package sample.objects.Image;
 
 import org.opencv.core.Mat;
 

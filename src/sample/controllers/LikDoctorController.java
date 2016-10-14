@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -23,17 +24,13 @@ import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
-import sample.libs.Image.ImageList;
+import sample.objects.Image.ImageList;
 import sample.libs.Image.ImageOperations;
 import sample.libs.Image.StartImageParams;
-import sample.libs.Nuclei;
-import sample.libs.PatientCollection;
-import sample.libs.ResearchCollection;
-import sample.models.CellEstimatorModel;
-import sample.models.ImageManagerModule;
-import sample.models.LikDoctorModel;
-import sample.models.TemplateMatching;
-import sample.nodes.StartApp;
+import sample.objects.Nuclei.Nuclei;
+import sample.objects.Patients.PatientCollection;
+import sample.objects.Research.ResearchCollection;
+import sample.models.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -77,7 +74,8 @@ public class LikDoctorController {
     private Node content ;
     public static ObservableList<ImageList> imageListData = FXCollections.observableArrayList();
     public static ArrayList<String> imageList = new ArrayList<String>();
-    private Mat selectedImageMat, autoPreprocImageMat, templateMatching;
+    private Mat  autoPreprocImageMat, templateMatching;
+    public static Mat selectedImageMat;
     private boolean okClicked = false;
     private Stage stage;
     private String researchName, researchGlass, pathToFolder;
@@ -303,13 +301,24 @@ public class LikDoctorController {
      * @param path - повний шлях до файлу*/
     @FXML
     private void setSelectedImageView(String path){
-        this.selectedImageMat = Highgui.imread(path, Highgui.CV_LOAD_IMAGE_COLOR);
-        StartImageParams.getStartValues(this.selectedImageMat);
-        ImageOperations.deleteFile("temp.png");
-        this.selectedImageView.setImage(ImageOperations.mat2Image(this.selectedImageMat));
-        this.selectedImageView.setFitWidth(450.0);
-        this.selectedImageView.setFitHeight(450.0);
-        this.selectedImageView.setPreserveRatio(true);
+        System.out.println(Thread.currentThread().getName());
+        Task<Void> task = new Task<Void>() {
+            @Override public Void call() throws Exception {
+                System.out.println(Thread.currentThread().getName());
+                LikDoctorController.selectedImageMat = Highgui.imread(path, Highgui.CV_LOAD_IMAGE_COLOR);
+                StartImageParams.getStartValues(LikDoctorController.selectedImageMat);
+                ImageOperations.deleteFile("temp.png");
+                selectedImageView.setImage(ImageOperations.mat2Image(LikDoctorController.selectedImageMat));
+                selectedImageView.setFitWidth(450.0);
+                selectedImageView.setFitHeight(450.0);
+                selectedImageView.setPreserveRatio(true);
+
+                return null;
+            }
+        };
+
+        Thread tasks = new Thread(task);
+        tasks.start();
     }
 
     @FXML
@@ -380,13 +389,25 @@ public class LikDoctorController {
      */
     @FXML
     private void calculateAllCellParameters()throws SQLException{
+
+
         ImageManagerModule imageManagerModule = new ImageManagerModule();
         CellEstimatorModel cellEstimatorModel = new CellEstimatorModel();
 
-        for(int i = 0; i < imageListData.size(); i++){
-            Mat src = imageManagerModule.autoImageCorrection(Highgui.imread(imageListData.get(i).getFullPath().toString()));
-            cellEstimatorModel.SimpleDetect(imageListData.get(i).getImageDbID(),src);
-        }
+        System.out.println(Thread.currentThread().getName());
+        Task<Void> taskCACP = new Task<Void>() {
+            @Override
+            public Void call() throws Exception {
+                System.out.println(Thread.currentThread().getName());
+                for (int i = 0; i < imageListData.size(); i++) {
+                    Mat src = imageManagerModule.autoImageCorrection(Highgui.imread(imageListData.get(i).getFullPath().toString()));
+                    cellEstimatorModel.SimpleDetect(imageListData.get(i).getImageDbID(), src);
+                }
+                return null;
+            }
+        };
+        Thread tasks = new Thread(taskCACP);
+        tasks.start();
     }
 
     @FXML

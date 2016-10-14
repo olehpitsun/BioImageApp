@@ -1,4 +1,4 @@
-package sample.libs.SimpleResearch;
+package sample.objects.SimpleResearch;
 
 /**
  * Created by Oleh7 on 3/19/2016.

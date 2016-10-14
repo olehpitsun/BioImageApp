@@ -8,8 +8,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import sample.libs.Messenger.Messenger;
-import sample.models.MessengerModel;
 import sample.models.SendingModel;
 import sample.nodes.StartApp;
 import sample.objects.Sendings;

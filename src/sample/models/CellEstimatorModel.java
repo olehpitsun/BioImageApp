@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgproc.Moments;
-import sample.libs.Nuclei;
+import sample.objects.Nuclei.Nuclei;
 import sample.libs.SQLDatabase;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -81,7 +81,7 @@ public class CellEstimatorModel extends SQLDatabase {
             MatOfPoint2f mMOP2f1;
 
             contourArea = Imgproc.contourArea(contours.get(i));
-            if(contourArea > 10) {
+            if(contourArea > 200) {
 
                 perimetr = Imgproc.arcLength(contour2f, true);
                 i_height = rect.height;

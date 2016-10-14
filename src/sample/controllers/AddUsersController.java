@@ -2,10 +2,8 @@ package sample.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import sample.models.AddPatientModel;
 import sample.models.AddUsersModel;
-import sample.objects.Patient;
-import sample.objects.Users;
+import sample.objects.User.Users;
 
 /**
  * Created by user1 on 10.07.2016.
