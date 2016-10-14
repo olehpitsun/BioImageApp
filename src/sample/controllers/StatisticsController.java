@@ -3,21 +3,12 @@ package sample.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.libs.CurrentStage;
-import sample.libs.Messages;
-import sample.models.AdminModel;
 import sample.models.StatisticsModel;
-import sample.nodes.AddUsers;
-import sample.nodes.Statistics;
 import sample.objects.StatisticsList;
-import sample.objects.Users;
-import sample.views.AddUsersView;
-import sample.views.AdminView;
-import sample.views.EditUsersView;
 
 import java.sql.SQLException;
 

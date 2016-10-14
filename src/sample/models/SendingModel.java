@@ -1,13 +1,10 @@
 package sample.models;
 
-import sample.controllers.MainWindowController;
 import sample.controllers.SendingController;
-import sample.controllers.writeMessageController;
 import sample.controllers.writeSendingMessageController;
-import sample.libs.Messenger.Messenger;
 import sample.libs.SQLDatabase;
 import sample.libs.Session;
-import sample.libs.UsersColection;
+import sample.objects.User.UsersColection;
 import sample.objects.Sendings;
 
 import java.sql.SQLException;

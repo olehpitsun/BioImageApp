@@ -1,45 +1,28 @@
 package sample.models;
 
-import com.mysql.jdbc.PreparedStatement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.opencv.core.*;
 import org.opencv.highgui.Highgui;
-import org.opencv.imgproc.Imgproc;
-import org.opencv.imgproc.Moments;
-import sample.libs.Estimate;
-import sample.libs.Filters.FilterColection;
+import sample.objects.Estimate.Estimate;
 import sample.libs.Filters.FiltersOperations;
-import sample.libs.Hash;
 import sample.libs.PreProcessing.PreProcessingOperation;
 import sample.libs.PreProcessing.StartImageParams;
 import sample.libs.SQLDatabase;
 import sample.libs.Segmentation.SegmentationOperations;
-import sample.libs.Session;
-import sample.libs.SimpleResearch.ResearchParam;
-import sample.libs.SimpleResearch.SimpleResearchCollection;
+import sample.objects.SimpleResearch.ResearchParam;
+import sample.objects.SimpleResearch.SimpleResearchCollection;
+import sample.objects.Image.Image;
 
-import java.awt.List;
-import java.awt.Point;
 import java.sql.SQLException;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.*;
-
-import static java.lang.Math.sqrt;
 
 /**
  * Created by oleh on 04.05.2016.
@@ -74,7 +57,7 @@ public class SimpleResearchModel extends SQLDatabase {
             /** return RGB values, average bright**/
             StartImageParams.getStartValues(file);
             this.image = Highgui.imread(file.getAbsolutePath(), Highgui.CV_LOAD_IMAGE_COLOR);
-            sample.libs.Image.Image.setImageMat(this.image);
+            Image.setImageMat(this.image);
         }
         else
         {
@@ -143,10 +126,10 @@ public class SimpleResearchModel extends SQLDatabase {
         Mat dst = new Mat();
         Mat testDst = new Mat();
 
-        sample.libs.Image.Image.getImageMat().copyTo(dst);
-        sample.libs.Image.Image.getImageMat().copyTo(testDst);
+        Image.getImageMat().copyTo(dst);
+        Image.getImageMat().copyTo(testDst);
 
-        System.out.println("-----------------------------------------------------------------" + sample.libs.Image.Image.getImageMat().size() + " " +
+        System.out.println("-----------------------------------------------------------------" + Image.getImageMat().size() + " " +
                 dst.size());
         /** use testing parametrs for getting HistAverValue **/
         PreProcessingOperation properation = new PreProcessingOperation(testDst,"1","15", "1", "1");
@@ -467,7 +450,7 @@ public class SimpleResearchModel extends SQLDatabase {
 
 
 
-        //sample.libs.Image.Image.setImageMat(properation.getOutputImage());
+        //sample.objects.Image.Image.setImageMat(properation.getOutputImage());
         //this.setPreProcImage(properation.getOutputImage());
 
 

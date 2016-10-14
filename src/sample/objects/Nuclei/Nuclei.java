@@ -1,4 +1,4 @@
-package sample.libs;
+package sample.objects.Nuclei;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;

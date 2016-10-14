@@ -3,18 +3,13 @@
  */
 
 package sample.nodes;
-import com.sun.prism.Material;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
 import sample.libs.Messages;
-import sample.libs.Messenger.Messenger;
+import sample.objects.Messenger.Messenger;
 import sample.libs.Session;
 import sample.models.CheckerModel;
 import sample.models.DbModel;

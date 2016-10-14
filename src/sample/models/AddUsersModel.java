@@ -1,12 +1,8 @@
 package sample.models;
 
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
 import sample.controllers.AdminController;
-import sample.controllers.PatientsController;
 import sample.libs.*;
-import sample.objects.Patient;
-import sample.objects.Users;
+import sample.objects.User.Users;
 
 import java.util.Random;
 

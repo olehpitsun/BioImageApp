@@ -21,7 +21,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import sample.libs.Messenger.Messenger;
+import sample.objects.Messenger.Messenger;
 import sample.libs.Session;
 import sample.models.MessengerModel;
 import sample.nodes.*;

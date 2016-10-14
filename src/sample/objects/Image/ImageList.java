@@ -1,4 +1,4 @@
-package sample.libs.Image;
+package sample.objects.Image;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

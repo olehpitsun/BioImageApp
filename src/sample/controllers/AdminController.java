@@ -8,18 +8,14 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.controlsfx.ControlsFXSample;
 import sample.libs.CurrentStage;
 import sample.libs.Messages;
 import sample.libs.Notifi;
 import sample.models.AdminModel;
 import sample.nodes.AddUsers;
 import sample.nodes.Statistics;
-import sample.objects.Users;
-import sample.views.AddUsersView;
-import sample.views.AdminView;
+import sample.objects.User.Users;
 import sample.views.EditUsersView;
-import org.controlsfx.control.*;
 
 import java.sql.SQLException;
 

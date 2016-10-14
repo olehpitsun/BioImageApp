@@ -3,7 +3,7 @@ package sample.models;
 import sample.controllers.AdminController;
 import sample.controllers.EditUsersController;
 import sample.libs.*;
-import sample.objects.Users;
+import sample.objects.User.Users;
 
 /**
  * Created by Petro on 04.05.2016.

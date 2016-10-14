@@ -1,4 +1,4 @@
-package sample.libs;
+package sample.objects.Estimate;
 
 /**
  * Created by oleh on 12.02.16.

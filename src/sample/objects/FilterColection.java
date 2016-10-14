@@ -1,4 +1,4 @@
-package sample.libs.Filters;
+package sample.objects;
 
 
 public class FilterColection {

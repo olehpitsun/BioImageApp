@@ -1,7 +1,7 @@
 package sample.libs.Image;
 
 import org.opencv.core.Mat;
-import sample.libs.Estimate;
+import sample.objects.Estimate.Estimate;
 import sample.tools.matToBufImg;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -13,7 +13,7 @@ public class StartImageParams {
 
     /**
      *
-     * @param inputImg
+     * @param Mat inputImg - вхідне зображення
      */
     public static void getStartValues(Mat inputImg){
         String timeStamp = "temp.png";

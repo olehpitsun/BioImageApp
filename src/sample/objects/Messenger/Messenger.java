@@ -1,4 +1,4 @@
-package sample.libs.Messenger;
+package sample.objects.Messenger;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

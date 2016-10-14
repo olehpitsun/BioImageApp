@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.libs.Messenger.Messenger;
-
-import java.text.DateFormat;
-import java.util.Date;
+import sample.objects.Messenger.Messenger;
 
 /**
  * Created by oleh on 18.06.2016.

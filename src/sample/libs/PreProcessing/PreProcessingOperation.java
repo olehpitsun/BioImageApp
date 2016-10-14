@@ -5,6 +5,7 @@ import org.opencv.core.MatOfFloat;
 import org.opencv.core.MatOfInt;
 import org.opencv.imgproc.Imgproc;
 import sample.libs.ValidateOperations;
+import sample.objects.PreProcessing.PreProcessingParam;
 
 import java.util.ArrayList;
 import java.util.List;

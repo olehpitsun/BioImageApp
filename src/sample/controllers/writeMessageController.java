@@ -3,14 +3,13 @@ package sample.controllers;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.validation.RequiredFieldValidator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import sample.libs.Messenger.Messenger;
-import sample.libs.UsersColection;
+import sample.objects.Messenger.Messenger;
+import sample.objects.User.UsersColection;
 import sample.models.MessengerModel;
 import java.sql.SQLException;
 

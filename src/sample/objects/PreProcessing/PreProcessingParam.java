@@ -1,4 +1,4 @@
-package sample.libs.PreProcessing;
+package sample.objects.PreProcessing;
 
 /**
  * Created by oleh on 11.02.16.

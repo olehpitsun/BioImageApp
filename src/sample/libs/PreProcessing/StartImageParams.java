@@ -1,7 +1,7 @@
 package sample.libs.PreProcessing;
 
 
-import sample.libs.Estimate;
+import sample.objects.Estimate.Estimate;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

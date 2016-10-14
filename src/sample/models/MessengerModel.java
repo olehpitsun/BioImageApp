@@ -2,10 +2,10 @@ package sample.models;
 
 import sample.controllers.MainWindowController;
 import sample.controllers.writeMessageController;
-import sample.libs.Messenger.Messenger;
+import sample.objects.Messenger.Messenger;
 import sample.libs.SQLDatabase;
 import sample.libs.Session;
-import sample.libs.UsersColection;
+import sample.objects.User.UsersColection;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.Date;

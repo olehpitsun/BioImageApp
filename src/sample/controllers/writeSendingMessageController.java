@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import sample.libs.UsersColection;
+import sample.objects.User.UsersColection;
 import sample.models.SendingModel;
 import sample.objects.Sendings;
 

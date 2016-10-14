@@ -4,7 +4,7 @@ import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import sample.libs.PreProcessing.PreProcessing;
 import sample.libs.PreProcessing.PreProcessingOperation;
-import sample.libs.*;
+import sample.objects.Estimate.Estimate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -292,16 +292,16 @@ public class Segmentation{
         }
         else if( threshValue1 > 30){
             if(Estimate.getBlueAverage() > 190){
-                rgba.convertTo(rgba, -1, 10d * 25 / 100, 0);  System.out.println("91");
+                rgba.convertTo(rgba, -1, 10d * 29 / 100, 0);  System.out.println("91");
             }
             else if(Estimate.getBlueAverage() > 160){
                 rgba.convertTo(rgba, -1, 10d * 35 / 100, 0);  System.out.println("92");
             }
         }else{
             if(Estimate.getBlueAverage() > 240){
-                rgba.convertTo(rgba, -1, 10d * 24 / 100, 0);  System.out.println("7");
+                rgba.convertTo(rgba, -1, 10d * 24 / 100, 0);  System.out.println("71");
             }else{
-                rgba.convertTo(rgba, -1, 10d * 17 / 100, 0);  System.out.println("7");
+                rgba.convertTo(rgba, -1, 10d * 21 / 100, 0);  System.out.println("72");
             }
         }
         tempMat.release();

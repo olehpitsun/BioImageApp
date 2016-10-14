@@ -2,7 +2,7 @@ package sample.libs.PreProcessing;
 
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
-import sample.libs.Estimate;
+import sample.objects.Estimate.Estimate;
 
 import java.util.ArrayList;
 import java.util.List;

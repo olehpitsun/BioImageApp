@@ -12,11 +12,11 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
-import sample.libs.Image.ImageList;
+import sample.objects.Image.ImageList;
 import sample.libs.Image.ImageOperations;
 import sample.libs.Image.StartImageParams;
-import sample.libs.PatientCollection;
-import sample.libs.ResearchCollection;
+import sample.objects.Patients.PatientCollection;
+import sample.objects.Research.ResearchCollection;
 import sample.models.LaborantModel;
 import sample.models.LikDoctorModel;
 

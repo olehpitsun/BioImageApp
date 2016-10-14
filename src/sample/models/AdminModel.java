@@ -6,7 +6,7 @@ import sample.libs.Date;
 import sample.libs.EventLogger;
 import sample.libs.SQLDatabase;
 import sample.libs.Session;
-import sample.objects.Users;
+import sample.objects.User.Users;
 
 import java.sql.SQLException;
 
