@@ -1,6 +1,9 @@
 package sample.libs.FTP;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -42,7 +45,7 @@ public class FTPFunctions {
     }
 
     /**
-     *
+     * Завантажити файл на FTP
      * @param localFileFullName  - шлях до файлу на локалі
      * @param fileName - назва файла (з розширенням)
      * @param hostDir - розміщення файлу на віддаленому сервері
@@ -62,7 +65,7 @@ public class FTPFunctions {
     }
 
     /**
-     *
+     * Отримати список директорій
      * @param path - шлях до директорії на віддаленому сервері
      */
     public void getDirectoriesList(String path){
@@ -101,7 +104,13 @@ public class FTPFunctions {
             System.out.println("Directory created");
     }
 
-    // Download the FTP File from the FTP Server
+
+
+    /**
+     * Download the FTP File from the FTP Server
+     * @param source - назва файлу на FTP сервері
+     * @param destination - директорія призначення (на локальному ПК)
+     */
     public void downloadFTPFile(String source, String destination) {
         try (FileOutputStream fos = new FileOutputStream(destination)) {
             this.ftp.retrieveFile(source, fos);
@@ -110,24 +119,21 @@ public class FTPFunctions {
         }
     }
 
-    // list the files in a specified directory on the FTP
-    public boolean listFTPFiles(String directory, String fileName) throws IOException {
-        // lists files and directories in the current working directory
-        boolean verificationFilename = false;
+    /**
+     * Отримати список файлів в директорії
+     * @param directory - директорія FTP з якої вибираються файли
+     * @return List<String>
+     * @throws IOException
+     */
+    public List<String> listFTPFiles(String directory) throws IOException {
+
+        List<String> imageList = new ArrayList<String>();
         FTPFile[] files = ftp.listFiles(directory);
         for (FTPFile file : files) {
-            String details = file.getName();
-            System.out.println(details);
-            if(details.equals(fileName))
-            {
-                System.out.println("Correct Filename");
-                verificationFilename=details.equals(fileName);
-
-                //System.out.println("Verification Failed: The filename is not updated at the CDN end.",details.equals(fileName));
-            }
+            imageList.add(file.getName().toString());
         }
 
-        return verificationFilename;
+        return imageList;
     }
 
     /**

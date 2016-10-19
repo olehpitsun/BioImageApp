@@ -299,6 +299,7 @@ public class MainWindowController implements Initializable{
     @FXML
     private void handleDiagnosisRules(){
         System.out.println("handleDiagnosisRules");
+        StartApp.DDQualityCharacteristics();
     }
 
     @FXML

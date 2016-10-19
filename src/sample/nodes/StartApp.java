@@ -170,6 +170,14 @@ public class StartApp extends Application {
             System.err.println(e);
         }
     }
+
+    public static void DDQualityCharacteristics(){
+        try {
+            DDQualityCharacteristicsModule ddQualityCharacteristics = new DDQualityCharacteristicsModule();
+        }catch (Exception e){
+            System.err.println(e);
+        }
+    }
 }
 
 
