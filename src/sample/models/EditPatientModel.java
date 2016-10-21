@@ -68,11 +68,11 @@ public class EditPatientModel extends SQLDatabase {
     }
     public void addToDB() {
         if(surname_of_patient.isEmpty() || name_of_patient.isEmpty() || fathername_of_patient.isEmpty() || date_of_birth.isEmpty() || results_of_research.isEmpty() || diagnosis.isEmpty() || full_name_of_doctor.isEmpty()
-                || !Regex.checkWithRegex(surname_of_patient, "^[a-zA-Zа-яА-Я]+$") || !Regex.checkWithRegex(name_of_patient, "^[a-zA-Zа-яА-Я]+$") || !Regex.checkWithRegex(fathername_of_patient, "^[a-zA-Zа-яА-Я]+$") ||
+                || !Regex.checkWithRegex(surname_of_patient, "^[a-zA-Zа-яА-Я\\s]+$") || !Regex.checkWithRegex(name_of_patient, "^[a-zA-Zа-яА-Я\\s]+$") || !Regex.checkWithRegex(fathername_of_patient, "^[a-zA-Zа-яА-Я\\s]+$") ||
                 !Regex.checkWithRegex(date_of_birth, "^[0-9.]+$") ||
-                !Regex.checkWithRegex(results_of_research, "^[a-zA-Zа-яА-Я0-9.,!;?]+$") ||
-                !Regex.checkWithRegex(diagnosis, "^[a-zA-Zа-яА-Я0-9.,!;?]+$") ||
-                !Regex.checkWithRegex(full_name_of_doctor, "^[a-zA-Zа-яА-Я]+$")) {
+                !Regex.checkWithRegex(results_of_research, "^[a-zA-Zа-яА-Я0-9\\s.,!;?]+$") ||
+                !Regex.checkWithRegex(diagnosis, "^[a-zA-Zа-яА-Я0-9.,!;?\\s]+$") ||
+                !Regex.checkWithRegex(full_name_of_doctor, "^[a-zA-Zа-яА-Я\\s]+$")) {
             Messages.error("Помилка заповнення!", "Будь ласка, заповніть коректно всі поля!", "Помилка!");
         } else {
             try {
