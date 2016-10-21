@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import sample.libs.Date;
 import sample.libs.Messages;
+import sample.libs.Session;
 import sample.models.AddPatientModel;
 import sample.models.EditPatientModel;
 import sample.objects.Patient;
@@ -39,8 +40,8 @@ public class EditPatientController {
     private TextArea diagnosis;
     @FXML
     private String date_of_completion;
-    @FXML
-    private TextField full_name_of_doctor;
+
+    private String doctor_id;
 
     EditPatientModel editPatientModel;
     public static Patient patient;
@@ -60,7 +61,7 @@ public class EditPatientController {
         editPatientModel.setResults_of_researsh(results_of_research.getText());
         editPatientModel.setDiagnosis(diagnosis.getText());
         editPatientModel.setDate_of_completion(Date.getTime());
-        editPatientModel.setFull_name_of_doctor(full_name_of_doctor.getText());
+        editPatientModel.setDoctor_id(Session.getKeyValue("id"));
         editPatientModel.addToDB();
 
     }
@@ -78,7 +79,7 @@ public class EditPatientController {
         results_of_research.setText(patient.getResults_of_research());
         diagnosis.setText(patient.getDiagnosis());
         date_of_completion = Date.getTime();
-        full_name_of_doctor.setText(patient.getFull_name_of_doctor());
+        doctor_id = Session.getKeyValue("id");
     }
 
 } // class AdClassController

@@ -12,7 +12,7 @@ public class Patient {
     private String results_of_research;
     private String diagnosis;
     private String date_of_completion;
-    private String full_name_of_doctor;
+    private String doctor_id;
     private String status;
     private String medical_card;
     private int id;
@@ -29,7 +29,7 @@ public class Patient {
         this.results_of_research = research;
         this.diagnosis = diagnosis;
         this.date_of_completion = completion;
-        this.full_name_of_doctor = doctor;
+        this.doctor_id = doctor;
         this.status = status;
         this.medical_card = medical_card;
     }
@@ -49,8 +49,8 @@ public class Patient {
     public void setDate_of_completion(String date_of_completion) {
         this.date_of_completion = date_of_completion;
     }
-    public void setFull_name_of_doctor(String full_name_of_doctor) {
-        this.full_name_of_doctor = full_name_of_doctor;
+    public void setDoctor(String doctor) {
+        this.doctor_id = doctor;
     }
     public void setMedical_card(String medical_card){ this.medical_card = medical_card;}
 
@@ -66,6 +66,6 @@ public class Patient {
     public String getResults_of_research() {return this.results_of_research;}
     public String getDiagnosis() {return this.diagnosis;}
     public String getDate_of_completion() {return this.date_of_completion;}
-    public String getFull_name_of_doctor() {return this.full_name_of_doctor;}
+    public String getDoctor_id() {return this.doctor_id;}
     public String getMedical_card(){return this.medical_card;}
 }
