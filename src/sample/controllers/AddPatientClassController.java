@@ -6,6 +6,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import sample.libs.Date;
 import sample.libs.Messages;
 import sample.models.AddPatientModel;
 import sample.models.PatientsModel;
@@ -37,7 +38,7 @@ public class AddPatientClassController {
     @FXML
     private TextArea diagnosis;
     @FXML
-    private TextField date_of_completion;
+    private String date_of_completion;
     @FXML
     private TextField full_name_of_doctor;
     private Patient patient;
@@ -54,7 +55,7 @@ public class AddPatientClassController {
         addPatientModel.setGender(Gender);
         addPatientModel.setResults_of_researsh(results_of_research.getText());
         addPatientModel.setDiagnosis(diagnosis.getText());
-        addPatientModel.setDate_of_completion(date_of_completion.getText());
+        addPatientModel.setDate_of_completion(Date.getTime());
         addPatientModel.setFull_name_of_doctor(full_name_of_doctor.getText());
         addPatientModel.addToDB();
     }

@@ -110,10 +110,6 @@ public class AdminController {
         AddUsers addUsers = new AddUsers();
         Notifi.notification(Pos.TOP_RIGHT, "Увага!", "У всіх полях, крім логіна та пароля, заборонено використання цифр.");
 
-        /*Notifications.create()
-                .title("бля")
-                .text("нахуй")
-                .showWarning();*/
     }
     @FXML
     public void close()
