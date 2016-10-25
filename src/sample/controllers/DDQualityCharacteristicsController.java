@@ -15,14 +15,11 @@ import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 import sample.libs.FTP.FTPFunctions;
 import sample.libs.Image.ImageOperations;
-import sample.libs.Image.StartImageParams;
 import sample.models.LikDoctorModel;
-import sample.objects.Image.ImageList;
+import sample.objects.Image.DDoctorImageList;
 import sample.objects.Patients.PatientCollection;
 import sample.objects.Research.ResearchCollection;
-import sample.tools.DivideString;
 import sample.tools.Md5Util;
-
 import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,9 +34,9 @@ import static sample.controllers.LikDoctorController.comboBoxResearchData;
 public class DDQualityCharacteristicsController {
 
     @FXML
-    private TableView<ImageList> imageListTableView;
+    private TableView<DDoctorImageList> imageListTableView;
     @FXML
-    private TableColumn<ImageList, String> fullPathColumn;
+    private TableColumn<DDoctorImageList, String> fullPathColumn;
     @FXML
     private ComboBox<PatientCollection> patientListComboBox;
     @FXML
@@ -49,7 +46,7 @@ public class DDQualityCharacteristicsController {
     @FXML
     private Label researchNameLabel, researchNameValueLabel, researchGlassLabel, researchGlassValueLabel;
     public int research_id, patientId, imgID;
-    public static ObservableList<ImageList> imageListData = FXCollections.observableArrayList();
+    public static ObservableList<DDoctorImageList> imageListData = FXCollections.observableArrayList();
     public static ArrayList<String> imageList = new ArrayList<String>();
 
     @FXML
@@ -107,11 +104,12 @@ public class DDQualityCharacteristicsController {
     @FXML
     private void setImageListToTable(){
         fullPathColumn.setCellValueFactory(cellData -> cellData.getValue().fullPathProperty());
-        imageListTableView.setVisible(true);
-        imageListTableView.setItems(LikDoctorController.imageListData);
 
+        imageListData.clear();
         this.downloadFromFTP();
 
+        imageListTableView.setVisible(true);
+        imageListTableView.setItems(imageListData);
 
         /**
          * обробка натиску на запис в таблиці та передача
@@ -121,9 +119,8 @@ public class DDQualityCharacteristicsController {
             @Override
             public void handle(MouseEvent event) {
                 if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
-                    ImageList selectedImg = imageListTableView.getSelectionModel().getSelectedItem();
+                    DDoctorImageList selectedImg = imageListTableView.getSelectionModel().getSelectedItem();
                     setSelectedImageView(selectedImg.fullPathProperty().getValue().toString());//показати вибране оригінальне зображення
-                    imgID = Integer.valueOf(selectedImg.imageDbIDProperty().getValue().toString());
                 }
             }
         });
@@ -165,27 +162,34 @@ public class DDQualityCharacteristicsController {
     @FXML
     private void downloadFromFTP(){
 
-        String patientDirName = Md5Util.md5(this.patientId+"");
-        String researchName = Md5Util.md5(this.research_id+"");
+        Task<Void> task = new Task<Void>() {
+            @Override public Void call() throws Exception {
 
-        try {
-            FTPFunctions ftpF = new FTPFunctions("cafki.hol.es", 21, "u911040123.oleh", "olko111");
+                String patientDirName = Md5Util.md5(patientId+"");
+                String researchName = Md5Util.md5(research_id+"");
+                String fullpath = patientDirName + "/" + researchName + "/";
+                try {
+                    FTPFunctions ftpF = new FTPFunctions("cafki.hol.es", 21, "u911040123.oleh", "olko111");
+                    List<String> imagesList = ftpF.listFTPFiles(fullpath);
 
-            List<String> imagesList = ftpF.listFTPFiles(patientDirName + "/" + researchName + "/");
+                    // створення локальної директорії
+                    new File("C:/bioimg/" + fullpath).mkdirs();
 
-            // створення локальної директорії
-            new File("C:/bioimg/" + patientDirName + "/" + researchName).mkdirs();
-
-            for (String img : imagesList){
-                //скачування файлів
-                ftpF.downloadFTPFile(img, "C:/bioimg/" + patientDirName + "/" + researchName + "/" + img);
-                System.out.println(img);
+                    for (String img : imagesList){
+                        String imgpsth = "C:/bioimg/" + fullpath + img;
+                        imageListData.add(new DDoctorImageList(imgpsth));
+                        //скачування файлів
+                        ftpF.downloadFTPFile("/" + fullpath + "/" + img, imgpsth);
+                    }
+                    ftpF.disconnect();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return null;
             }
+        };
 
-            ftpF.disconnect();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Thread tasks = new Thread(task);
+        tasks.start();
     }
 }

@@ -74,6 +74,12 @@ public class PreProcessing{
         return dst;
     }
 
+    /**
+     *
+     * @param image - вхідне зображення
+     * @param kernel - ядро
+     * @return Mat
+     */
     public static Mat Erode(Mat image, int kernel){
 
         final Mat dst = new Mat(image.cols(), image.rows(), CvType.CV_8UC3);

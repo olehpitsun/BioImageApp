@@ -130,7 +130,9 @@ public class FTPFunctions {
         List<String> imageList = new ArrayList<String>();
         FTPFile[] files = ftp.listFiles(directory);
         for (FTPFile file : files) {
-            imageList.add(file.getName().toString());
+            if(file.isFile()){
+                imageList.add(file.getName().toString());
+            }
         }
 
         return imageList;
