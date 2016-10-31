@@ -33,6 +33,7 @@ import sample.models.CellEstimatorModel;
 import sample.models.ImageManagerModule;
 import sample.models.LikDoctorModel;
 import sample.models.TemplateMatching;
+import sample.module.dipl.DIPL;
 import sample.nodes.StartApp;
 
 import java.io.File;
@@ -152,6 +153,19 @@ public class LikDoctorController {
         contourNumColumn.setCellValueFactory(cellData -> cellData.getValue().contourNumProperty().asObject());
         contourAreaColumn.setCellValueFactory(cellData -> cellData.getValue().contourAreaProperty().asObject());
         contourPerimetrColumn.setCellValueFactory(cellData -> cellData.getValue().contourPerimetrProperty().asObject());
+    this.handeImageCorectionButton.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            DIPL dipl = new DIPL();
+            Stage pr = new Stage();
+            try {
+                dipl.start(pr);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    });
     }
 
     public LikDoctorController() {}
