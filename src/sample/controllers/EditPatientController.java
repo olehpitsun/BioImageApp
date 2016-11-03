@@ -6,7 +6,9 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import sample.libs.Date;
 import sample.libs.Messages;
+import sample.libs.Session;
 import sample.models.AddPatientModel;
 import sample.models.EditPatientModel;
 import sample.objects.Patient;
@@ -37,9 +39,9 @@ public class EditPatientController {
     @FXML
     private TextArea diagnosis;
     @FXML
-    private TextField date_of_completion;
-    @FXML
-    private TextField full_name_of_doctor;
+    private String date_of_completion;
+
+    private String doctor_id;
 
     EditPatientModel editPatientModel;
     public static Patient patient;
@@ -58,15 +60,15 @@ public class EditPatientController {
         editPatientModel.setId(patient.getId());
         editPatientModel.setResults_of_researsh(results_of_research.getText());
         editPatientModel.setDiagnosis(diagnosis.getText());
-        editPatientModel.setDate_of_completion(date_of_completion.getText());
-        editPatientModel.setFull_name_of_doctor(full_name_of_doctor.getText());
+        editPatientModel.setDate_of_completion(Date.getTime());
+        editPatientModel.setDoctor_id(Session.getKeyValue("id"));
         editPatientModel.addToDB();
 
     }
     @FXML
     public void initialize(){
         editPatientModel = new EditPatientModel();
-        if(patient.getGender().equals("Male"))
+        if(patient.getGender().equals("Чоловік"))
         {
             male_gender.setSelected(true);
         } else female_gender.setSelected(true);
@@ -76,8 +78,8 @@ public class EditPatientController {
         date_of_birth.setText(patient.getDate_of_birth());
         results_of_research.setText(patient.getResults_of_research());
         diagnosis.setText(patient.getDiagnosis());
-        date_of_completion.setText(patient.getDate_of_completion());
-        full_name_of_doctor.setText(patient.getFull_name_of_doctor());
+        date_of_completion = Date.getTime();
+        doctor_id = Session.getKeyValue("id");
     }
 
 } // class AdClassController

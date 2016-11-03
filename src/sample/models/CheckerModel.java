@@ -24,13 +24,13 @@ public class CheckerModel extends Task<Void> {
             con.setRequestMethod("HEAD");
             result = (con.getResponseCode() == HttpURLConnection.HTTP_OK);
         } catch (Exception e) {
-            e.printStackTrace();
+
         } finally {
             if (con != null) {
                 try {
                     con.disconnect();
                 } catch (Exception e) {
-                    e.printStackTrace();
+
                 }
             }
         }
