@@ -466,29 +466,38 @@ public class LikDoctorController {
      */
     private void FTP(){
 
-        String patientDirName = Md5Util.md5(this.patientId+"");
-        String researchName = Md5Util.md5(this.research_id+"");
-        try {
-            FTPFunctions ftpF = new FTPFunctions("cafki.hol.es", 21, "u911040123.oleh", "olko111");
+        Task<Void> task = new Task<Void>() {
+            @Override
+            public Void call() throws Exception {
+                String patientDirName = Md5Util.md5(patientId + "");
 
-            ftpF.createDirectory("/",patientDirName); // назва директорії для пацієента
-            ftpF.createDirectory("/" + patientDirName + "/", researchName);// назва директорії для ДОСЛІДУ
+                String researchName = Md5Util.md5(research_id + "");
+                try {
+                    FTPFunctions ftpF = new FTPFunctions("cafki.hol.es", 21, "u911040123.oleh", "olko111");
 
-            ftpF.getDirectoriesList("/");
-            ftpF.getDirectoriesList("" + patientDirName);
+                    ftpF.createDirectory("/", patientDirName); // назва директорії для пацієента
+                    ftpF.createDirectory("/" + patientDirName + "/", researchName);// назва директорії для ДОСЛІДУ
 
-            for (int i=0;i<imageListData.size(); i++) {
-                DivideString dvs = new DivideString(imageListData.get(i).getFullPath().toString(), '/');
-                System.out.println(dvs.fileNameWithExtension());
-                ftpF.uploadFTPFile(imageListData.get(i).getFullPath().toString(), dvs.fileNameWithExtension(),
-                        "/" + patientDirName + "/" + researchName + "/");
+                    ftpF.getDirectoriesList("/");
+                    ftpF.getDirectoriesList("" + patientDirName);
+
+                    for (int i = 0; i < imageListData.size(); i++) {
+                        DivideString dvs = new DivideString(imageListData.get(i).getFullPath().toString(), '/');
+                        System.out.println(dvs.fileNameWithExtension());
+                        ftpF.uploadFTPFile(imageListData.get(i).getFullPath().toString(), dvs.fileNameWithExtension(),
+                                "/" + patientDirName + "/" + researchName + "/");
+                    }
+
+                    ftpF.disconnect();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                return null;
             }
+        };
 
-            ftpF.disconnect();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Thread tasks = new Thread(task);
+        tasks.start();
     }
-
-
 }
