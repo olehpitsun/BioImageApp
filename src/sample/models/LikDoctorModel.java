@@ -25,7 +25,7 @@ public class LikDoctorModel extends SQLDatabase{
 
     public void createFolder(String pathToFolder){
         try {
-            new File(pathToFolder +"/pretreated").mkdir();
+            //new File(pathToFolder +"/pretreated").mkdir();
         }catch (Exception e){
             System.err.println(e);
         }
@@ -37,14 +37,14 @@ public class LikDoctorModel extends SQLDatabase{
     public void getPatientList() throws SQLException{
 
         int doctor_id = Integer.valueOf(Session.getKeyValue("id"));
-        sqlExecute("SELECT * FROM patients WHERE doctor_id = "+doctor_id+"");
+        sqlExecute("SELECT * FROM patients ORDER BY ID DESC");// WHERE doctor_id = "+doctor_id+"");
 
         LikDoctorController.comboBoxData.clear();
         while(resultSet.next()) {
             setData();
             counts++;
             LikDoctorController.comboBoxData.add(new PatientCollection(id, medical_card, surname, name, fathername));
-            QuantitativeParametersController.comboBoxData.add(new PatientCollection(id, medical_card, surname, name, fathername));
+            QuantitativeParametersController.comboBoxData.add(new PatientCollection(id, medical_card));
         }
     }
 
@@ -71,7 +71,8 @@ public class LikDoctorModel extends SQLDatabase{
     public void getResearchesByPatient(int patientID) throws SQLException{
 
         int doctor_id = Integer.valueOf(Session.getKeyValue("id"));
-        sqlExecute("SELECT * FROM researches WHERE patient_id = "+patientID+" AND user_id = "+doctor_id+"");
+        //sqlExecute("SELECT * FROM researches WHERE patient_id = "+patientID+" AND user_id = "+doctor_id+"");
+        sqlExecute("SELECT * FROM researches WHERE patient_id = "+patientID+"");
 
         LikDoctorController.comboBoxResearchData.clear();
         while(resultSet.next()) {
@@ -134,7 +135,6 @@ public class LikDoctorModel extends SQLDatabase{
         File[] files = dir.listFiles();
         for (int i = 0; i < files.length; i++) {
             String fileName = files[i].getName();
-            System.out.println(files[i].getAbsolutePath());
             for (String s : mask) {
                 if (fileName.toLowerCase(Locale.US).endsWith(s)) {
                     if (files[i].isFile()) {

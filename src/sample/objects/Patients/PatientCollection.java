@@ -14,6 +14,14 @@ public class PatientCollection {
         this.fathername = fathername;
     }
 
+    public PatientCollection(int id, String medical_card){
+        this.id = id;
+        this.medical_card = medical_card;
+        this.surname = "";
+        this.name = "";
+        this.fathername = "";
+    }
+
     public void setId(int id1){
         this.id = id1;
     }

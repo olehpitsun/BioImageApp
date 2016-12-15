@@ -91,15 +91,15 @@ public class MessengerModel extends SQLDatabase {
         while(resultSet.next()) {
             setUsersData();
             counts++;
-            writeMessageController.comboBoxData.add(new UsersColection(id, name, name, name));
+            writeMessageController.comboBoxData.add(new UsersColection(id, surname, name, fathername));
         }
     }
 
     public void setUsersData() throws SQLException
     {
         this.id = resultSet.getInt("id");
-        this.surname = resultSet.getString("name");
+        this.surname = resultSet.getString("Surname");
         this.name = resultSet.getString("name");
-        this.fathername = resultSet.getString("name");
+        this.fathername = resultSet.getString("Fathername");
     }
 }

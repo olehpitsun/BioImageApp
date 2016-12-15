@@ -14,7 +14,8 @@ public class SQLDatabase {
           Driver driver = new FabricMySQLDriver();
           DriverManager.registerDriver(driver);
           //connection = DriverManager.getConnection("jdbc:mysql://localhost/bioimageapp", "oleh", "oleh123");
-          connection = DriverManager.getConnection("jdbc:mysql://"+ SQLDatabaseParam.getHost() +"/" + SQLDatabaseParam.getDbname(),
+          connection = DriverManager.getConnection("jdbc:mysql://"+ SQLDatabaseParam.getHost() +"/" +
+                          SQLDatabaseParam.getDbname()+"?characterEncoding=utf8",
                   SQLDatabaseParam.getDbuser() , SQLDatabaseParam.getDbpass());
 
           statement = connection.createStatement();

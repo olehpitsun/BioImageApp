@@ -5,24 +5,24 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 import sample.libs.FTP.FTPFunctions;
 import sample.libs.Image.ImageOperations;
+import sample.models.DDQualityCharacteristicsModel;
 import sample.models.LikDoctorModel;
 import sample.objects.Image.DDoctorImageList;
 import sample.objects.Patients.PatientCollection;
+import sample.objects.QualityCharacteristics.QualityCharacteristicsCollection;
 import sample.objects.Research.ResearchCollection;
 import sample.tools.Md5Util;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static sample.controllers.LikDoctorController.comboBoxData;
@@ -45,9 +45,20 @@ public class DDQualityCharacteristicsController {
     private ImageView selectedImageView;
     @FXML
     private Label researchNameLabel, researchNameValueLabel, researchGlassLabel, researchGlassValueLabel;
+    @FXML
+    public ScrollPane scroll;
     public int research_id, patientId, imgID;
     public static ObservableList<DDoctorImageList> imageListData = FXCollections.observableArrayList();
     public static ArrayList<String> imageList = new ArrayList<String>();
+    private DDQualityCharacteristicsModel ddqcmodel = new DDQualityCharacteristicsModel();// підєднання до БД
+
+    @FXML
+    public ComboBox<QualityCharacteristicsCollection> emailComboBox = new ComboBox<>();
+    @FXML
+    public ComboBox<QualityCharacteristicsCollection> typeComboBox = new ComboBox<>();
+    @FXML
+    public ComboBox<QualityCharacteristicsCollection> sizeComboBox = new ComboBox<>();
+
 
     @FXML
     private void initialize() {
@@ -58,16 +69,36 @@ public class DDQualityCharacteristicsController {
             System.err.println(e);
         }
         patientListComboBox.setItems(comboBoxData);
+
+        // колекція елементів форми
+        List<ComboBox<QualityCharacteristicsCollection>> qualityCharacteristicsCollectionList =
+                Arrays.asList(emailComboBox,typeComboBox,sizeComboBox);
+
+        // перебір якісних параметрів. Виділення їх значень
+        for(int i = 0, j = 1; i < qualityCharacteristicsCollectionList.size(); i++, j++){
+            setQualityValues(qualityCharacteristicsCollectionList.get(i),j);
+        }
     }
 
     public DDQualityCharacteristicsController(){}
 
-    /**
-     * обробка інформації про обраного пацієнта
-     * @throws SQLException
-     */
+    /*** виділення значень для якісних характеристик
+     * @param srt - ComboBox-елемент
+     * @param id - ідентифікатор значення якісного параметру в БД*/
+    @FXML
+    private void setQualityValues(ComboBox<QualityCharacteristicsCollection> srt, int id){
+        try {
+            srt.setItems(ddqcmodel.getQualityCharacteristicsValuesFromDB(id));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*** обробка інформації про обраного пацієнта
+     * @throws SQLException*/
     @FXML
     private void getResearchesByPatientList() throws SQLException {
+
         PatientCollection patientCollection = patientListComboBox.getSelectionModel().getSelectedItem();
         this.patientId = patientCollection.getId();
         LikDoctorModel likDoctorModel = new LikDoctorModel();
@@ -111,10 +142,8 @@ public class DDQualityCharacteristicsController {
         imageListTableView.setVisible(true);
         imageListTableView.setItems(imageListData);
 
-        /**
-         * обробка натиску на запис в таблиці та передача
-         * у метод setSelectedImageView для виводу зображення на екран
-         */
+        /*** обробка натиску на запис в таблиці та передача
+         * у метод setSelectedImageView для виводу зображення на екран*/
         imageListTableView.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -139,7 +168,6 @@ public class DDQualityCharacteristicsController {
                 selectedImageView.setFitWidth(450.0);
                 selectedImageView.setFitHeight(450.0);
                 selectedImageView.setPreserveRatio(true);
-
                 return null;
             }
         };
@@ -156,9 +184,7 @@ public class DDQualityCharacteristicsController {
         this.selectedImageView.setPreserveRatio(true);
     }
 
-    /**
-     * завантаження файлів на локальний диск
-     */
+    /*** завантаження файлів на локальний диск*/
     @FXML
     private void downloadFromFTP(){
 
@@ -168,6 +194,8 @@ public class DDQualityCharacteristicsController {
                 String patientDirName = Md5Util.md5(patientId+"");
                 String researchName = Md5Util.md5(research_id+"");
                 String fullpath = patientDirName + "/" + researchName + "/";
+
+                System.out.println(fullpath);
                 try {
                     FTPFunctions ftpF = new FTPFunctions("cafki.hol.es", 21, "u911040123.oleh", "olko111");
                     List<String> imagesList = ftpF.listFTPFiles(fullpath);

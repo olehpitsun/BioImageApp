@@ -83,10 +83,10 @@
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
     -fx-border-color:
-        transparent
-        transparent
-        derive(-fx-base, 80%)
-        transparent;
+            transparent
+            transparent
+            derive(-fx-base, 80%)
+            transparent;
     -fx-border-insets: 0 10 1 0;
 }
 
@@ -143,9 +143,9 @@
  */
 
 .button:hover{
--fx-background-color: #ffffff;
--fx-text-fill: #8BC34A;
--fx-text-alignment: center;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #8BC34A;
+    -fx-text-alignment: center;
 }
 
 .button{
@@ -331,14 +331,11 @@
     -fx-background-color: #DCEDC8;
     -fx-text-color: #212121;
      -fx-text-fill: #212121;
-
 }
-
 .button:pressed, .button:default:hover:pressed {
   -fx-background-color: white;
   -fx-text-fill: #212121;
 }
-
 .button:focused {
     -fx-border-color: white, white;
     -fx-border-width: 1, 1;
@@ -347,18 +344,15 @@
     -fx-border-insets: 1 1 1 1, 0;
     -fx-text-color: #212121;
 }
-
 .button:disabled, .button:default:disabled {
     -fx-opacity: 0.4;
     -fx-background-color: #1b323b;
     -fx-text-fill: white;
 }
-
 .button:default {
     -fx-background-color: -fx-focus-color;
     -fx-text-fill: #ffffff;
 }
-
 .button:default:hover {
     -fx-background-color: derive(-fx-focus-color,30%);
 }
@@ -552,22 +546,22 @@
     -fx-background-image: url("../images/mail.png");
     -fx-background-repeat: no-repeat;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
- }
+}
 
- #cytologyButton, #histologyButton{
-     -fx-padding: 3 10 3 10;
-     -fx-border-color: #317589;
-     -fx-border-width: 2;
-     -fx-background-radius: 0;
-     -fx-background-color: #317589;
-     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-     -fx-font-size: 10pt;
-     -fx-text-fill: #d8d8d8;
-     -fx-text-alignment: right;
-     -fx-min-height: 200px;
-     -fx-min-width: 250px;
-     -fx-alignment: center;
-     -fx-background-image: url("../images/tag.png");
-     -fx-background-repeat: no-repeat;
-     -fx-background-insets: 0 0 0 0, 0, 1, 2;
- }
+#cytologyButton, #histologyButton{
+    -fx-padding: 3 10 3 10;
+    -fx-border-color: #317589;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #317589;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-text-alignment: right;
+    -fx-min-height: 200px;
+    -fx-min-width: 250px;
+    -fx-alignment: center;
+    -fx-background-image: url("../images/tag.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}

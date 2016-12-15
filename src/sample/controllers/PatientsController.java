@@ -97,7 +97,7 @@ public class PatientsController {
                     patient.getSurname_of_patient().toLowerCase().contains(text) ||
                     patient.getName_of_patient().toLowerCase().contains(text) ||
                     patient.getFathername_of_patient().toLowerCase().contains(text) ||
-                    patient.getFull_name_of_doctor().toLowerCase().contains(text) ||
+                    patient.getDoctor_id().toLowerCase().contains(text) ||
                     patient.getGender().toLowerCase().contains(text) ||
                     patient.getResults_of_research().toLowerCase().contains(text) ||
                     patient.getStatus().toLowerCase().contains(text) ||
@@ -107,7 +107,7 @@ public class PatientsController {
                     patient.getSurname_of_patient().toUpperCase().contains(text) ||
                     patient.getName_of_patient().toUpperCase().contains(text) ||
                     patient.getFathername_of_patient().toUpperCase().contains(text) ||
-                    patient.getFull_name_of_doctor().toUpperCase().contains(text) ||
+                    patient.getDoctor_id().toUpperCase().contains(text) ||
                     patient.getGender().toUpperCase().contains(text) ||
                     patient.getResults_of_research().toUpperCase().contains(text) ||
                     patient.getStatus().toUpperCase().contains(text) ||
@@ -117,7 +117,7 @@ public class PatientsController {
                     patient.getSurname_of_patient().contains(text) ||
                     patient.getName_of_patient().contains(text) ||
                     patient.getFathername_of_patient().contains(text) ||
-                    patient.getFull_name_of_doctor().contains(text) ||
+                    patient.getDoctor_id().contains(text) ||
                     patient.getGender().contains(text) ||
                     patient.getResults_of_research().contains(text) ||
                     patient.getStatus().contains(text))
@@ -131,7 +131,7 @@ public class PatientsController {
     {
         AddPatientView addPatientView = new AddPatientView();
         addPatientView.render();
-        Notifi.notification(Pos.TOP_RIGHT, "Увага!", "У всіх полях, крім дати народження та дати заповнення,\n " +
+        Notifi.notification(Pos.TOP_RIGHT, "Увага!", "У всіх полях, крім дати народження, " +
                 "заборонено використання цифр.");
     }
     @FXML
@@ -148,7 +148,7 @@ public class PatientsController {
         EditPatientController.patient = patient;
         EditPatientView editPatientView = new EditPatientView();
             editPatientView.render();
-            Notifi.notification(Pos.TOP_RIGHT, "Увага!", "У всіх полях, крім дати народження та дати заповнення,\n " +
+            Notifi.notification(Pos.TOP_RIGHT, "Увага!", "У всіх полях, крім дати народження, " +
                     "заборонено використання цифр.");
         } catch (Exception ex) {
             Messages.error("Помилка","Не вибрано пацієнта","TABLE");
@@ -187,7 +187,7 @@ public class PatientsController {
         diagnosis.setCellValueFactory(new PropertyValueFactory<Patient, String>("diagnosis"));
         research.setCellValueFactory(new PropertyValueFactory<Patient, String>("results_of_research"));
         completion.setCellValueFactory(new PropertyValueFactory<Patient, String>("date_of_completion"));
-        doctor.setCellValueFactory(new PropertyValueFactory<Patient, String>("full_name_of_doctor"));
+        doctor.setCellValueFactory(new PropertyValueFactory<Patient, String>("doctor_id"));
         patientsData.addListener(new ListChangeListener<Patient>() {
             @Override
             public void onChanged(Change<? extends Patient> c){

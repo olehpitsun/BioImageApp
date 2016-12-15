@@ -213,6 +213,7 @@ public class MainWindowController implements Initializable{
 
     @FXML
     private void activateMainPage() throws SQLException {
+
         showButton1.setDisable(false); directionButton.setDisable(false);
         cytologyButton.setDisable(false); histologyButton.setDisable(false);
         objectCharacterParamButton.setVisible(false);
@@ -242,9 +243,17 @@ public class MainWindowController implements Initializable{
     @FXML
     private void logout(){
         Session.clear();
+
+        objectCharacterParamButton.setVisible(false);
+        DiagnosisRulesButton.setVisible(false);
+        PatternsDescriptionButton.setVisible(false);
+
         showButton1.setDisable(true); directionButton.setDisable(true);
+        cytologyButton.setVisible(true); histologyButton.setVisible(true);
         cytologyButton.setDisable(true); histologyButton.setDisable(true);
         messenger.setVisible(false);
+
+
     }
 
     @FXML
@@ -298,7 +307,6 @@ public class MainWindowController implements Initializable{
 
     @FXML
     private void handleDiagnosisRules(){
-        System.out.println("handleDiagnosisRules");
         StartApp.DDQualityCharacteristics();
     }
 
@@ -307,6 +315,10 @@ public class MainWindowController implements Initializable{
         System.out.println("handlePatternsDescription");
     }
 
+    /**
+     * Кількісні характеристики
+     * Формування звіту
+     */
     @FXML
     private void handleQuantitativeParameters(){
         StartApp.QuantitativeParametersPage();

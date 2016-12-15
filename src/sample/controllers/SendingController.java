@@ -37,14 +37,8 @@ public class SendingController {
         this.showMessenger();
     }
 
-
-
     @FXML
-    private void showMessages() throws SQLException {
-
-
-    }
-
+    private void showMessages() throws SQLException {}
 
     @FXML
     private void showMessenger(){

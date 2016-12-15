@@ -17,7 +17,6 @@
       <TextField fx:id="date_of_birth" layoutX="50.0" layoutY="132.0" prefHeight="30.0" prefWidth="230.0" promptText="дд.мм.рррр" />
       <TextArea fx:id="results_of_research" layoutX="50.0" layoutY="200.0" prefHeight="100.0" prefWidth="500.0" promptText="Результати досліджень" />
       <TextArea fx:id="diagnosis" layoutX="50.0" layoutY="335.0" prefHeight="56.0" prefWidth="500.0" promptText="Діагноз" />
-      <TextField fx:id="date_of_completion" layoutX="50.0" layoutY="432.0" prefHeight="30.0" prefWidth="230.0" promptText="дд.мм.рррр" />
       <TextField fx:id="full_name_of_doctor" layoutX="320.0" layoutY="432.0" prefHeight="30.0" prefWidth="230.0" promptText="Прізвище ім'я по батькові" />
       <JFXButton buttonType="RAISED" layoutX="150.0" layoutY="482.0" mnemonicParsing="false" onAction="#addAPatientInDB" prefHeight="40.0" prefWidth="300.0" text="ДОДАТИ" ripplerFill="#bbdefb" style="-fx-background-color: #2196F3;" textFill="WHITE">
          <font>

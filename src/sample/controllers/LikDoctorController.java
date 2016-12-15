@@ -25,6 +25,7 @@ import org.controlsfx.control.Notifications;
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 import sample.libs.FTP.FTPFunctions;
+import sample.module.dipl.DIPL;
 import sample.objects.Image.ImageList;
 import sample.libs.Image.ImageOperations;
 import sample.libs.Image.StartImageParams;
@@ -153,6 +154,20 @@ public class LikDoctorController {
         contourNumColumn.setCellValueFactory(cellData -> cellData.getValue().contourNumProperty().asObject());
         contourAreaColumn.setCellValueFactory(cellData -> cellData.getValue().contourAreaProperty().asObject());
         contourPerimetrColumn.setCellValueFactory(cellData -> cellData.getValue().contourPerimetrProperty().asObject());
+
+        this.handeImageCorectionButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DIPL dipl = new DIPL();
+                Stage pr = new Stage();
+                try {
+                    dipl.start(pr);
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public LikDoctorController() {}
@@ -491,6 +506,11 @@ public class LikDoctorController {
                     ftpF.disconnect();
                 } catch (Exception e) {
                     e.printStackTrace();
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Доступ до FTP сервера");
+                    alert.setHeaderText("Виникла помилка. Перевірте підключення до Інтернету");
+                    alert.showAndWait();
                 }
 
                 return null;

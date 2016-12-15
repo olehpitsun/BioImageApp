@@ -3,8 +3,12 @@ package sample.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
@@ -16,6 +20,8 @@ import sample.objects.ImagesColection;
 import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import static sample.libs.CurrentStage.stage;
 
 /**
  * Created by oleh_pi on 13.09.2016.
@@ -40,6 +46,7 @@ public class QuantitativeParametersController {
     private Stage dialogStage;
     public static ArrayList selectedNucleiParam = new ArrayList();
     public static ObservableList<ImagesColection> comboBoxImagesData = FXCollections.observableArrayList();
+
 
     @FXML
     private void initialize() {
@@ -73,6 +80,13 @@ public class QuantitativeParametersController {
         compactness.setSelected(true);
 
         handleCheckBoxAction();
+
+
+
+
+
+
+
     }
 
     public QuantitativeParametersController(){}
