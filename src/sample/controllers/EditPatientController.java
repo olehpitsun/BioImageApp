@@ -49,6 +49,7 @@ public class EditPatientController {
     @FXML
     private ToggleGroup Gender;
 
+
     @FXML
     public void update()
     {
