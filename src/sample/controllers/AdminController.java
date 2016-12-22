@@ -6,8 +6,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import org.controlsfx.ControlsFXSample;
 import sample.libs.CurrentStage;
 import sample.libs.Messages;
@@ -65,6 +67,8 @@ public class AdminController {
     private TextField search;
     @FXML
     private Label count;
+    @FXML
+    private Pagination pagination;
     @FXML
     public void search()
     {
@@ -170,10 +174,23 @@ public class AdminController {
             public void onChanged(Change<? extends Users> c){
 
                 updateCount(usersData.size());
+                table.getItems().removeAll(backupUsersData);
+                table.getItems().addAll(usersData);
             }
         });
         adminModel.selectData();
-        table.setItems(usersData);
+        pagination.setPageCount(usersData.size() / rowsPerPage + 1);
+        pagination.setCurrentPageIndex(0);
+        pagination.setPageFactory(this::createPage);
+        //table.setItems(usersData);
+    }
+    private final static int dataSize = 10_023;
+    private final static int rowsPerPage = 50;
+    private Node createPage(int pageIndex) {
+        int fromIndex = pageIndex * rowsPerPage;
+        int toIndex = Math.min(fromIndex + rowsPerPage, usersData.size());
+        table.setItems(FXCollections.observableArrayList(usersData.subList(fromIndex, toIndex)));
+        return new BorderPane(table);
     }
 
 }

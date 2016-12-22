@@ -5,8 +5,10 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import sample.libs.CurrentStage;
 import sample.libs.Messages;
 import sample.models.AdminModel;
@@ -42,7 +44,8 @@ public class StatisticsController {
     private TableColumn<StatisticsList, String> event;
     @FXML
     private TableColumn<StatisticsList, String> date;
-
+    @FXML
+    private Pagination pagination;
     @FXML
     private Button searchButton;
     @FXML
@@ -105,11 +108,24 @@ public class StatisticsController {
             @Override
             public void onChanged(Change<? extends StatisticsList> c){
                 updateCount(statisticsData.size());
+                table.getItems().removeAll(backupStatisticsData);
+                table.getItems().addAll(statisticsData);
             }
         });
         statisticsModel.selectData();
-        table.setItems(statisticsData);
+        pagination.setPageCount(statisticsData.size() / rowsPerPage + 1);
+        pagination.setCurrentPageIndex(0);
+        pagination.setPageFactory(this::createPage);
+        //table.setItems(statisticsData);
 
+    }
+    private final static int dataSize = 10_023;
+    private final static int rowsPerPage = 50;
+    private Node createPage(int pageIndex) {
+        int fromIndex = pageIndex * rowsPerPage;
+        int toIndex = Math.min(fromIndex + rowsPerPage, statisticsData.size());
+        table.setItems(FXCollections.observableArrayList(statisticsData.subList(fromIndex, toIndex)));
+        return new BorderPane(table);
     }
 
 }
