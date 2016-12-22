@@ -18,8 +18,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
+import sample.libs.Image.*;
 import sample.module.dipl.Filters.Filter;
 import sample.module.dipl.tools.*;
+import sample.module.dipl.tools.ImageOperations;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -86,6 +88,18 @@ public class Controller {
             alert.showAndWait();
             System.out.println("Error loading");
         }
+    }
+    public void loadPrev(String path)
+    {
+        this.image = Highgui.imread(path, Highgui.CV_LOAD_IMAGE_COLOR);
+        changeList.clear();
+        obsListHistory.clear();
+        changeList.add(image);
+        obsListHistory.add("Original image");
+        originalImagePath = path;
+        String[] temp = originalImagePath.split("/");
+        originalImageName = temp[temp.length-1].substring(0, temp[temp.length-1].length()-4);
+        this.setOriginalImage(this.image);
     }
 
     //save to original image
@@ -193,7 +207,7 @@ public class Controller {
     //відкриття вікна редактора
     @FXML public void handleOpenEditor()throws Exception {
         Stage editor = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("resource/EditorWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resource/EditorWindow.fxml"));
         VBox root = loader.load();
         Scene scene = new Scene(root);
         editor.setScene(scene);
@@ -218,8 +232,9 @@ public class Controller {
         double psnr = PSNR.getPsnr( PSNR.getmeanSquaredError(image1, image2) );
         labelPSNR.setText("PSNR: "+Double.toString(psnr));
     }
-
-    public void init() {
+    String pathtoSelectImage;
+    public void init(String path) {
+        pathtoSelectImage = path;
         FilterUtil.setController(this);
         listFilters.setItems(obsListFilters);
         obsListFilters.add(Constants.FILTER_1);
@@ -237,5 +252,6 @@ public class Controller {
         obsListOperations.add(Constants.OPERATION_4);
 
         listHistory.setItems(obsListHistory);
+        loadPrev(path);
     }
 }
