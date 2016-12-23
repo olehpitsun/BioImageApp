@@ -1,5 +1,6 @@
 package sample.controllers;
 
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
@@ -23,6 +24,8 @@ import java.util.Properties;
 public class DBConnectionController {
     @FXML
     private JFXTextField hostField, portField, userField, dbnameField;
+    @FXML
+    private JFXCheckBox remember;
     @FXML
     private JFXPasswordField passwordField;
     private Stage dialogStage;
@@ -92,17 +95,20 @@ public class DBConnectionController {
             if(db.checkDbConnection() == true){
                 Messages.information("Зв'язок з БД", "З'єднання успішно встановлено", "БД");
             }
-            try {
-                FileOutputStream fout = new FileOutputStream("src/sample/props/db.properties");
-                Properties props = new Properties();
-                props.setProperty("db.host", hostField.getText());
-                props.setProperty("db.port", portField.getText());
-                props.setProperty("db.user", userField.getText());
-                props.setProperty("db.pass", passwordField.getText());
-                props.setProperty("db.name", dbnameField.getText());
-                props.store(fout, null);
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(remember.isSelected())
+            {
+                try {
+                    FileOutputStream fout = new FileOutputStream("src/sample/props/db.properties");
+                    Properties props = new Properties();
+                    props.setProperty("db.host", hostField.getText());
+                    props.setProperty("db.port", portField.getText());
+                    props.setProperty("db.user", userField.getText());
+                    props.setProperty("db.pass", passwordField.getText());
+                    props.setProperty("db.name", dbnameField.getText());
+                    props.store(fout, null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             okClicked = true;
             dialogStage.close();
