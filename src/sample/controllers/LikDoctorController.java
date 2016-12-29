@@ -156,7 +156,7 @@ public class LikDoctorController {
     this.handeImageCorectionButton.setOnAction(new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
-            DIPL dipl = new DIPL();
+            DIPL dipl = new DIPL(pathToSelectImage);
             Stage pr = new Stage();
             try {
                 dipl.start(pr);
@@ -287,6 +287,7 @@ public class LikDoctorController {
     }
 
     /*** заповнення таблиці imageListTableView контентом*/
+    String pathToSelectImage;
     @FXML
     private void setImageListToTable(){
         fullPathColumn.setCellValueFactory(cellData -> cellData.getValue().fullPathProperty());
@@ -304,6 +305,7 @@ public class LikDoctorController {
                     ImageList selectedImg = imageListTableView.getSelectionModel().getSelectedItem();
                     setSelectedImageView(selectedImg.fullPathProperty().getValue().toString());//показати вибране оригінальне зображення
                     imgID = Integer.valueOf(selectedImg.imageDbIDProperty().getValue().toString());
+                    pathToSelectImage = selectedImg.fullPathProperty().getValue().toString();
                     //settingsAutoPreprocImageView(selectedImg.fullPathProperty().getValue().toString());
                     templateMatch.setVisible(false);
                     autoImageCorectionButton.setVisible(true);

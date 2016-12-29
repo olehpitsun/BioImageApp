@@ -9,8 +9,11 @@ import org.opencv.core.Core;
 import sample.module.dipl.controler.Controller;
 
 public class DIPL extends Application {
-
-
+    String pathToSelectImage;
+    public DIPL(String path)
+    {
+        pathToSelectImage = path;
+    }
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("resource/MainWindow.fxml"));
         VBox root = loader.load();
@@ -21,7 +24,7 @@ public class DIPL extends Application {
 
         Controller controller = loader.getController();
         //controller.setStage(this.primaryStage);
-        controller.init();
+        controller.init(pathToSelectImage);
     }
 
 }

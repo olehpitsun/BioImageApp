@@ -7,8 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import sample.interfaces.PatientsBook;
 import sample.libs.CurrentStage;
 import sample.libs.Messages;
@@ -39,6 +41,8 @@ public class PatientsController {
     }
     public static ObservableList<Patient> patientsData = FXCollections.observableArrayList();
     public static ObservableList<Patient> backupPatientsData = FXCollections.observableArrayList();
+    @FXML
+    private Pagination pagination;
     @FXML
     private TableView<Patient> table;
     @FXML
@@ -126,6 +130,7 @@ public class PatientsController {
             }
         }
     }
+    static public TableView<Patient> staticTable;
     @FXML
     public void addPatient() throws Exception
     {
@@ -165,6 +170,7 @@ public class PatientsController {
         patientsModel.remove(patient);
         patientsData.remove(patient);
         backupPatientsData.remove(patient);
+        //table.getItems().remove(table.getSelectionModel().getSelectedIndex());
         } catch (Exception ex) {
             Messages.error("Помилка","Не вибрано пацієнта","TABLE");
         }
@@ -191,12 +197,24 @@ public class PatientsController {
         patientsData.addListener(new ListChangeListener<Patient>() {
             @Override
             public void onChanged(Change<? extends Patient> c){
-
                 updateCount(patientsData.size());
+                table.getItems().removeAll(backupPatientsData);
+                table.getItems().addAll(patientsData);
             }
         });
         patientsModel.selectData();
-        table.setItems(patientsData);
+        pagination.setPageCount(patientsData.size() / rowsPerPage + 1);
+        pagination.setCurrentPageIndex(0);
+        pagination.setPageFactory(this::createPage);
+        //table.setItems(patientsData);
+    }
+    private final static int dataSize = 10_023;
+    private final static int rowsPerPage = 5;
+    private Node createPage(int pageIndex) {
+        int fromIndex = pageIndex * rowsPerPage;
+        int toIndex = Math.min(fromIndex + rowsPerPage, patientsData.size());
+        table.setItems(FXCollections.observableArrayList(patientsData.subList(fromIndex, toIndex)));
+        return new BorderPane(table);
     }
 
 }

@@ -1,5 +1,6 @@
 package sample.controllers;
 
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
@@ -10,9 +11,12 @@ import sample.libs.SQLDatabase;
 import sample.libs.*;
 import sample.models.DbModel;
 import sample.nodes.DBConnectionModule;
-
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * Created by oleh on 30.04.2016.
@@ -21,10 +25,14 @@ public class DBConnectionController {
     @FXML
     private JFXTextField hostField, portField, userField, dbnameField;
     @FXML
+    private JFXCheckBox remember;
+    @FXML
     private JFXPasswordField passwordField;
     private Stage dialogStage;
     //private Person person;
     private boolean okClicked = false;
+    FileInputStream fis;
+    Properties property;
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -32,6 +40,14 @@ public class DBConnectionController {
      */
     @FXML
     private void initialize() {
+        property = new Properties();
+        try {
+            fis = new FileInputStream("src/sample/props/db.properties");
+            property.load(fis);
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -44,11 +60,11 @@ public class DBConnectionController {
     }
 
     public void setConnectField() {
-        hostField.setText("localhost");
-        portField.setText("3306");
-        userField.setText("oleh");
-        passwordField.setText("oleh123");
-        dbnameField.setText("bioimageapp");
+        hostField.setText(property.getProperty("db.host"));
+        portField.setText(property.getProperty("db.port"));
+        userField.setText(property.getProperty("db.user"));
+        passwordField.setText(property.getProperty("db.pass"));
+        dbnameField.setText(property.getProperty("db.name"));
     }
 
     /**
@@ -79,7 +95,21 @@ public class DBConnectionController {
             if(db.checkDbConnection() == true){
                 Messages.information("Зв'язок з БД", "З'єднання успішно встановлено", "БД");
             }
-
+            if(remember.isSelected())
+            {
+                try {
+                    FileOutputStream fout = new FileOutputStream("src/sample/props/db.properties");
+                    Properties props = new Properties();
+                    props.setProperty("db.host", hostField.getText());
+                    props.setProperty("db.port", portField.getText());
+                    props.setProperty("db.user", userField.getText());
+                    props.setProperty("db.pass", passwordField.getText());
+                    props.setProperty("db.name", dbnameField.getText());
+                    props.store(fout, null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
             okClicked = true;
             dialogStage.close();
 

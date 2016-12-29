@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
@@ -48,6 +49,7 @@
                <font>
                   <Font size="13.0" />
                </font></JFXTextField>
+            <JFXCheckBox fx:id="remember" text="Запам'ятати" />
          </children>
       </VBox>
       <JFXButton fx:id="dbSettingButton" buttonType="RAISED" layoutX="51.0" layoutY="301.0" onAction="#handleOk" prefHeight="32.0" prefWidth="146.0" ripplerFill="#bbdefb" style="-fx-background-color: #2196F3;" text="ПІДКЛЮЧЕННЯ" textFill="WHITE" AnchorPane.topAnchor="310.0">
