@@ -19,7 +19,8 @@ public class Hash {
     public static String hash(String st, String salt) {
         MessageDigest messageDigest = null;
         byte[] digest = new byte[0];
-        st = st.concat(salt);
+        if(salt != null)
+            st = st.concat(salt);
         try {
             messageDigest = MessageDigest.getInstance("MD5");
             messageDigest.reset();
