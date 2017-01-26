@@ -14,5 +14,9 @@
     <orderEntry type="library" name="mysql-connector-java-5.1.38-bin" level="project" />
     <orderEntry type="library" name="controlsfx-8.40.11" level="project" />
     <orderEntry type="library" name="jfoenix" level="project" />
+    <orderEntry type="library" name="itext-pdfa-5.5.10" level="project" />
+    <orderEntry type="library" name="itext-xtra-5.5.10" level="project" />
+    <orderEntry type="library" name="itextpdf-5.5.10" level="project" />
+    <orderEntry type="library" name="xmlworker-5.5.10" level="project" />
   </component>
 </module>

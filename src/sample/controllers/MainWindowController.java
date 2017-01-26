@@ -16,15 +16,18 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import sample.libs.*;
 import sample.libs.Messenger.Messenger;
-import sample.libs.Session;
 import sample.models.MessengerModel;
 import sample.nodes.*;
+
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -274,8 +277,23 @@ public class MainWindowController implements Initializable{
 
     @FXML
     private void handlePacientList() throws Exception{
+        Box box = Box.createHorizontalBox();
+        JLabel jl = new JLabel("Пароль: ");
+        box.add(jl);
+        JPasswordField jpf = new JPasswordField(24);
+        jpf.setEchoChar('*');
+        box.add(jpf);
+        int button = JOptionPane.showConfirmDialog(null, box, "Авторизація", JOptionPane.OK_CANCEL_OPTION);
 
-        Patients patient = new Patients();
+        if (button == JOptionPane.OK_OPTION) {
+            char[] input = jpf.getPassword();
+            String pass = String.valueOf(input);
+            if(Hash.hash(pass, null).equals(Session.getKeyValue("auth"))) {
+                Patients patient = new Patients();
+            } else
+                Notifi.notification(Pos.TOP_CENTER, "Помилка", "Неправильний пароль");
+        }
+
     }
 
     @FXML

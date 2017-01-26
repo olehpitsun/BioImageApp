@@ -37,7 +37,10 @@ public class PatientsModel extends SQLDatabase {
         sqlSetConnect();
         sqlExecute("SELECT * FROM patients WHERE doctor_id='"+doctor_id+"'");
     }
-
+    public void getdoctor(String doc_id)
+    {
+        sqlExecute("SELECT * FROM users WHERE id='"+doc_id+"'");
+    }
     public void remove(Patient patient) throws SQLException
     {
         removeExecute("DELETE FROM patients WHERE ID='"+patient.getId()+"'");

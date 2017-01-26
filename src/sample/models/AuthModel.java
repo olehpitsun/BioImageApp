@@ -56,7 +56,7 @@ public class AuthModel extends SQLDatabase {
                 Session.setKeyValue("id", resultSet.getString("id"));
                 Session.setKeyValue("name", resultSet.getString("name"));
                 Session.setKeyValue("role_id", resultSet.getString("role_id"));
-
+                Session.setKeyValue("auth", resultSet.getString("auth_key"));
                 System.out.println(Session.getKeyValue("id"));
                 System.out.println(Session.getKeyValue("name"));
                 System.out.println(Session.getKeyValue("role_id"));
