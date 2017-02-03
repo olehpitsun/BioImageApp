@@ -30,6 +30,11 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.geometry.Pos;
+import sample.libs.*;
+import javax.swing.*;
+
+
 
 public class MainWindowController implements Initializable{
 
@@ -284,7 +289,21 @@ public class MainWindowController implements Initializable{
     @FXML
     private void handlePacientList() throws Exception{
 
-        Patients patient = new Patients();
+        Box box = Box.createHorizontalBox();
+        JLabel jl = new JLabel("Пароль: ");
+        box.add(jl);
+        JPasswordField jpf = new JPasswordField(24);
+        jpf.setEchoChar('*');
+        box.add(jpf);
+        int button = JOptionPane.showConfirmDialog(null, box, "Авторизація", JOptionPane.OK_CANCEL_OPTION);
+        if (button == JOptionPane.OK_OPTION) {
+            char[] input = jpf.getPassword();
+            String pass = String.valueOf(input);
+            if(Hash.hash(pass, null).equals(Session.getKeyValue("auth"))) {
+                Patients patient = new Patients();
+            } else
+                Notifi.notification(Pos.TOP_CENTER, "Помилка", "Неправильний пароль");
+        }
     }
 
     @FXML

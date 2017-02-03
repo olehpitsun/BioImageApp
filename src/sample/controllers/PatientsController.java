@@ -21,10 +21,16 @@ import sample.models.EditPatientModel;
 import sample.models.PatientsModel;
 import sample.nodes.AddPatientModule;
 import sample.nodes.Patients;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
+import javafx.scene.control.TextField;
 import sample.objects.Patient;
 import sample.views.AddPatientView;
 import sample.views.EditPatientView;
-
+import java.io.FileOutputStream;
+import sample.libs.*;
+import java.io.File;
+import java.nio.charset.Charset;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,15 +74,7 @@ public class PatientsController {
     @FXML
     private TableColumn<Patient, String> doctor;
     @FXML
-    private Button addPatient;
-    @FXML
-    private Button editPatient;
-    @FXML
-    private Button removePatient;
-    @FXML
-    private Button searchButton;
-    @FXML
-    private Button close;
+    private Button addPatient, editPatient, removePatient, searchButton, close, pdfBtn;
     @FXML
     private TextField search;
     @FXML
@@ -158,9 +156,71 @@ public class PatientsController {
         } catch (Exception ex) {
             Messages.error("Помилка","Не вибрано пацієнта","TABLE");
         }
-
-
     }
+
+    public PdfPCell getCell(String text, int alignment) {
+        PdfPCell cell = null;
+        try {
+            BaseFont baseFont = BaseFont.createFont("src/sample/res/times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font c = new Font(baseFont, 14, Font.NORMAL);
+            cell = new PdfPCell(new Phrase(text, c));
+            cell.setPaddingBottom(15);
+            cell.setHorizontalAlignment(alignment);
+            cell.setBorder(PdfPCell.NO_BORDER);
+        } catch (Exception e) {}
+        return cell;
+    }
+
+    @FXML
+    public void pdfExport()
+    {
+        try {
+            Patient pat = (Patient) table.getSelectionModel().getSelectedItem();
+            Document document = new Document(PageSize.A4);
+            PdfWriter.getInstance(document, new FileOutputStream(Hash.hash(pat.getName_of_patient(), Hash.generateSalt(10)) + ".pdf"));
+            document.open();
+            //meta
+            BaseFont baseFont = BaseFont.createFont("src/sample/res/times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font t = new Font(baseFont, 16, Font.BOLD);
+            Font c = new Font(baseFont, 14, Font.NORMAL);
+            //content
+            Paragraph title = new Paragraph("Результати дослідження", t);
+            title.setAlignment(Element.ALIGN_CENTER);
+            document.add(title);
+            document.add(Chunk.NEWLINE);
+            PdfPTable table = new PdfPTable(2);
+            table.setWidthPercentage(90);
+            table.setSpacingAfter(20);
+            table.addCell(getCell("ПІБ пацієнта: ", PdfPCell.ALIGN_LEFT));
+            table.addCell(getCell(pat.getSurname_of_patient() + " " +
+                    pat.getName_of_patient() + " " +
+                    pat.getFathername_of_patient(), PdfPCell.ALIGN_RIGHT));
+            table.addCell(getCell("Дата народження: ", PdfPCell.ALIGN_LEFT));
+            table.addCell(getCell(pat.getDate_of_birth(), PdfPCell.ALIGN_RIGHT));
+            table.addCell(getCell("Стать: ", PdfPCell.ALIGN_LEFT));
+            table.addCell(getCell(pat.getGender(), PdfPCell.ALIGN_RIGHT));
+            table.addCell(getCell("Результати дослідження: ", PdfPCell.ALIGN_LEFT));
+            table.addCell(getCell(pat.getResults_of_research(), PdfPCell.ALIGN_RIGHT));
+            table.addCell(getCell("Діагнози: ", PdfPCell.ALIGN_LEFT));
+            table.addCell(getCell(pat.getDiagnosis(), PdfPCell.ALIGN_RIGHT));
+            table.addCell(getCell("Дата заповнення: ", PdfPCell.ALIGN_LEFT));
+            table.addCell(getCell(pat.getDate_of_completion(), PdfPCell.ALIGN_RIGHT));
+            table.addCell(getCell("ПІБ лікаря: ", PdfPCell.ALIGN_LEFT));
+            patientsModel.getdoctor(pat.getDoctor_id());
+            ResultSet set = patientsModel.returnResult();
+            set.next();
+            table.addCell(getCell(set.getString("Surname") + " " +
+                    set.getString("Name") + " " + set.getString("Fathername"), PdfPCell.ALIGN_RIGHT));
+            document.add(table);
+            document.close();
+        }
+        catch (Exception ex) {
+            Messages.error("Помилка","Не вибрано пацієнта","TABLE");
+            ex.printStackTrace();
+        }
+    }
+
+
     @FXML
     public void deletePatient() throws SQLException
     {
