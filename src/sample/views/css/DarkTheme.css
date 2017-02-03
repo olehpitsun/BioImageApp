@@ -331,11 +331,14 @@
     -fx-background-color: #DCEDC8;
     -fx-text-color: #212121;
      -fx-text-fill: #212121;
+
 }
+
 .button:pressed, .button:default:hover:pressed {
   -fx-background-color: white;
   -fx-text-fill: #212121;
 }
+
 .button:focused {
     -fx-border-color: white, white;
     -fx-border-width: 1, 1;
@@ -344,15 +347,18 @@
     -fx-border-insets: 1 1 1 1, 0;
     -fx-text-color: #212121;
 }
+
 .button:disabled, .button:default:disabled {
     -fx-opacity: 0.4;
     -fx-background-color: #1b323b;
     -fx-text-fill: white;
 }
+
 .button:default {
     -fx-background-color: -fx-focus-color;
     -fx-text-fill: #ffffff;
 }
+
 .button:default:hover {
     -fx-background-color: derive(-fx-focus-color,30%);
 }

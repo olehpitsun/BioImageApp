@@ -61,7 +61,7 @@ public class AuthModule {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(StartApp.class.getResource("../views/fxml/AuthModuleView.fxml"));
+            loader.setLocation(StartApp.class.getResource("/sample/views/fxml/AuthModuleView.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
             // Create the dialog Stage.

@@ -40,6 +40,7 @@ public class EditPatientController {
     private TextArea diagnosis;
     @FXML
     private String date_of_completion;
+
     private String doctor_id;
 
     EditPatientModel editPatientModel;
@@ -47,6 +48,7 @@ public class EditPatientController {
 
     @FXML
     private ToggleGroup Gender;
+
 
     @FXML
     public void update()

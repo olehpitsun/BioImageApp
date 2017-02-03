@@ -42,8 +42,8 @@ public class AddPatientModel extends  SQLDatabase{
     public void setDate_of_birth(String date_of_birth) { this.date_of_birth = date_of_birth; }
 
     public void setGender(ToggleGroup toggle) {
-                RadioButton chk = (RadioButton)toggle.getSelectedToggle();
-                gender = chk.getText();
+        RadioButton chk = (RadioButton)toggle.getSelectedToggle();
+        gender = chk.getText();
     }
 
     public void setResults_of_researsh(String results_of_research) {

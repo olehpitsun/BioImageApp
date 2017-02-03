@@ -67,6 +67,7 @@ public class EditPatientModel extends SQLDatabase {
         sqlSetConnect();
     }
     public void addToDB() {
+
         if(surname_of_patient.isEmpty() || name_of_patient.isEmpty() || fathername_of_patient.isEmpty() || date_of_birth.isEmpty() || results_of_research.isEmpty() || diagnosis.isEmpty()
                 || !Regex.checkWithRegex(surname_of_patient, "^[a-zA-Zа-яА-Я\\s]+$") || !Regex.checkWithRegex(name_of_patient, "^[a-zA-Zа-яА-Я\\s]+$") || !Regex.checkWithRegex(fathername_of_patient, "^[a-zA-Zа-яА-Я\\s]+$") ||
                 !Regex.checkWithRegex(date_of_birth, "^[0-9.]+$") ||

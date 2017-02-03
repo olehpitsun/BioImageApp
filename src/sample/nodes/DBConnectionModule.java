@@ -20,7 +20,7 @@ public class DBConnectionModule {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(StartApp.class.getResource("../views/fxml/DbConnectionModuleView.fxml"));
+            loader.setLocation(StartApp.class.getResource("/sample/views/fxml/DbConnectionModuleView.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
             // Create the dialog Stage.
@@ -29,7 +29,7 @@ public class DBConnectionModule {
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
-            scene.getStylesheets().add(0, "sample/views/css/DarkTheme.css");
+            scene.getStylesheets().add(0, "/sample/views/css/DarkTheme.css");
 
             dialogStage.setScene(scene);
 

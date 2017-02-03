@@ -43,11 +43,19 @@
     -fx-size: 35;
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
+<<<<<<< HEAD
+    -fx-border-color: 
+        transparent
+        transparent
+        derive(-fx-base, 80%) 
+        transparent;
+=======
     -fx-border-color:
             transparent
             transparent
             derive(-fx-base, 80%)
             transparent;
+>>>>>>> multithrading
     -fx-border-insets: 0 10 1 0;
 }
 
@@ -97,7 +105,11 @@
     -fx-font-width: 20;
 }
 
+<<<<<<< HEAD
+/* 
+=======
 /*
+>>>>>>> multithrading
  * Metro style Push Button
  * Author: Pedro Duque Vieira
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
@@ -121,8 +133,13 @@
 }
 
 .button:pressed, .button:default:hover:pressed {
+<<<<<<< HEAD
+  -fx-background-color: white;
+  -fx-text-fill: #1d1d1d;
+=======
     -fx-background-color: white;
     -fx-text-fill: #1d1d1d;
+>>>>>>> multithrading
 }
 
 .button:focused {

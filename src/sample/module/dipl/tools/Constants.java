@@ -14,4 +14,8 @@ public class Constants {
     public static final String OPERATION_2 = "Dilation";
     public static final String OPERATION_3 = "Contrast";
     public static final String OPERATION_4 = "Brightness";
+
 }
+
+
+

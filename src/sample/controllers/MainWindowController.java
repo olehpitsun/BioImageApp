@@ -67,7 +67,7 @@ public class MainWindowController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            VBox box = FXMLLoader.load(getClass().getResource("../views/fxml/DrawerContent.fxml"));
+            VBox box = FXMLLoader.load(getClass().getResource("/sample/views/fxml/DrawerContent.fxml"));
             authDrawer.setSidePane(box);
             authDrawer.setOverLayVisible(false);
 
