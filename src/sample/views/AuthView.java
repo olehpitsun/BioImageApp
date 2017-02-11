@@ -31,7 +31,7 @@ public class AuthView{
         CurrentStage.getStage().close();
         primaryStage.show();*/
 
-            Parent parent = FXMLLoader.load(getClass().getResource("fxml/AuthModuleView.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/sample/views/fxml/AuthModuleView.fxml"));
             Scene scene2 = new Scene(parent);
 
             // Create the dialog Stage.

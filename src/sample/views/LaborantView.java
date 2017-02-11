@@ -13,7 +13,7 @@ public class LaborantView {
     Stage primaryStage = new Stage();
     public void render() throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/LaborantView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sample/views/fxml/LaborantView.fxml"));
         Scene scene = new Scene(root);
         CurrentStage.setStage(primaryStage);
         primaryStage.setMinHeight(400);

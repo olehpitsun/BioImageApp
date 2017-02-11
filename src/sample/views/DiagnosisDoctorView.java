@@ -13,7 +13,7 @@ public class DiagnosisDoctorView {
     Stage primaryStage = new Stage();
     public void render() throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/DiagnosisDoctorView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sample/views/fxml/DiagnosisDoctorView.fxml"));
         Scene scene = new Scene(root);
         CurrentStage.setStage(primaryStage);
         primaryStage.setMinHeight(400);

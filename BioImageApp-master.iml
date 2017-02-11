@@ -18,5 +18,6 @@
     <orderEntry type="library" name="itext-xtra-5.5.10" level="project" />
     <orderEntry type="library" name="itextpdf-5.5.10" level="project" />
     <orderEntry type="library" name="xmlworker-5.5.10" level="project" />
+    <orderEntry type="library" name="PDFRenderer-0.9.1" level="project" />
   </component>
 </module>

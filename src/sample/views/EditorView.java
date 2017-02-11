@@ -14,7 +14,7 @@ public class EditorView {
     Stage primaryStage = new Stage();
     public void render() throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/EditorWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sample/views/fxml/EditorWindow.fxml"));
         Scene scene = new Scene(root);
         CurrentStage.setStage(primaryStage);
         primaryStage.setMinHeight(400);

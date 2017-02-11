@@ -16,7 +16,7 @@ public class StatisticsView {
     Stage primaryStage = new Stage();
     public void render() throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/StatisticsView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sample/views/fxml/StatisticsView.fxml"));
         Scene scene = new Scene(root);
         CurrentStage.setOwnerStage(primaryStage);
         primaryStage.setMinHeight(400);
