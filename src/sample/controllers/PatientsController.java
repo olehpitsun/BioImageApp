@@ -267,10 +267,10 @@ public class PatientsController {
 //            fos.close();
                             Stage primaryStage = new Stage();
                             Parent parent = FXMLLoader.load(getClass().getResource("/sample/views/fxml/PreviewPDF.fxml"));
-                            Scene scene = new Scene(parent, 600, 400);
+                            Scene scene = new Scene(parent, 500, 700);
                             CurrentStage.setOwnerStage(primaryStage);
-                            primaryStage.setMinHeight(400);
-                            primaryStage.setMinWidth(600);
+                            primaryStage.setMinHeight(700);
+                            primaryStage.setMinWidth(500);
                             primaryStage.setTitle("PDF Preview");
                             primaryStage.setScene(scene);
                             primaryStage.initModality(Modality.WINDOW_MODAL);

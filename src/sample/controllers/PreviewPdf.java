@@ -59,7 +59,6 @@ public class PreviewPdf implements Initializable{
                     null,
                     true,
                     true);
-
             prev_img.setImage(createFxImage(img));
         } catch (IOException ee) {
             ee.printStackTrace();

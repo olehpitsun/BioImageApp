@@ -7,41 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2655a775-c4f5-4532-882e-6ea1389e71f6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/res/times.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/res/timesbd.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/res/timesbi.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/res/timesi.ttf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/controllers/PreviewPdf.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/views/fxml/PreviewPDF.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/controllers/MainWindowController.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/controllers/MainWindowController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/controllers/PatientsController$1.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/controllers/PatientsController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/controllers/PatientsController.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/controllers/PatientsController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/libs/Hash.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/libs/Hash.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/models/AuthModel.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/models/AuthModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/models/PatientsModel.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/models/PatientsModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/views/AuthView.class" afterPath="$PROJECT_DIR$/out/production/BioImageApp-master/sample/views/AuthView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BioImageApp-master.iml" afterPath="$PROJECT_DIR$/BioImageApp-master.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controllers/PatientsController.java" afterPath="$PROJECT_DIR$/src/sample/controllers/PatientsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/AddPatientView.java" afterPath="$PROJECT_DIR$/src/sample/views/AddPatientView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/AddUsersView.java" afterPath="$PROJECT_DIR$/src/sample/views/AddUsersView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/AdminView.java" afterPath="$PROJECT_DIR$/src/sample/views/AdminView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/AuthView.java" afterPath="$PROJECT_DIR$/src/sample/views/AuthView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/CheckerView.java" afterPath="$PROJECT_DIR$/src/sample/views/CheckerView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/DiagnosisDoctorView.java" afterPath="$PROJECT_DIR$/src/sample/views/DiagnosisDoctorView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/EditPatientView.java" afterPath="$PROJECT_DIR$/src/sample/views/EditPatientView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/EditUsersView.java" afterPath="$PROJECT_DIR$/src/sample/views/EditUsersView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/EditorView.java" afterPath="$PROJECT_DIR$/src/sample/views/EditorView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/LaborantView.java" afterPath="$PROJECT_DIR$/src/sample/views/LaborantView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/LikDoctorPageView.java" afterPath="$PROJECT_DIR$/src/sample/views/LikDoctorPageView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/MainWindowView.java" afterPath="$PROJECT_DIR$/src/sample/views/MainWindowView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/PatientsView.java" afterPath="$PROJECT_DIR$/src/sample/views/PatientsView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/QuantitativeParametersPageView.java" afterPath="$PROJECT_DIR$/src/sample/views/QuantitativeParametersPageView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/SendingView.java" afterPath="$PROJECT_DIR$/src/sample/views/SendingView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/SimpleResearchModuleView.java" afterPath="$PROJECT_DIR$/src/sample/views/SimpleResearchModuleView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/StatisticsView.java" afterPath="$PROJECT_DIR$/src/sample/views/StatisticsView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controllers/PreviewPdf.java" afterPath="$PROJECT_DIR$/src/sample/controllers/PreviewPdf.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/views/fxml/PreviewPDF.fxml" afterPath="$PROJECT_DIR$/src/sample/views/fxml/PreviewPDF.fxml" />
     </list>
     <ignored path="BioImageApp-master.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PatientsController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PatientsController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/controllers/PatientsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="268" column="0" selection-start-line="268" selection-start-column="0" selection-end-line="268" selection-end-column="0" />
+            <state relative-caret-position="214">
+              <caret line="272" column="56" selection-start-line="272" selection-start-column="56" selection-end-line="272" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,25 +47,12 @@
       <file leaf-file-name="PreviewPdf.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/controllers/PreviewPdf.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="584">
-              <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+            <state relative-caret-position="91">
+              <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PreviewPDF.fxml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/views/fxml/PreviewPDF.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="249" selection-start-line="7" selection-start-column="249" selection-end-line="7" selection-end-column="249" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
           </provider>
         </entry>
       </file>
@@ -184,9 +141,9 @@
         <option value="$PROJECT_DIR$/src/sample/views/SendingView.java" />
         <option value="$PROJECT_DIR$/src/sample/views/SimpleResearchModuleView.java" />
         <option value="$PROJECT_DIR$/src/sample/views/StatisticsView.java" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/PatientsController.java" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/PreviewPdf.java" />
         <option value="$PROJECT_DIR$/src/sample/views/fxml/PreviewPDF.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/PreviewPdf.java" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/PatientsController.java" />
       </list>
     </option>
   </component>
@@ -651,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1485267680152</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="preview pdf">
+      <created>1486825325545</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1486825325545</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -665,7 +629,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1040" height="754" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -674,12 +638,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32298136" sideWeight="0.5040816" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45249596" sideWeight="0.49591836" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45249596" sideWeight="0.49591836" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3268921" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3268921" sideWeight="0.49591836" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24795918" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24795918" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -737,7 +701,8 @@
     <MESSAGE value="fix dipl" />
     <MESSAGE value="add remember checkbox" />
     <MESSAGE value="add fucking features with auth patients and pdf" />
-    <option name="LAST_COMMIT_MESSAGE" value="add fucking features with auth patients and pdf" />
+    <MESSAGE value="preview pdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="preview pdf" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -888,6 +853,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -952,6 +918,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
           <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -959,6 +926,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="63" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="77" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -966,6 +934,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="18" column="76" selection-start-line="18" selection-start-column="76" selection-end-line="18" selection-end-column="76" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -973,6 +942,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="33" column="82" selection-start-line="33" selection-start-column="82" selection-end-line="33" selection-end-column="82" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -980,6 +950,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="27" column="78" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -987,6 +958,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -994,6 +966,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="16" column="76" selection-start-line="16" selection-start-column="76" selection-end-line="16" selection-end-column="76" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1001,6 +974,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="21" column="84" selection-start-line="21" selection-start-column="84" selection-end-line="21" selection-end-column="84" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1008,6 +982,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="20" column="84" selection-start-line="20" selection-start-column="84" selection-end-line="20" selection-end-column="84" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,6 +990,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,6 +998,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="75" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1029,6 +1006,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
           <caret line="23" column="75" selection-start-line="23" selection-start-column="75" selection-end-line="23" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1036,6 +1014,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="75" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1043,6 +1022,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="75" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1050,6 +1030,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="16" column="75" selection-start-line="16" selection-start-column="75" selection-end-line="16" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1057,6 +1038,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="18" column="76" selection-start-line="18" selection-start-column="76" selection-end-line="18" selection-end-column="76" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1090,26 +1072,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controllers/PatientsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="268" column="0" selection-start-line="268" selection-start-column="0" selection-end-line="268" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controllers/PreviewPdf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
-          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/views/fxml/PreviewPDF.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1119,6 +1081,26 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controllers/PreviewPdf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controllers/PatientsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="272" column="56" selection-start-line="272" selection-start-column="56" selection-end-line="272" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
