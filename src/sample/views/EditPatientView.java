@@ -19,7 +19,7 @@ public class EditPatientView {
 
     public void render() throws IOException {
 
-        Parent parent_panel = FXMLLoader.load(getClass().getResource("fxml/EditPatientClassView.fxml"));
+        Parent parent_panel = FXMLLoader.load(getClass().getResource("/sample/views/fxml/EditPatientClassView.fxml"));
         primaryStage.setTitle("EDITING A PATIENT");
         Scene cont = new Scene(parent_panel);
         cont.getStylesheets().add(0, "sample/views/css/style.css");

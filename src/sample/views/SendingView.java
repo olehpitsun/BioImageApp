@@ -13,7 +13,7 @@ public class SendingView {
     Stage primaryStage = new Stage();
 
     public void render() throws Exception {
-        Parent pr1 = FXMLLoader.load(getClass().getResource("fxml/SendingView.fxml"));
+        Parent pr1 = FXMLLoader.load(getClass().getResource("/sample/views/fxml/SendingView.fxml"));
         primaryStage.setTitle("Направлення");
         Scene scene = new Scene(pr1);
         scene.getStylesheets().add(0, "sample/views/css/DarkTheme.css");

@@ -18,7 +18,7 @@ public class EditUsersView {
 
     public void render() throws IOException {
 
-        Parent parent_panel = FXMLLoader.load(getClass().getResource("fxml/EditUsersView.fxml"));
+        Parent parent_panel = FXMLLoader.load(getClass().getResource("/sample/views/fxml/EditUsersView.fxml"));
         primaryStage.setTitle("EDITING USERS");
         Scene cont = new Scene(parent_panel);
         cont.getStylesheets().add(0, "sample/views/css/style.css");

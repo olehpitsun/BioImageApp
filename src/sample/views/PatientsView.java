@@ -15,7 +15,7 @@ public class PatientsView {
     Stage primaryStage = new Stage();
     public void render() throws IOException
     {
-        Parent parent = FXMLLoader.load(getClass().getResource("fxml/Patients.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("/sample/views/fxml/Patients.fxml"));
         Scene scene = new Scene(parent, 600, 400);
         CurrentStage.setOwnerStage(primaryStage);
         primaryStage.setMinHeight(400);

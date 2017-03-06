@@ -14,7 +14,7 @@ public class SimpleResearchModuleView {
     Stage primaryStage = new Stage();
 
     public void render() throws Exception {
-        Parent pr1 = FXMLLoader.load(getClass().getResource("fxml/SimpleResearchModuleView.fxml"));
+        Parent pr1 = FXMLLoader.load(getClass().getResource("/sample/views/fxml/SimpleResearchModuleView.fxml"));
         primaryStage.setTitle("Досліди");
 
         Scene scene = new Scene(pr1);

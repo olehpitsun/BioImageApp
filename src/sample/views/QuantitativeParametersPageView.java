@@ -13,7 +13,7 @@ public class QuantitativeParametersPageView {
     Stage primaryStage = new Stage();
 
     public void render() throws Exception {
-        Parent pr1 = FXMLLoader.load(getClass().getResource("fxml/QuantitativeParametersPageView.fxml"));
+        Parent pr1 = FXMLLoader.load(getClass().getResource("/sample/views/fxml/QuantitativeParametersPageView.fxml"));
         primaryStage.setTitle("Кількісні параметри");
         Scene scene = new Scene(pr1);
         scene.getStylesheets().add(0, "sample/views/css/DarkTheme.css");

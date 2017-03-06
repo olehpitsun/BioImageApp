@@ -1,19 +1,35 @@
 package sample.controllers;
 
 import com.itextpdf.text.*;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.*;
+import com.jfoenix.controls.JFXButton;
+import com.sun.pdfview.PDFFile;
+import com.sun.pdfview.PDFPage;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import sample.interfaces.PatientsBook;
 import sample.libs.*;
 import sample.models.AddPatientModel;
@@ -25,9 +41,18 @@ import sample.objects.Patient;
 import sample.views.AddPatientView;
 import sample.views.EditPatientView;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.Rectangle;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.*;
+import java.nio.*;
 import java.net.URL;
+import java.nio.*;
+import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -180,13 +205,14 @@ public class PatientsController {
         {}
         return cell;
     }
-    @FXML
-    public void pdfExport()
+    public ByteArrayOutputStream createPdf()
     {
+        ByteArrayOutputStream baosPDF = null;
         try {
             Patient pat = (Patient) table.getSelectionModel().getSelectedItem();
             Document document = new Document(PageSize.A4);
-            PdfWriter.getInstance(document, new FileOutputStream(Hash.hash(pat.getName_of_patient(), Hash.generateSalt(10)) + ".pdf"));
+            baosPDF = new ByteArrayOutputStream();
+            PdfWriter.getInstance(document, baosPDF);
             document.open();
             //meta
             BaseFont baseFont = BaseFont.createFont("src/sample/res/times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
@@ -228,7 +254,37 @@ public class PatientsController {
             Messages.error("Помилка","Не вибрано пацієнта","TABLE");
             ex.printStackTrace();
         }
+        return baosPDF;
     }
+    public static byte[] BUFFER = null;
+    @FXML
+    public void pdfExport(ActionEvent event)
+    {
+        try {
+            BUFFER = createPdf().toByteArray();
+//            FileOutputStream fos = new FileOutputStream(Hash.hash(Hash.generateSalt(12), Hash.generateSalt(24)) + ".pdf");
+//            fos.write(PatientsController.BUFFER);
+//            fos.close();
+                            Stage primaryStage = new Stage();
+                            Parent parent = FXMLLoader.load(getClass().getResource("/sample/views/fxml/PreviewPDF.fxml"));
+                            Scene scene = new Scene(parent, 500, 700);
+                            CurrentStage.setOwnerStage(primaryStage);
+                            primaryStage.setMinHeight(700);
+                            primaryStage.setMinWidth(500);
+                            primaryStage.setTitle("PDF Preview");
+                            primaryStage.setScene(scene);
+                            primaryStage.initModality(Modality.WINDOW_MODAL);
+                            primaryStage.initOwner(
+                                    ((Node)event.getSource()).getScene().getWindow() );
+                            primaryStage.show();
+
+    }
+    catch (Exception r)
+    {
+        r.printStackTrace();
+    }
+    }
+
     @FXML
     public void deletePatient() throws SQLException
     {

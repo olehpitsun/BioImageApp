@@ -13,7 +13,7 @@ public class AddUsersView {
     Stage primaryStage = new Stage();
     public void render() throws Exception
     {
-        Parent panel = FXMLLoader.load(getClass().getResource("fxml/AddUsersView.fxml"));
+        Parent panel = FXMLLoader.load(getClass().getResource("/sample/views/fxml/AddUsersView.fxml"));
         Scene scene = new Scene(panel);
         CurrentStage.setOwnerStage(primaryStage);
         primaryStage.setMinHeight(400);

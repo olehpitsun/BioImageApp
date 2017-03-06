@@ -25,7 +25,7 @@ public class CheckerView{
     Stage primaryStage = new Stage(StageStyle.UNDECORATED);
     public synchronized void render() throws Exception
     {
-        Parent parent = FXMLLoader.load(getClass().getResource("fxml/START.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("/sample/views/fxml/START.fxml"));
         Scene scene = new Scene(parent, 369, 478);
         primaryStage.setResizable(false);
         primaryStage.setMinHeight(478);

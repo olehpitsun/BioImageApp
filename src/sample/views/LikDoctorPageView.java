@@ -13,7 +13,7 @@ public class LikDoctorPageView {
     Stage primaryStage = new Stage();
 
     public void render() throws Exception {
-        Parent pr1 = FXMLLoader.load(getClass().getResource("fxml/LikDoctorPageView.fxml"));
+        Parent pr1 = FXMLLoader.load(getClass().getResource("/sample/views/fxml/LikDoctorPageView.fxml"));
         primaryStage.setTitle("Лікуючий лікар");
         Scene scene = new Scene(pr1);
         scene.getStylesheets().add(0, "sample/views/css/DarkTheme.css");
