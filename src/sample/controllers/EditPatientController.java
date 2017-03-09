@@ -43,11 +43,15 @@ public class EditPatientController {
 
     private String doctor_id;
 
-    EditPatientModel editPatientModel;
+
     public static Patient patient;
 
     @FXML
     private ToggleGroup Gender;
+    @FXML
+    private TextField medical_card_of_patient;
+
+    EditPatientModel editPatientModel;
 
 
     @FXML
@@ -63,6 +67,7 @@ public class EditPatientController {
         editPatientModel.setDiagnosis(diagnosis.getText());
         editPatientModel.setDate_of_completion(Date.getTime());
         editPatientModel.setDoctor_id(Session.getKeyValue("id"));
+        editPatientModel.setMedical_card_of_patient(medical_card_of_patient.getText());
         editPatientModel.addToDB();
 
     }
@@ -81,6 +86,7 @@ public class EditPatientController {
         diagnosis.setText(patient.getDiagnosis());
         date_of_completion = Date.getTime();
         doctor_id = Session.getKeyValue("id");
+        medical_card_of_patient.setText(patient.getMedical_card());
     }
 
 } // class AdClassController

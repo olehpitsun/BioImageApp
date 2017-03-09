@@ -22,7 +22,8 @@ public class PatientsModel extends SQLDatabase {
     private String results_of_research;
     private String diagnosis;
     private String date_of_completion;
-    private String doctor_id, medical_card;
+    private String doctor_id;
+    private String medical_card_of_patient;
     private String status;
     private int id;
     public int counts;
@@ -58,6 +59,7 @@ public class PatientsModel extends SQLDatabase {
             this.diagnosis = resultSet.getString("Diagnosis");
             this.date_of_completion = resultSet.getString("Date_of_completion");
             this.doctor_id = resultSet.getString("doctor_id");
+            this.medical_card_of_patient = resultSet.getString("medical_card");
             this.status = resultSet.getString("Status");
 //            this.medical_card = resultSet.getString("medical_card");
     }
@@ -70,7 +72,7 @@ public class PatientsModel extends SQLDatabase {
             PatientsController.patientsData.add(new Patient(id, surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
                     gender,
                     results_of_research, diagnosis,
-                    date_of_completion, doctor_id, status, medical_card));
+                    date_of_completion, doctor_id, status, medical_card_of_patient));
         }
         PatientsController.backupPatientsData.clear();
         PatientsController.backupPatientsData.addAll(PatientsController.patientsData);

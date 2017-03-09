@@ -30,7 +30,8 @@ public class AddPatientModel extends  SQLDatabase{
     private String results_of_research;
     private String diagnosis;
     private String date_of_completion;
-    private String doctor_id, medical_card;
+    private String doctor_id;
+    private String medical_card_of_patient;
 
 
     public void setSurname_of_patient(String surname_of_patient) { this.surname_of_patient = surname_of_patient; }
@@ -61,32 +62,33 @@ public class AddPatientModel extends  SQLDatabase{
     public void setDoctor_id(String doctor_id) {
         this.doctor_id = doctor_id;
     }
-    public void setMedical_card(String medical_card1){ this.medical_card = medical_card1;}
+    public void setMedical_card_of_patient(String medical_card_of_patient){ this.medical_card_of_patient = medical_card_of_patient;}
     public AddPatientModel()
     {
         sqlSetConnect();
     }
     public void addToDB() {
-        if(surname_of_patient.isEmpty() || name_of_patient.isEmpty() || fathername_of_patient.isEmpty() || date_of_birth.isEmpty() || results_of_research.isEmpty() || diagnosis.isEmpty()
+        if(surname_of_patient.isEmpty() || name_of_patient.isEmpty() || fathername_of_patient.isEmpty() || date_of_birth.isEmpty() || results_of_research.isEmpty() || diagnosis.isEmpty() || medical_card_of_patient.isEmpty()
                 || !Regex.checkWithRegex(surname_of_patient, "^[a-zA-Zа-яА-Я\\s]+$") || !Regex.checkWithRegex(name_of_patient, "^[a-zA-Zа-яА-Я\\s]+$") || !Regex.checkWithRegex(fathername_of_patient, "^[a-zA-Zа-яА-Я\\s]+$") ||
                 !Regex.checkWithRegex(date_of_birth, "^[0-9.]+$") ||
                 !Regex.checkWithRegex(results_of_research, "^[a-zA-Zа-яА-Я0-9\\s.,!;?]+$") ||
-                !Regex.checkWithRegex(diagnosis, "^[a-zA-Zа-яА-Я0-9.,!;?\\s]+$")) {
+                !Regex.checkWithRegex(diagnosis, "^[a-zA-Zа-яА-Я0-9.,!;?\\s]+$") ||
+                !Regex.checkWithRegex(medical_card_of_patient, "^[0-9]+$")) {
             Messages.error("Помилка заповнення!", "Будь ласка, заповніть коректно всі поля!", "Помилка!");
         } else {
             try {
 
-                sqlInsertExecute("INSERT INTO patients (Status, Surname, Name, Fathername, Date_of_birth, Gender, Results_of_research, Diagnosis, Date_of_completion, doctor_id) VALUES (" + "'Patient'," + "'" + surname_of_patient + "'," + "'" + name_of_patient + "'," + "'" + fathername_of_patient + "'," + "'" + date_of_birth + "'," + "'" + gender + "'," + "'" + results_of_research + "'," + "'" + diagnosis + "'," + "'" + date_of_completion + "'," + "'" + doctor_id + "')");
+                sqlInsertExecute("INSERT INTO patients (Status, Surname, Name, Fathername, Date_of_birth, Gender, Results_of_research, Diagnosis, Date_of_completion, doctor_id, medical_card) VALUES (" + "'Patient'," + "'" + surname_of_patient + "'," + "'" + name_of_patient + "'," + "'" + fathername_of_patient + "'," + "'" + date_of_birth + "'," + "'" + gender + "'," + "'" + results_of_research + "'," + "'" + diagnosis + "'," + "'" + date_of_completion + "'," + "'" + doctor_id + "'," + "'" + medical_card_of_patient + "')");
                 sqlExecute("SELECT id, status FROM patients WHERE Surname='" + surname_of_patient + "' AND Name='" + name_of_patient + "' AND Fathername='" + fathername_of_patient + "' AND Date_of_birth='" + date_of_birth + "'");
                 if (resultSet.next()) {
                     PatientsController.patientsData.add(new Patient(Integer.valueOf(resultSet.getString("ID")), surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
                             gender,
                             results_of_research, diagnosis,
-                            date_of_completion, doctor_id, resultSet.getString("Status"), medical_card));
+                            date_of_completion, doctor_id, resultSet.getString("Status"), medical_card_of_patient));
                     PatientsController.backupPatientsData.add(new Patient(Integer.valueOf(resultSet.getString("ID")), surname_of_patient, name_of_patient, fathername_of_patient, date_of_birth,
                             gender,
                             results_of_research, diagnosis,
-                            date_of_completion, doctor_id, resultSet.getString("Status"), medical_card));
+                            date_of_completion, doctor_id, resultSet.getString("Status"), medical_card_of_patient));
                     //database.sqlInsertExecute("INSERT INTO patients VALUES ('2', '', '', '', '', '', '', '', '')");
                     EventLogger.createEvent(Session.getKeyValue("name"), "Added patient" + surname_of_patient + " " + name_of_patient, Date.getTime());
                 }
