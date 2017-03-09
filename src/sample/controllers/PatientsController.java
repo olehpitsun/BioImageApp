@@ -96,6 +96,8 @@ public class PatientsController {
     @FXML
     private TableColumn<Patient, String> doctor;
     @FXML
+    private TableColumn<Patient, String> medicalcard;
+    @FXML
     private Button addPatient;
     @FXML
     private Button editPatient;
@@ -135,6 +137,7 @@ public class PatientsController {
                     patient.getGender().toLowerCase().contains(text) ||
                     patient.getResults_of_research().toLowerCase().contains(text) ||
                     patient.getStatus().toLowerCase().contains(text) ||
+                    patient.getMedical_card().toLowerCase().contains(text) ||
                     patient.getDate_of_birth().toUpperCase().contains(text) ||
                     patient.getDate_of_completion().toUpperCase().contains(text) ||
                     patient.getDiagnosis().toUpperCase().contains(text) ||
@@ -145,6 +148,7 @@ public class PatientsController {
                     patient.getGender().toUpperCase().contains(text) ||
                     patient.getResults_of_research().toUpperCase().contains(text) ||
                     patient.getStatus().toUpperCase().contains(text) ||
+                    patient.getMedical_card().toUpperCase().contains(text) ||
                     patient.getDate_of_birth().contains(text) ||
                     patient.getDate_of_completion().contains(text) ||
                     patient.getDiagnosis().contains(text) ||
@@ -154,7 +158,8 @@ public class PatientsController {
                     patient.getDoctor_id().contains(text) ||
                     patient.getGender().contains(text) ||
                     patient.getResults_of_research().contains(text) ||
-                    patient.getStatus().contains(text))
+                    patient.getStatus().contains(text) ||
+                    patient.getMedical_card().contains(text))
             {
                 patientsData.add(patient);
             }
@@ -166,7 +171,7 @@ public class PatientsController {
     {
         AddPatientView addPatientView = new AddPatientView();
         addPatientView.render();
-        Notifi.notification(Pos.TOP_RIGHT, "Увага!", "У всіх полях, крім дати народження, " +
+        Notifi.notification(Pos.BOTTOM_RIGHT, "Увага!", "У всіх полях, крім дати народження та медичної картки, " +
                 "заборонено використання цифр.");
     }
     @FXML
@@ -183,7 +188,7 @@ public class PatientsController {
         EditPatientController.patient = patient;
         EditPatientView editPatientView = new EditPatientView();
             editPatientView.render();
-            Notifi.notification(Pos.TOP_RIGHT, "Увага!", "У всіх полях, крім дати народження, " +
+            Notifi.notification(Pos.BOTTOM_RIGHT, "Увага!", "У всіх полях, крім дати народження та медичної картки, " +
                     "заборонено використання цифр.");
         } catch (Exception ex) {
             Messages.error("Помилка","Не вибрано пацієнта","TABLE");
@@ -318,6 +323,7 @@ public class PatientsController {
         research.setCellValueFactory(new PropertyValueFactory<Patient, String>("results_of_research"));
         completion.setCellValueFactory(new PropertyValueFactory<Patient, String>("date_of_completion"));
         doctor.setCellValueFactory(new PropertyValueFactory<Patient, String>("doctor_id"));
+        medicalcard.setCellValueFactory(new PropertyValueFactory<Patient, String>("medical_card"));
         patientsData.addListener(new ListChangeListener<Patient>() {
             @Override
             public void onChanged(Change<? extends Patient> c){

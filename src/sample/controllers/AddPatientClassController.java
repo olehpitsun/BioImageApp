@@ -41,12 +41,17 @@ public class AddPatientClassController {
     @FXML
     private String date_of_completion;
 
-    private String doctor_id;
-    private Patient patient;
-    AddPatientModel addPatientModel;
+    // private String doctor_id;
+    // private Patient patient;
+
 
     @FXML
     private ToggleGroup Gender;
+    @FXML
+    private TextField medical_card_of_patient;
+
+    AddPatientModel addPatientModel;
+
     public void addAPatientInDB(){
         addPatientModel = new AddPatientModel();
         addPatientModel.setSurname_of_patient(surname_of_patient.getText());
@@ -58,6 +63,7 @@ public class AddPatientClassController {
         addPatientModel.setDiagnosis(diagnosis.getText());
         addPatientModel.setDate_of_completion(Date.getTime());
         addPatientModel.setDoctor_id(Session.getKeyValue("id"));
+        addPatientModel.setMedical_card_of_patient(medical_card_of_patient.getText());
         addPatientModel.addToDB();
     }
 

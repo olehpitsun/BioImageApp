@@ -112,7 +112,7 @@ public class AdminController {
     public void addUser() throws Exception
     {
         AddUsers addUsers = new AddUsers();
-        Notifi.notification(Pos.TOP_RIGHT, "Увага!", "У всіх полях, крім логіна та пароля, заборонено використання цифр.");
+        Notifi.notification(Pos.BOTTOM_RIGHT, "Увага!", "У всіх полях, крім логіна та пароля, заборонено використання цифр.");
 
     }
     @FXML
@@ -134,7 +134,7 @@ public class AdminController {
             EditUsersController.users = users;
             EditUsersView editUsersView = new EditUsersView();
             editUsersView.render();
-            Notifi.notification(Pos.TOP_RIGHT, "Увага!", "У всіх полях, крім логіна та пароля, заборонено використання цифр.");
+            Notifi.notification(Pos.BOTTOM_RIGHT, "Увага!", "У всіх полях, крім логіна та пароля, заборонено використання цифр.");
         } catch (Exception ex) {
             Messages.error("Помилка","Не вибрано користувача","TABLE");
         }
